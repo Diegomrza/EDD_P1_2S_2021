@@ -3,9 +3,16 @@
 #include <conio.h>
 #include <fstream>
 #include <locale.h>
+#include <string.h>
+#include <cstdlib> //Convertir a entero
+
 #include "./Estructuras/Doble.cpp"
+#include "./Estructuras/Nodo.cpp"
 #include "./Grafos/Grafo.cpp"
+
 using namespace std;
+
+// C:\Users\Squery\Desktop\Programas\Estudiantes.csv
 
 void menu();
 void lectura();
@@ -16,22 +23,29 @@ void reportes();
 
 int main()
 {
+
+    int numero = 5;
+    
+    cout << &numero<< endl;
+
     //setlocale(LC_CTYPE,"English");
     //Doble<int> *lst = new Doble<int>();
     //lst->insertar(1);
     //lst->insertar(2);
     //lst->insertar(3);
-
     //cout << "El tamanio de la lista es: "<<lst->size << endl;
 
+    //[5][30][9] = 1350 posiciones
+    
     menu();
 }
 
-void menu(){
-    string opcion; //variable de tipo cadena de letras
+void menu()
+{
+    string opcion;       //variable de tipo cadena de letras
     bool bandera = true; //variable de tipo falso o verdadero
     cout << "\n\n\n";
-    while (bandera==true)
+    while (bandera == true)
     {
         cout << "***********Menu**********" << endl;
         cout << "* 1. Carga de usuarios  *" << endl;
@@ -39,38 +53,44 @@ void menu(){
         cout << "* 3. Ingreso manual     *" << endl;
         cout << "* 4. Reportes           *" << endl;
         cout << "* 5. Cerrar el programa *" << endl;
-        cout << "*************************" << endl; 
+        cout << "*************************" << endl;
         cout << "Ingrese una opcion:\n>> ";
         cin >> opcion;
-        
+
         if (opcion == "1")
         {
             cargaUsuarios();
-        } 
+        }
         else if (opcion == "2")
         {
             cargaTareas();
-        } 
+        }
         else if (opcion == "3")
         {
             ingresoManual();
-        } 
+        }
         else if (opcion == "4")
         {
             reportes();
-        } else if (opcion == "5")
+        }
+        else if (opcion == "5")
         {
-           exit(0);
+            exit(0);
         }
         else
         {
             cout << endl;
-            cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl << endl << endl << endl << endl;
+            cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl
+                 << endl
+                 << endl
+                 << endl
+                 << endl;
         }
     }
 }
 
-void lectura(){
+void lectura()
+{
     ifstream archivo;
     string texto;
     string texting;
@@ -79,31 +99,89 @@ void lectura(){
     cout << "Ingrese la ruta del archivo: " << endl;
     cin >> ruta;
 
-    archivo.open(ruta, ios::in);  //Abriendo el archivo en modo lectura
+    archivo.open(ruta, ios::in); //Abriendo el archivo en modo lectura
+
+    int contador = 0;
+    int contador2 = 0;
 
     if (archivo.fail())
     {
         cout << "Hubo un error al intentar abrir el archivo" << endl;
-    } else{
-        while (!archivo.eof()) 
+    }
+    else
+    {
+        while (!archivo.eof())
         {
             getline(archivo, texto);
             texting += texto + "\n";
+            contador++;
         }
-        cout <<texting;
+        string arreglo[contador-1];
+
+        texto = "";
+        stringstream input_stringstream(texting);
+        getline(input_stringstream, texto, '\n');
+        while (getline(input_stringstream, texto, '\n'))
+        {
+            arreglo[contador2] = texto;
+            contador2++;
+        }
+        texto = "";
+        cout << contador<< "      "<< contador2<<endl;
+
+        
+
+        Doble<int> *lst = new Doble<int>();
+
+        for (size_t i = 0; i < contador2; i++)
+        {
+            
+            stringstream input_stringstream(arreglo[i]);
+            getline(input_stringstream, texto, ',');
+            string carnet = texto;
+            getline(input_stringstream, texto, ',');
+            string dpi = texto;
+            getline(input_stringstream, texto, ',');
+            string nombre = texto;
+            getline(input_stringstream, texto, ',');
+            string carrera = texto;
+            getline(input_stringstream, texto, ',');
+            string password = texto;
+            getline(input_stringstream, texto, ',');
+            string creditos = texto;
+            getline(input_stringstream, texto, ',');
+            string edad = texto;
+            getline(input_stringstream, texto, ',');
+            string correo = texto;
+
+            cout << carnet << " - "<<dpi<<" - "<<nombre<<" - "<<carrera<<" - "<<password<<" - "<<creditos<<" - "<<edad<<" - "<<correo<<endl<<endl;
+            if (carnet!="")
+            {
+                lst->insertar(carnet,dpi,nombre,carrera,correo,password,creditos,edad);
+            }
+            
+            
+        }
+        
+        cout << "El numero de elementos en la lista es: " <<lst->size<< endl;
+
     }
     archivo.close();
 }
 
-void cargaUsuarios(){
+void cargaUsuarios()
+{
     cout << "Metodo de carga de usuarios" << endl;
+    lectura();
 }
 
-void cargaTareas(){
+void cargaTareas()
+{
     cout << "Metodo de carga de tareas" << endl;
 }
 
-void ingresoManual(){
+void ingresoManual()
+{
     cout << "Metodo de ingreso manual" << endl;
     cout << "1. Usuarios" << endl;
     cout << "2. Tareas" << endl;
@@ -113,17 +191,18 @@ void ingresoManual(){
     if (opcion == 1)
     {
         cout << "Usuarios" << endl;
-    } else if (opcion == 2)
+    }
+    else if (opcion == 2)
     {
         cout << "Tareas" << endl;
-    } else if (opcion == 3)
+    }
+    else if (opcion == 3)
     {
         cout << "Regresando" << endl;
     }
-    
 }
 
-void reportes(){
+void reportes()
+{
     cout << "Metodo de reportes" << endl;
-}   
-
+}
