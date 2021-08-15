@@ -5,9 +5,12 @@
 #include <locale.h>
 #include <string.h>
 #include <cstdlib> //Convertir a entero
+#include <regex>
 
-#include "./Estructuras/Doble.cpp"
-#include "./Estructuras/Nodo.cpp"
+//#include "./Estructuras/Doble.cpp"
+//#include "./Estructuras/Nodo.cpp"
+#include "./Estructuras/ListaDoble.cpp"
+#include "./Estructuras/NodoListaDoble.cpp"
 #include "./Grafos/Grafo.cpp"
 
 using namespace std;
@@ -23,18 +26,7 @@ void reportes();
 
 int main()
 {
-
-    int numero = 5;
-    
-    cout << &numero<< endl;
-
     //setlocale(LC_CTYPE,"English");
-    //Doble<int> *lst = new Doble<int>();
-    //lst->insertar(1);
-    //lst->insertar(2);
-    //lst->insertar(3);
-    //cout << "El tamanio de la lista es: "<<lst->size << endl;
-
     //[5][30][9] = 1350 posiciones
     
     menu();
@@ -129,40 +121,46 @@ void lectura()
         texto = "";
         cout << contador<< "      "<< contador2<<endl;
 
+        //Doble<int> *lst = new Doble<int>();
+        ListaDoble *lst = new ListaDoble();
         
-
-        Doble<int> *lst = new Doble<int>();
-
         for (size_t i = 0; i < contador2; i++)
         {
             
             stringstream input_stringstream(arreglo[i]);
             getline(input_stringstream, texto, ',');
             string carnet = texto;
+
             getline(input_stringstream, texto, ',');
             string dpi = texto;
+
             getline(input_stringstream, texto, ',');
             string nombre = texto;
+
             getline(input_stringstream, texto, ',');
             string carrera = texto;
+            
             getline(input_stringstream, texto, ',');
             string password = texto;
+
             getline(input_stringstream, texto, ',');
-            string creditos = texto;
+            long creditos = atoi(texto.c_str());
+
             getline(input_stringstream, texto, ',');
-            string edad = texto;
+            long edad = atoi(texto.c_str());
+
             getline(input_stringstream, texto, ',');
             string correo = texto;
 
-            cout << carnet << " - "<<dpi<<" - "<<nombre<<" - "<<carrera<<" - "<<password<<" - "<<creditos<<" - "<<edad<<" - "<<correo<<endl<<endl;
-            if (carnet!="")
+            cout <<"El dpi tiene " <<dpi.length() << "digitos" << endl;
+            cout << "El carnet tiene " << carnet.length() << "digitos" << endl;
+ 
+            if (carrera!="")
             {
                 lst->insertar(carnet,dpi,nombre,carrera,correo,password,creditos,edad);
             }
-            
-            
         }
-        
+        lst->mostrar();
         cout << "El numero de elementos en la lista es: " <<lst->size<< endl;
 
     }
