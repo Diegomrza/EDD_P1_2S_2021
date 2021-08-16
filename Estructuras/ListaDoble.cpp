@@ -65,7 +65,15 @@ void ListaDoble::mostrar(){
        cout<<temporal->creditos<<endl;
        cout<<temporal->edad<<"\n\n\n";
        temporal = temporal->siguiente;
-    }
+    } 
+    cout<<temporal->noCarnet<<endl;
+    cout<<temporal->dpi<<endl;
+    cout<<temporal->nombre<<endl;
+    cout<<temporal->carrera<<endl;
+    cout<<temporal->correo<<endl;
+    cout<<temporal->password<<endl;
+    cout<<temporal->creditos<<endl;
+    cout<<temporal->edad<<"\n\n\n";
 }
 
 void ListaDoble::modificar(string dpi){
@@ -75,7 +83,8 @@ void ListaDoble::modificar(string dpi){
     {
         if (temporal->dpi == dpi)
         {
-            cout<<"modificando datos";
+            cout<<"Modificando datos datos";
+            break;
         }
         
         temporal = temporal->siguiente;

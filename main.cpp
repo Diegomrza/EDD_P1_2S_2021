@@ -16,6 +16,8 @@
 using namespace std;
 
 // C:\Users\Squery\Desktop\Programas\Estudiantes.csv
+ListaDoble *lst = new ListaDoble(); //lista global
+
 
 void menu();
 void lectura();
@@ -23,6 +25,8 @@ void cargaUsuarios();
 void cargaTareas();
 void ingresoManual();
 void reportes();
+void menuUsuarios();
+void menuTareas();
 
 int main()
 {
@@ -68,8 +72,10 @@ void menu()
         else if (opcion == "5")
         {
             exit(0);
-        }
-        else
+        } else if (opcion=="6")
+        {
+            lst->mostrar();
+        } else
         {
             cout << endl;
             cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl
@@ -122,7 +128,7 @@ void lectura()
         cout << contador<< "      "<< contador2<<endl;
 
         //Doble<int> *lst = new Doble<int>();
-        ListaDoble *lst = new ListaDoble();
+        
         
         for (size_t i = 0; i < contador2; i++)
         {
@@ -162,14 +168,13 @@ void lectura()
         }
         lst->mostrar();
         cout << "El numero de elementos en la lista es: " <<lst->size<< endl;
-
     }
     archivo.close();
 }
 
 void cargaUsuarios()
 {
-    cout << "Metodo de carga de usuarios" << endl;
+    cout << "\n\n\n" << endl;
     lectura();
 }
 
@@ -179,25 +184,89 @@ void cargaTareas()
 }
 
 void ingresoManual()
-{
-    cout << "Metodo de ingreso manual" << endl;
-    cout << "1. Usuarios" << endl;
-    cout << "2. Tareas" << endl;
-    cout << "3. Regresar" << endl;
+{   
+    cout << "*Menu ingreso manual*" << endl;
+    cout << "* 1.   Usuarios     *" << endl;
+    cout << "* 2.   Tareas       *" << endl;
+    cout << "* 3.   Regresar     *" << endl;
+    cout << "*********************"<<endl;
     int opcion = 0;
+    cin >> opcion;
 
     if (opcion == 1)
     {
-        cout << "Usuarios" << endl;
+        menuUsuarios();
     }
     else if (opcion == 2)
     {
-        cout << "Tareas" << endl;
+        menuTareas();
     }
     else if (opcion == 3)
     {
-        cout << "Regresando" << endl;
+        menu();
     }
+}
+
+void menuUsuarios(){
+
+    cout << "**Menu Usuarios**" <<endl;
+    cout << "* 1. Ingresar   *" << endl;
+    cout << "* 2. Modificar  *" << endl;
+    cout << "* 3. Eliminar   *" << endl;
+    cout << "* 4. Regresar   *" << endl;
+    cout << "*****************" <<endl;
+    int opcion;
+    cout << "Ingrese una opcion: " <<endl;
+    cin >> opcion;
+    if (opcion == 1)
+    {
+        cout << "Ingrese los datos del nuevo usuario: " << endl;
+        string noCarnet;
+        string dpi;
+        string nombre;
+        string carrera;
+        string correo;
+        string password;
+        int creditos;
+        int edad;
+        cout << "Numero de carnet: "<< endl; 
+        cin>> noCarnet;       
+        cout << "Numero de dpi: " << endl; 
+        cin>> dpi;        
+        cout << "Nombre: " << endl; 
+        getline(cin,nombre);
+        cout << "Carrera: " << endl; 
+        getline(cin, carrera);       
+        cout << "Correo: " << endl; 
+        cin >> correo; 
+        cout << "Password: " << endl; 
+        cin >> password;  
+        cout << "Creditos: " << endl; 
+        cin >> creditos;
+        cout << "Edad: " << endl; 
+        cin >> edad;
+
+        lst->insertar(noCarnet, dpi, nombre, carrera, correo, password, creditos, edad);
+        
+    } else if (opcion == 2)
+    {
+        string dpi;
+        cout << "Ingrese el dpi del usuario que desea modificar" << endl;
+    } else if (opcion == 3)
+    {
+        string dpi;
+        cout << "Ingrese el dpi del usuario que desea eliminar" << endl;
+    } else if (opcion == 4)
+    {
+        ingresoManual();
+    }
+    lst->mostrar();
+    cout << "El numero de elementos en la lista es: " <<lst->size<< endl;
+    
+}
+
+void menuTareas(){
+
 }
 
 void reportes()
