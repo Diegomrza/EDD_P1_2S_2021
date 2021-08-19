@@ -1,7 +1,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include "../Estructuras/Doble.cpp"
 
 
 template <typename T>

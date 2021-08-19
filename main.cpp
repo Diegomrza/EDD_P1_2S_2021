@@ -1,25 +1,23 @@
+//Importaciones de librerias importantes
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
 #include <fstream>
 #include <locale.h>
 #include <string.h>
-#include <cstdlib> //Convertir a entero
+#include <cstdlib> 
 #include <cstring>
 #include <regex>
 
-//#include "./Estructuras/Doble.cpp"
-//#include "./Estructuras/Nodo.cpp"
+//Importaciones de estructuras
 #include "./Estructuras/ListaDoble.cpp"
 #include "./Estructuras/NodoListaDoble.cpp"
 #include "./Grafos/Grafo.cpp"
 #include "./Estructuras/NodoTarea.cpp"
-
 using namespace std;
-
-// C:\Users\Squery\Desktop\Programas\Estudiantes.csv
-// C:\Users\Squery\Desktop\Programas\Tareas.csv
-ListaDoble *lst = new ListaDoble(); //lista global
+//                  C:\Users\Squery\Desktop\Programas\Estudiantes.csv
+//                  C:\Users\Squery\Desktop\Programas\Tareas.csv
+ListaDoble *lst = new ListaDoble();
 NodoTarea *listaTareas[5][30][9];
 
 void menu();
@@ -33,12 +31,10 @@ void menuTareas();
 
 int main()
 {
-    //setlocale(LC_CTYPE,"English");
-    //[5][30][9] = 1350 posiciones
-
     menu();
 }
 
+//Menú principal
 void menu()
 {
     string opcion;       //variable de tipo cadena de letras
@@ -94,7 +90,9 @@ void menu()
     }
 }
 
-void lectura()
+
+//Métodos de carga masiva       ****************************************
+void cargaUsuarios()
 {
     ifstream archivo;
     string texto;
@@ -134,55 +132,50 @@ void lectura()
             contador2++;
         }
         texto = "";
-        cout << contador << "      " << contador2 << endl;
+        //cout << contador << "      " << contador2 << endl;
 
         for (size_t i = 0; i < contador2; i++)
         {
             stringstream input_stringstream(arreglo[i]);
             
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Carnet
             string carnet = texto;
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Dpi
             string dpi = texto;
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Nombre
             string nombre = texto;
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Carrera
             string carrera = texto;
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Password
             string password = texto;
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Creditos
             long creditos = atoi(texto.c_str());
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Edad
             long edad = atoi(texto.c_str());
-
-            getline(input_stringstream, texto, ',');
+            getline(input_stringstream, texto, ','); //Correo
             string correo = texto;
 
-            //cout <<"El dpi tiene " <<dpi.length() << "digitos" << endl;
-            //cout << "El carnet tiene " << carnet.length() << "digitos" << endl;
+            regex r("[a-zA-Z_0-9]+@[a-zA-Z]+.(com|es|org){1}"); smatch m;
+            if (!regex_match(correo, m, r)){
+                cout << "No Encontrado" << endl;
+            }
+            if (dpi.length()!=13){
+                
+            }
+            if (carnet.length()){
+                
+            }
+            if (correo.length()){
 
+            }
+            
             if (carrera != "")
             {
                 lst->insertar(carnet, dpi, nombre, carrera, correo, password, creditos, edad);
             }
         }
-        //lst->mostrar();
-        //cout << "El numero de elementos en la lista es: " << lst->size << endl;
     }
     archivo.close();
-}
-
-void cargaUsuarios()
-{
-    cout << "\n\n\n"
-         << endl;
-    lectura();
 }
 
 void cargaTareas()
@@ -191,7 +184,6 @@ void cargaTareas()
     string texto;
     string texting;
     string ruta = "";
-
     int contadorT=0;
     int contadorT2=0;
 
@@ -200,29 +192,23 @@ void cargaTareas()
 
     archivo.open(ruta, ios::in);
 
-    if (archivo.fail())
-    {
+    if (archivo.fail()){
         cout << "No se pudo abrir el archivo :C" << endl;
     }
-    else
-    {
+    else{
         while (!archivo.eof())
         {
             getline(archivo, texto);
             texting += texto + "\n";
             contadorT++;
         }
-        //cout<<texting<<endl;
-        
         string arreglo[contadorT-1];
         texto = "";
         
         stringstream input2_stringstream(texting);
         getline(input2_stringstream, texto, '\n');
         
-        
-        while (getline(input2_stringstream, texto, '\n'))
-        {
+        while (getline(input2_stringstream, texto, '\n')){
             arreglo[contadorT2] = texto;
             contadorT2++;
         }
@@ -230,8 +216,7 @@ void cargaTareas()
         
         int id_contador=0;
         
-        for (int a = 0; a < contadorT2; a++)
-        {
+        for (int a = 0; a < contadorT2; a++){
             stringstream input_stringstream(arreglo[a]);
 
             getline(input_stringstream, texto, ','); //Mes
@@ -253,27 +238,10 @@ void cargaTareas()
             getline(input_stringstream, texto, ','); //Estado
             string estado = texto;
 
-            /*
-            cout<<endl;
-            cout<<mes<<endl;
-            cout<<dia<<endl;
-            cout<<hora<<endl;
-            cout<<carnet<<endl;
-            cout<<nombre<<endl;
-            cout<<descripcion<<endl;
-            cout<<materia<<endl;
-            cout<<fecha<<endl;
-            cout<<estado<<endl;
-            cout<<endl;
-            */
-            for (int i = 1; i <= 5; i++)
-            {
-                for (int j = 1; j <= 30; j++)
-                {
-                    for (int k = 1; k <= 9; k++)
-                    {   
-                        if ((mes==i+6) && dia==j && (hora==k+7))
-                        {
+            for (int i = 1; i <= 5; i++){
+                for (int j = 1; j <= 30; j++){
+                    for (int k = 1; k <= 9; k++){   
+                        if ((mes==i+6) && dia==j && (hora==k+7)){
                             cout<<"Si entre "<<mes<<"/"<<dia<<"/"<<hora<<endl;
                             NodoTarea *nuevo = new NodoTarea(id_contador,carnet,nombre,descripcion,materia,fecha,hora,estado);
                             listaTareas[i-1][j-1][k-1]= nuevo;
@@ -285,47 +253,28 @@ void cargaTareas()
             } //For de las horas
         } //Fin del primer for que se usa para leer el archivo
 
-        for (int i = 0; i < 5; i++)
-        {
-            for (int j = 0; j < 30; j++)
-            {
-                for (int k = 0; k < 9; k++)
-                {
-                    if (listaTareas[i][j][k] != NULL)
-                    {
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j < 30; j++){
+                for (int k = 0; k < 9; k++){
+                    if (listaTareas[i][j][k] != NULL){
                         cout<<listaTareas[i][j][k]->nombre_tarea<<endl;
                         cout<<listaTareas[i][j][k]->id_tarea<<endl;
                         cout<<listaTareas[i][j][k]->descripcion_tarea<<endl;
                         cout<<listaTareas[i][j][k]->estado<<endl<<endl<<endl;
                     }
                 }
-                //cout<<"\n";
             }
-            //cout<<"\n";
         }
-        
     } //Fin primer if
+    archivo.close();
 }
-
-/*
-for (int i = 0; i < 5; i++)
-{
-    for (int j = 0; j < 30; j++)
-    {
-        for (int k = 0; k < 9; k++)
-        {
-            if ( (mes>=7 && mes<=11) && (dia>0 && dia<=30) && (hora>=8 && hora<=16) )
-            {   
-                NodoTarea *nuevo = new NodoTarea(id_contador,carnet,nombre,descripcion,materia,fecha,hora,estado);
-                listaTareas[i][j][k]= nuevo;
-                break;
-            }
-        } //For de los Meses
-    } //For de los días
-} //For de las horas
-*/
+//Fin métodos de carga masiva   ****************************************
 
 
+//---------------------------------------------------------------------------------------------------------//
+
+
+//Métodos de ingreso manual     ****************************************
 void ingresoManual()
 {
     cout << "*Menu ingreso manual*" << endl;
@@ -336,16 +285,11 @@ void ingresoManual()
     int opcion = 0;
     cin >> opcion;
 
-    if (opcion == 1)
-    {
+    if (opcion == 1){
         menuUsuarios();
-    }
-    else if (opcion == 2)
-    {
+    }else if (opcion == 2){
         menuTareas();
-    }
-    else if (opcion == 3)
-    {
+    }else if (opcion == 3){
         menu();
     }
 }
@@ -453,7 +397,13 @@ void menuTareas()
         ingresoManual();
     }
 }
+//Fin métodos de ingreso manual ****************************************
 
+
+//---------------------------------------------------------------------------------------------------------//
+
+
+//Método de reportes
 void reportes()
 {
     cout << "Metodo de reportes" << endl;
