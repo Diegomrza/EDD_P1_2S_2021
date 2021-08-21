@@ -11,14 +11,19 @@ class NodoListaDoble
 private:
     /* data */
 public:
-    string noCarnet;
-    string dpi;
+    string noCarnet;    
+    string dpi;         
     string nombre;
-    string carrera;
-    string correo;
+    string carrera; 
+    string correo;      
     string password;
     int creditos;
     int edad;
+
+    //Errores
+    string err_noCarnet;
+    string err_dpi;
+    string err_correo;
 
     NodoListaDoble * siguiente;
     NodoListaDoble * anterior;
@@ -39,6 +44,10 @@ NodoListaDoble::NodoListaDoble(string _noCarnet, string _dpi, string _nombre, st
     this->edad = _edad;
     this->siguiente = NULL;
     this->anterior = NULL;
+
+    this->err_noCarnet="";
+    this->err_correo="";
+    this->err_dpi="";
 }
 
 NodoListaDoble::~NodoListaDoble()

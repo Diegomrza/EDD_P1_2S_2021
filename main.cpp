@@ -12,13 +12,18 @@
 //Importaciones de estructuras
 #include "./Estructuras/ListaDoble.cpp"
 #include "./Estructuras/NodoListaDoble.cpp"
-#include "./Grafos/Grafo.cpp"
+#include "./Estructuras/Cola.cpp"
+#include "./Estructuras/NodoCola.cpp"
 #include "./Estructuras/NodoTarea.cpp"
+#include "./Grafos/Grafo.cpp"
 using namespace std;
 //                  C:\Users\Squery\Desktop\Programas\Estudiantes.csv
 //                  C:\Users\Squery\Desktop\Programas\Tareas.csv
 ListaDoble *lst = new ListaDoble();
 NodoTarea *listaTareas[5][30][9];
+Cola *colaErrores = new Cola(); 
+
+//                                            Hora dia mes
 
 void menu();
 void lectura();
@@ -53,33 +58,24 @@ void menu()
         cout << "Ingrese una opcion:\n>> ";
         cin >> opcion;
 
-        if (opcion == "1")
-        {
+        if (opcion == "1"){
             cargaUsuarios();
-        }
-        else if (opcion == "2")
-        {
+        } else if (opcion == "2"){
             cargaTareas();
-        }
-        else if (opcion == "3")
-        {
+        } else if (opcion == "3"){
             ingresoManual();
-        }
-        else if (opcion == "4")
+        } else if (opcion == "4")
         {
             reportes();
-        }
-        else if (opcion == "5")
-        {
+        } else if (opcion == "5"){
             exit(0);
-        }
-        else if (opcion == "6")
-        {
+        } else if (opcion == "6"){
             lst->mostrar();
             cout << "Hay " << lst->size << " Elementos en la lista" << endl;
-        }
-        else
+        } else if (opcion == "7")
         {
+            colaErrores->desencolar();
+        } else {
             cout << endl;
             cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl
                  << endl
@@ -155,23 +151,37 @@ void cargaUsuarios()
             getline(input_stringstream, texto, ','); //Correo
             string correo = texto;
 
-            regex r("[a-zA-Z_0-9]+@[a-zA-Z]+.(com|es|org){1}"); smatch m;
-            if (!regex_match(correo, m, r)){
-                cout << "No Encontrado" << endl;
-            }
-            if (dpi.length()!=13){
-                
-            }
-            if (carnet.length()){
-                
-            }
-            if (correo.length()){
-
-            }
+            regex r("[a-zA-Z_0-9\.]+@[a-zA-Z]+.(com|es|org){1}"); smatch m;
+            //cout<<correo<<endl;
             
-            if (carrera != "")
+            string err_correo="";
+            string err_dpi="";
+            string err_carnet="";
+            bool error_estudiantes=false;
+
+            //Error en correo
+            if (correo!="" && regex_match(correo, m, r)==0){
+                err_correo="El correo no cumple";
+                error_estudiantes=true;
+            }
+            //Error en dpi
+            if (dpi!="" && dpi.length()!=13){
+                err_dpi="El dpi no cumple con los 13 digitos establecidos";
+                error_estudiantes=true;
+            }
+            //Error en carnet
+            if (carnet!="" && carnet.length()!=9){
+                err_carnet="El carnet no cumple con los 9 digitos establecidos";
+                error_estudiantes=true;
+            }
+            //Si hay algun error en el dato se ingresa a la cola de errores
+            if (error_estudiantes==true)
+            {                           //Tipo      id
+                colaErrores->encolar("estudiante",dpi);
+            }
+            if (nombre != "")
             {
-                lst->insertar(carnet, dpi, nombre, carrera, correo, password, creditos, edad);
+                lst->insertar(carnet, dpi, nombre, carrera, correo, password, creditos, edad, err_carnet, err_dpi, err_correo);
             }
         }
     }
@@ -215,7 +225,16 @@ void cargaTareas()
         texto = "";
         
         int id_contador=0;
-        
+        for (int i = 0; i < 5; i++){
+                for (int j = 0; j < 30; j++){
+                    for (int k = 0; k < 9; k++){
+                        NodoTarea *nuevo = new NodoTarea(id_contador,-1,"-1","-1","-1","-1",-1,"-1");
+                        listaTareas[i][j][k]= nuevo;
+                        id_contador++;
+                    }
+                    
+                }
+            }
         for (int a = 0; a < contadorT2; a++){
             stringstream input_stringstream(arreglo[a]);
 
@@ -238,18 +257,24 @@ void cargaTareas()
             getline(input_stringstream, texto, ','); //Estado
             string estado = texto;
 
+            
+
             for (int i = 1; i <= 5; i++){
                 for (int j = 1; j <= 30; j++){
-                    for (int k = 1; k <= 9; k++){   
+                    for (int k = 1; k <= 9; k++){
                         if ((mes==i+6) && dia==j && (hora==k+7)){
-                            cout<<"Si entre "<<mes<<"/"<<dia<<"/"<<hora<<endl;
                             NodoTarea *nuevo = new NodoTarea(id_contador,carnet,nombre,descripcion,materia,fecha,hora,estado);
-                            listaTareas[i-1][j-1][k-1]= nuevo;
-                            id_contador++;
+                            listaTareas[i-1][j-1][k-1]->carnet= carnet;
+                            listaTareas[i-1][j-1][k-1]->nombre_tarea= nombre;
+                            listaTareas[i-1][j-1][k-1]->descripcion_tarea= descripcion;
+                            listaTareas[i-1][j-1][k-1]->materia= materia;
+                            listaTareas[i-1][j-1][k-1]->fecha= fecha;
+                            listaTareas[i-1][j-1][k-1]->hora= hora;
+                            listaTareas[i-1][j-1][k-1]->estado= estado;
                         }
+                        
                     } //For de los Meses
                 } //For de los días
-                cout<<i<<endl;
             } //For de las horas
         } //Fin del primer for que se usa para leer el archivo
 
@@ -342,7 +367,7 @@ void menuUsuarios()
         cout << "Carrera: " << endl;
         getline(cin, carrera);
 
-        lst->insertar(noCarnet, dpi, nom, carrera, correo, password, creditos, edad);
+        lst->insertar(noCarnet, dpi, nom, carrera, correo, password, creditos, edad,"","","");
     }
     else if (opcion == 2)
     {
@@ -368,7 +393,7 @@ void menuUsuarios()
 
 void menuTareas()
 {
-    cout << "**Menu Tareas**" << endl;
+    cout << "** Menu Tareas **" << endl;
     cout << "* 1. Ingresar   *" << endl;
     cout << "* 2. Modificar  *" << endl;
     cout << "* 3. Eliminar   *" << endl;

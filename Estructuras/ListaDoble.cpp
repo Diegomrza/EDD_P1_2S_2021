@@ -16,7 +16,7 @@ public:
     NodoListaDoble *ultimo;
     int size;
     ListaDoble(/* args */);
-    void insertar(string, string, string, string, string, string, int, int);
+    void insertar(string, string, string, string, string, string, int, int, string, string, string);
     void mostrar();
     void modificar(string);
     void eliminar(string);
@@ -30,11 +30,14 @@ ListaDoble::ListaDoble(/* args */)
     this->size = 0;
 }
 
-void ListaDoble::insertar(string _noCarnet, string _dpi, string _nombre, string _carrera, string _correo, string _password, int _creditos, int _edad)
+void ListaDoble::insertar(string _noCarnet, string _dpi, string _nombre, string _carrera, string _correo, string _password, int _creditos, int _edad, string _err_noCarnet, string _err_dpi, string _err_correo)
 {
 
     NodoListaDoble *nuevo = new NodoListaDoble(_noCarnet, _dpi, _nombre, _carrera, _correo, _password, _creditos, _edad);
-
+    nuevo->err_noCarnet=_err_noCarnet;
+    nuevo->err_dpi=_err_dpi;
+    nuevo->err_correo=_err_correo;
+    
     if (this->primero == NULL)
     {
         this->primero = nuevo;

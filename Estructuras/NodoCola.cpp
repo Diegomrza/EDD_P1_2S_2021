@@ -11,20 +11,22 @@ class NodoCola
 private:
     /* data */
 public:
-    int id_error=0;
+    int id_error;
+    string id_tipo;
     string tipo;
-    string descripcion;
+    //string descripcion;
 
     NodoCola *siguiente;
     NodoCola(int, string, string);
     ~NodoCola();
 };
 
-NodoCola::NodoCola(int _id_error, string _tipo, string _descripcion)
+NodoCola::NodoCola(int _id_error, string _tipo, string _id_tipo)
 {
+    this->id_tipo=_id_tipo;
     this->id_error=_id_error;
     this->tipo=_tipo;
-    this->descripcion=_descripcion;
+    //this->descripcion=_descripcion;
     this->siguiente=NULL;
 }
 
