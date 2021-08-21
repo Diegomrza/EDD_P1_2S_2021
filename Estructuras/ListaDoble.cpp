@@ -18,8 +18,10 @@ public:
     ListaDoble(/* args */);
     void insertar(string, string, string, string, string, string, int, int, string, string, string);
     void mostrar();
+    void mostrarUno(int);
     void modificar(string);
     void eliminar(string);
+    bool verificarCarnet(string);
     ~ListaDoble();
 };
 
@@ -83,6 +85,24 @@ void ListaDoble::mostrar()
     cout << temporal->password << endl;
     cout << temporal->creditos << endl;
     cout << temporal->edad << "\n\n\n";
+}
+
+void ListaDoble::mostrarUno(int id){
+    NodoListaDoble *aux =this->primero;
+    while (aux != NULL)
+    {
+        if (to_string(id)==aux->noCarnet)
+        {
+            cout<<"Errores: " <<endl;
+            cout<<aux->err_correo<<endl;
+            cout<<aux->err_noCarnet<<endl;
+            cout<<aux->err_dpi<<endl;
+            break;
+        }
+        
+        aux = aux->siguiente;
+    }
+    
 }
 
 void ListaDoble::modificar(string dpi)
@@ -195,6 +215,22 @@ void ListaDoble::eliminar(string dpi)
     } else{
         cout<<"\n\n\n\n*******no se encontro**********\n\n\n\n"<<endl;
     }      
+}
+
+bool ListaDoble::verificarCarnet(string carnet){
+    NodoListaDoble *aux = this->primero;
+
+    while (aux!=this->ultimo){
+        if (aux->noCarnet==carnet){
+            return true;
+        }
+        aux=aux->siguiente;
+    }
+    if (aux->noCarnet==carnet){
+        return true;
+    } else{
+        return false;
+    }
 }
 
 ListaDoble::~ListaDoble()

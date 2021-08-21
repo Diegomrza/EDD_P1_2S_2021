@@ -1,1 +1,1 @@
-nombre_tarea
+linealizacion->insertar(pos, listaTareas[i][j][k]);

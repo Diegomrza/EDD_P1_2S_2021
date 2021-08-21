@@ -8,8 +8,10 @@
 #include <cstdlib> 
 #include <cstring>
 #include <regex>
+#include <stdlib.h>
 
 //Importaciones de estructuras
+#include "./Estructuras/ListaLinealizada.cpp"
 #include "./Estructuras/ListaDoble.cpp"
 #include "./Estructuras/NodoListaDoble.cpp"
 #include "./Estructuras/Cola.cpp"
@@ -21,9 +23,8 @@ using namespace std;
 //                  C:\Users\Squery\Desktop\Programas\Tareas.csv
 ListaDoble *lst = new ListaDoble();
 NodoTarea *listaTareas[5][30][9];
-Cola *colaErrores = new Cola(); 
-
-//                                            Hora dia mes
+Cola *colaErrores = new Cola();
+ListaLinealizada *linealizacion = new ListaLinealizada(); 
 
 void menu();
 void lectura();
@@ -33,6 +34,7 @@ void ingresoManual();
 void reportes();
 void menuUsuarios();
 void menuTareas();
+void linealizar();
 
 int main()
 {
@@ -74,7 +76,8 @@ void menu()
             cout << "Hay " << lst->size << " Elementos en la lista" << endl;
         } else if (opcion == "7")
         {
-            colaErrores->desencolar();
+            colaErrores->desencolar(lst);
+
         } else {
             cout << endl;
             cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl
@@ -176,7 +179,7 @@ void cargaUsuarios()
             }
             //Si hay algun error en el dato se ingresa a la cola de errores
             if (error_estudiantes==true)
-            {                           //Tipo      id
+            {                          //Tipo      id
                 colaErrores->encolar("estudiante",dpi);
             }
             if (nombre != "")
@@ -224,20 +227,18 @@ void cargaTareas()
         }
         texto = "";
         
-        int id_contador=0;
-        for (int i = 0; i < 5; i++){
-                for (int j = 0; j < 30; j++){
-                    for (int k = 0; k < 9; k++){
-                        NodoTarea *nuevo = new NodoTarea(id_contador,-1,"-1","-1","-1","-1",-1,"-1");
-                        listaTareas[i][j][k]= nuevo;
-                        id_contador++;
-                    }
-                    
+        //Rellenando el vector con -1
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 30; j++){
+                for (int k = 0; k < 9; k++){
+                    NodoTarea *nuevo = new NodoTarea(0,-1,"-1","-1","-1","-1",-1,"-1");
+                    listaTareas[i][j][k]= nuevo;
                 }
             }
+        }
         for (int a = 0; a < contadorT2; a++){
             stringstream input_stringstream(arreglo[a]);
-
             getline(input_stringstream, texto, ','); //Mes
             int mes = atoi(texto.c_str());
             getline(input_stringstream, texto, ','); //Día
@@ -257,41 +258,52 @@ void cargaTareas()
             getline(input_stringstream, texto, ','); //Estado
             string estado = texto;
 
-            
-
             for (int i = 1; i <= 5; i++){
                 for (int j = 1; j <= 30; j++){
                     for (int k = 1; k <= 9; k++){
                         if ((mes==i+6) && dia==j && (hora==k+7)){
-                            NodoTarea *nuevo = new NodoTarea(id_contador,carnet,nombre,descripcion,materia,fecha,hora,estado);
-                            listaTareas[i-1][j-1][k-1]->carnet= carnet;
-                            listaTareas[i-1][j-1][k-1]->nombre_tarea= nombre;
-                            listaTareas[i-1][j-1][k-1]->descripcion_tarea= descripcion;
-                            listaTareas[i-1][j-1][k-1]->materia= materia;
-                            listaTareas[i-1][j-1][k-1]->fecha= fecha;
-                            listaTareas[i-1][j-1][k-1]->hora= hora;
-                            listaTareas[i-1][j-1][k-1]->estado= estado;
-                        }
-                        
-                    } //For de los Meses
-                } //For de los días
-            } //For de las horas
-        } //Fin del primer for que se usa para leer el archivo
 
-        for (int i = 0; i < 5; i++){
-            for (int j = 0; j < 30; j++){
-                for (int k = 0; k < 9; k++){
-                    if (listaTareas[i][j][k] != NULL){
-                        cout<<listaTareas[i][j][k]->nombre_tarea<<endl;
-                        cout<<listaTareas[i][j][k]->id_tarea<<endl;
-                        cout<<listaTareas[i][j][k]->descripcion_tarea<<endl;
-                        cout<<listaTareas[i][j][k]->estado<<endl<<endl<<endl;
+                            NodoTarea *nuevo = new NodoTarea(0,carnet,nombre,descripcion,materia,fecha,hora,estado);
+                            if (lst->verificarCarnet(to_string(nuevo->carnet)) == false)
+                            {
+                                nuevo->err_carnet="El numero de carnet no existe en la lista de estudiantes";
+                                colaErrores->encolar("Tarea",to_string(nuevo->carnet));
+                            }
+                            listaTareas[i-1][j-1][k-1]=nuevo;
+                            //listaTareas[i-1][j-1][k-1]->carnet= carnet;
+                            //listaTareas[i-1][j-1][k-1]->nombre_tarea= nombre;
+                            //listaTareas[i-1][j-1][k-1]->descripcion_tarea= descripcion;
+                            //listaTareas[i-1][j-1][k-1]->materia= materia;
+                            //listaTareas[i-1][j-1][k-1]->fecha= fecha;
+                            //listaTareas[i-1][j-1][k-1]->hora= hora;
+                            //listaTareas[i-1][j-1][k-1]->estado= estado;
+                        }
                     }
-                }
+                } 
+            } 
+        } 
+        linealizar();
+    }
+    archivo.close();
+}
+
+void linealizar(){
+    int mes=5;
+    int dia=30;
+    int hora=9;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 30; j++)
+        {
+            for (int k = 0; k < 9; k++)
+            {
+                int pos=(j*mes+i)*hora+k;
+                string var= to_string(i)+ "," + to_string(j)+ "," + to_string(k);
+                linealizacion->insertar(var, pos, listaTareas[i][j][k]);
             }
         }
-    } //Fin primer if
-    archivo.close();
+    }
+    linealizacion->mostrar();
 }
 //Fin métodos de carga masiva   ****************************************
 

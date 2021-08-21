@@ -21,6 +21,10 @@ public:
     string fecha;
     int hora;
     string estado;
+    string err_carnet;
+
+    NodoTarea *siguiente;
+    NodoTarea *anterior;
     
     NodoTarea(int, int, string, string, string, string, int, string);
     ~NodoTarea();
@@ -36,6 +40,9 @@ NodoTarea::NodoTarea(int _id_tarea, int _carnet, string _nombre_tarea, string _d
     this->fecha=_fecha;
     this->hora=_hora;
     this->estado=_estado;
+    
+    this->siguiente=NULL;
+    this->anterior=NULL;
 }
 
 NodoTarea::~NodoTarea()

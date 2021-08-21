@@ -26,7 +26,6 @@ NodoCola::NodoCola(int _id_error, string _tipo, string _id_tipo)
     this->id_tipo=_id_tipo;
     this->id_error=_id_error;
     this->tipo=_tipo;
-    //this->descripcion=_descripcion;
     this->siguiente=NULL;
 }
 

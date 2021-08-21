@@ -5,6 +5,7 @@
 #include "NodoCola.cpp"
 #include "NodoListaDoble.cpp"
 #include "NodoTarea.cpp"
+#include "ListaDoble.cpp"
 
 class Cola
 {
@@ -17,8 +18,9 @@ public:
 
     Cola(/* args */);
     bool vacia(NodoCola *);
+    int obtener_id();
     void encolar(string,string);
-    void desencolar();
+    void desencolar(ListaDoble *);
     ~Cola();
 };
 
@@ -49,22 +51,43 @@ void Cola::encolar(string tipo, string id_tipo){
     this->fin=nuevo;
 }
 
-void Cola::desencolar(){
+void Cola::desencolar(ListaDoble *lista){
 
     NodoCola *aux = this->frente;
     
     while (aux != NULL)
     {
-        cout<<"i"<<endl;
-        cout<<aux->id_error<<endl;
-        cout<<aux->id_tipo<<endl;
-        cout<<aux->tipo<<endl;
-        aux = aux->siguiente;
-    }
-    //cout<<aux->id_error<<endl;
-    //cout<<aux->id_tipo<<endl;
-    //cout<<aux->tipo<<endl;
+        if (aux->tipo=="Estudiante")
+        {
+            cout<<aux->id_error<<endl;
+            cout<<aux->id_tipo<<endl;
+            cout<<aux->tipo<<endl;
+            lista->mostrarUno(aux->id_error);
 
+        } else{
+            cout<<aux->id_error<<endl;
+            cout<<aux->id_tipo<<endl;
+            cout<<aux->tipo<<endl;
+        }
+        aux = aux->siguiente;
+        
+    }
+}
+
+int Cola::obtener_id(){
+    NodoCola *aux = this->frente;
+    
+    while (aux != NULL)
+    {
+        if (aux->tipo=="Estudiante")
+        {
+            return aux->id_error;
+        } else{
+            return aux->id_error;
+        }
+        aux = aux->siguiente;
+        
+    }
 }
 
 bool Cola::vacia(NodoCola *frente){
