@@ -71,7 +71,6 @@ void Cola::desencolar(ListaDoble *lista){
             cout<<aux->tipo<<endl;
         }
         aux = aux->siguiente;
-        
     }
 }
 

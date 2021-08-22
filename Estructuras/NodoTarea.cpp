@@ -13,6 +13,9 @@ private:
     /* data */
 public:
 
+    int mes;
+    int dia;
+
     int id_tarea;
     int carnet;
     string nombre_tarea;
@@ -43,6 +46,7 @@ NodoTarea::NodoTarea(int _id_tarea, int _carnet, string _nombre_tarea, string _d
     
     this->siguiente=NULL;
     this->anterior=NULL;
+    
 }
 
 NodoTarea::~NodoTarea()

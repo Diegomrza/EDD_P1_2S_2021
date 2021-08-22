@@ -35,7 +35,7 @@ void reportes();
 void menuUsuarios();
 void menuTareas();
 void linealizar();
-void mostrarTareas();
+void reporte_de_salida();
 
 int main()
 {
@@ -191,6 +191,7 @@ void cargaUsuarios()
         }
     }
     archivo.close();
+    cout<<"\n\n\n";
 }
 
 void cargaTareas()
@@ -235,6 +236,7 @@ void cargaTareas()
             for (int j = 0; j < 30; j++){
                 for (int k = 0; k < 9; k++){
                     NodoTarea *nuevo = new NodoTarea(0,-1,"-1","-1","-1","-1",-1,"-1");
+                    nuevo->mes=-1; nuevo->dia=-1;
                     listaTareas[i][j][k]= nuevo;
                 }
             }
@@ -266,19 +268,13 @@ void cargaTareas()
                         if ((mes==i+6) && dia==j && (hora==k+7)){
 
                             NodoTarea *nuevo = new NodoTarea(0,carnet,nombre,descripcion,materia,fecha,hora,estado);
+                            nuevo->mes=mes; nuevo->dia=dia;
                             if (lst->verificarCarnet(to_string(nuevo->carnet)) == false)
                             {
                                 nuevo->err_carnet="El numero de carnet no existe en la lista de estudiantes";
                                 colaErrores->encolar("Tarea",to_string(nuevo->carnet));
                             }
                             listaTareas[i-1][j-1][k-1]=nuevo;
-                            //listaTareas[i-1][j-1][k-1]->carnet= carnet;
-                            //listaTareas[i-1][j-1][k-1]->nombre_tarea= nombre;
-                            //listaTareas[i-1][j-1][k-1]->descripcion_tarea= descripcion;
-                            //listaTareas[i-1][j-1][k-1]->materia= materia;
-                            //listaTareas[i-1][j-1][k-1]->fecha= fecha;
-                            //listaTareas[i-1][j-1][k-1]->hora= hora;
-                            //listaTareas[i-1][j-1][k-1]->estado= estado;
                         }
                     }
                 } 
@@ -315,7 +311,8 @@ void linealizar(){
             }
         }
     }
-    linealizacion->mostrar();
+    //linealizacion->mostrar();
+    cout<<"\n\n\n";
 }
 //Fin métodos de carga masiva   ****************************************
 
@@ -326,7 +323,7 @@ void linealizar(){
 //Métodos de ingreso manual     ****************************************
 void ingresoManual()
 {
-    cout << "*Menu ingreso manual*" << endl;
+    cout << "\n\n\n*Menu ingreso manual*" << endl;
     cout << "* 1.   Usuarios     *" << endl;
     cout << "* 2.   Tareas       *" << endl;
     cout << "* 3.   Regresar     *" << endl;
@@ -335,10 +332,13 @@ void ingresoManual()
     cin >> opcion;
 
     if (opcion == 1){
+        cout<<"\n\n\n";
         menuUsuarios();
     }else if (opcion == 2){
+        cout<<"\n\n\n";
         menuTareas();
     }else if (opcion == 3){
+        cout<<"\n\n\n";
         menu();
     }
 }
@@ -357,6 +357,7 @@ void menuUsuarios()
     cin >> opcion;
     if (opcion == 1)
     {
+        cout<<"\n\n\n";
         cout << "Ingrese los datos del nuevo usuario: " << endl;
         string noCarnet;
         cout << "Numero de carnet: " << endl;
@@ -392,23 +393,29 @@ void menuUsuarios()
         getline(cin, carrera);
 
         lst->insertar(noCarnet, dpi, nom, carrera, correo, password, creditos, edad,"","","");
+        cout<<"\n\n\n";
     }
     else if (opcion == 2)
     {
+        cout<<"\n\n\n";
         string dpi;
         cout << "Ingrese el dpi del usuario que desea modificar" << endl;
         cin >> dpi;
         lst->modificar(dpi);
+        cout<<"\n\n\n";
     }
     else if (opcion == 3)
     {
+        cout<<"\n\n\n";
         string dpi;
         cout << "Ingrese el dpi del usuario que desea eliminar" << endl;
         cin >> dpi;
         lst->eliminar(dpi);
+        cout<<"\n\n\n";
     }
     else if (opcion == 4)
     {
+        cout<<"\n\n\n";
         ingresoManual();
     }
     //lst->mostrar();
@@ -429,6 +436,7 @@ void menuTareas()
 
     if (opcion == 1)
     {
+        cout<<"\n\n\n";
         cout<<"Ingrese el mes: "<<endl;
         int mes; cin>>mes;
         mes=mes-7;          cout<<mes<<endl;
@@ -465,25 +473,31 @@ void menuTareas()
         pos= (dia*5+mes)*9+hora;
 
         NodoTarea *nuevo = new NodoTarea(0,carnet,nombre,descripcion,materia,fecha,hora,estado);
+        nuevo->mes=mes+7; nuevo->dia=dia+1;
         linealizacion->insertar("",pos,nuevo);
-
+        cout<<"\n\n\n";
     }
     else if (opcion == 2)
     {
+        cout<<"\n\n\n";
         int indice;
         cout << "Ingrese el id de la tarea que desea modificar" << endl;
         cin >> indice;
         linealizacion->modificar(indice);
+        cout<<"\n\n\n";
     }
     else if (opcion == 3)
     {
+        cout<<"\n\n\n";
         int id;
         cout << "Ingrese el id de la tarea que desea eliminar" << endl;
         cin >> id;
         linealizacion->eliminar(id);
+        cout<<"\n\n\n";
     }
     else if (opcion == 4)
     {
+        cout<<"\n\n\n";
         ingresoManual();
     }
 }
@@ -496,15 +510,62 @@ void menuTareas()
 //Método de reportes
 void reportes()
 {
-    cout << "Reporte sobre la lista de estudiantes" << endl;
-    cout << "Reporte sobre la lista de tareas linealizadas" << endl;
-    cout << "Busqueda en estructura linealizada" << endl;
-    cout << "Busqueda de posicion en lista linealizada" << endl;
-    cout << "Cola de errores" << endl;
-    cout << "Codigo generado de salida" << endl;
+    Grafo *nuevo = new Grafo();
+    
+
+    while (true)
+    {
+        cout << "\n\n\nSeleccione una opcion:\n1. Reporte sobre la lista de estudiantes" << endl;
+        cout << "2. Reporte sobre la lista de tareas linealizadas" << endl;
+        cout << "3. Busqueda en estructura linealizada" << endl;
+        cout << "4. Busqueda de posicion en lista linealizada" << endl;
+        cout << "5. Cola de errores" << endl;
+        cout << "6. Codigo generado de salida" << endl;
+        cout << "7. Regresar" << endl;
+        int opcion=0;
+        cin>>opcion;
+        if (opcion==1)
+        {
+            nuevo->generarGrafo(lst);
+            
+        } else if (opcion==2)
+        {
+            nuevo->grafoTareas(linealizacion);
+            
+        } else if (opcion==3)
+        {
+            cout<<"Ingrese el mes, el dia y la hora: "<<endl;
+            int mes;
+            int dia;
+            int hora;
+            cout<<"Mes: "<<endl; cin>>mes;
+            cout<<"Dia: "<<endl; cin>>dia;
+            cout<<"Hora: "<<endl; cin>>hora;
+            linealizacion->metodoReporte(mes, dia, hora);
+            
+        } else if (opcion==4)
+        {
+            cout<<"Ingrese el mes, el dia y la hora: "<<endl;
+            int mes; cout<<"Mes: "<<endl; cin>>mes; mes=mes-7;
+            int dia; cout<<"Dia: "<<endl; cin>>dia; dia=dia-1;
+            int hora; cout<<"Hora: "<<endl; cin>>hora; hora=hora-8;
+            
+            int pos= (dia*5+mes)*9+hora;
+            cout<<"Posicion: "<<pos<<endl;
+        } else if (opcion==5)
+        {
+            nuevo->grafoCola(colaErrores);
+            
+        } else if (opcion==6)
+        {
+            
+        } else if(opcion==7)
+        {
+            menu();
+        }
+    }
 }
 
-void mostrarTareas(){
-
+void reporte_de_salida(){
     
 }

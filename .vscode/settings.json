@@ -43,6 +43,7 @@
         "typeinfo": "cpp",
         "codecvt": "cpp",
         "ctime": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "bitset": "cpp"
     }
 }
