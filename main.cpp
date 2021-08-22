@@ -77,9 +77,11 @@ void menu()
             cout << "Hay " << lst->size << " Elementos en la lista" << endl;
         } else if (opcion == "7")
         {
+            //cout<<"Cola: "<<endl;
             //colaErrores->desencolar(lst);
-            cout<<"\nLinealizacion"<<endl;
-            linealizacion->mostrar();
+            //cout<<"\nLinealizacion"<<endl;
+            //linealizacion->mostrar();
+            lst->mostrar();
         } else {
             cout << endl;
             cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl
@@ -262,6 +264,13 @@ void cargaTareas()
             getline(input_stringstream, texto, ','); //Estado
             string estado = texto;
 
+            // 2021/09/30
+            regex r("[0-9]{4}/(1(0|1|2)|(0[1-9]))/(0[1-9]|1[0-9]|2[0-9]|30)"); smatch m;
+            string errorFecha;
+            if (regex_match(fecha, m, r)==0){
+                errorFecha="La fecha no cumple";
+            }
+
             for (int i = 1; i <= 5; i++){
                 for (int j = 1; j <= 30; j++){
                     for (int k = 1; k <= 9; k++){
@@ -272,6 +281,7 @@ void cargaTareas()
                             if (lst->verificarCarnet(to_string(nuevo->carnet)) == false)
                             {
                                 nuevo->err_carnet="El numero de carnet no existe en la lista de estudiantes";
+                                nuevo->err_fecha=errorFecha;
                                 colaErrores->encolar("Tarea",to_string(nuevo->carnet));
                             }
                             listaTareas[i-1][j-1][k-1]=nuevo;
@@ -459,7 +469,7 @@ void menuTareas()
         cout<<"Materia: "<<endl;
         string materia;     /*cin.ignore();*/   getline(cin, materia);
 
-        cout<<"Fecha de la tarea: "<<endl;
+        cout<<"Fecha de la tarea(YYYY/MM/DD): "<<endl;
         string fecha;   cin>>fecha;    //cin.ignore();   getline(cin, fecha);
 
         cout<<"Estado: "<<endl;
@@ -512,7 +522,6 @@ void reportes()
 {
     Grafo *nuevo = new Grafo();
     
-
     while (true)
     {
         cout << "\n\n\nSeleccione una opcion:\n1. Reporte sobre la lista de estudiantes" << endl;
@@ -526,12 +535,10 @@ void reportes()
         cin>>opcion;
         if (opcion==1)
         {
-            nuevo->generarGrafo(lst);
-            
+            nuevo->generarGrafo(lst); 
         } else if (opcion==2)
         {
             nuevo->grafoTareas(linealizacion);
-            
         } else if (opcion==3)
         {
             cout<<"Ingrese el mes, el dia y la hora: "<<endl;
@@ -542,7 +549,6 @@ void reportes()
             cout<<"Dia: "<<endl; cin>>dia;
             cout<<"Hora: "<<endl; cin>>hora;
             linealizacion->metodoReporte(mes, dia, hora);
-            
         } else if (opcion==4)
         {
             cout<<"Ingrese el mes, el dia y la hora: "<<endl;
@@ -554,11 +560,17 @@ void reportes()
             cout<<"Posicion: "<<pos<<endl;
         } else if (opcion==5)
         {
-            nuevo->grafoCola(colaErrores);
-            
+            nuevo->grafoCola(colaErrores, linealizacion, lst);
         } else if (opcion==6)
         {
-            
+            if (colaErrores->size==0)
+            {
+                reporte_de_salida();
+                cout<<"Reporte generado con exito"<<endl;
+            } else {
+                cout<<"Aun hay errores que resolver"<<endl;
+                
+            }
         } else if(opcion==7)
         {
             menu();
@@ -567,5 +579,13 @@ void reportes()
 }
 
 void reporte_de_salida(){
-    
+    string cadena="¿Elements?";
+    cadena += lst->cadenaReporte(linealizacion);
+    cadena += "¿$Elements?";
+
+    ofstream archivo;
+    archivo.open("Estudiantes.txt");
+    archivo<<cadena;
+
+    archivo.close();
 }

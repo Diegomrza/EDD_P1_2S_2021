@@ -63,7 +63,7 @@ void Cola::desencolar(ListaDoble *lista){
             cout<<aux->id_error<<endl;
             cout<<aux->id_tipo<<endl;
             cout<<aux->tipo<<endl;
-            lista->mostrarUno(aux->id_tipo);
+            //lista->mostrarUno(aux->id_tipo);
 
         } else{
             cout<<aux->id_error<<endl;

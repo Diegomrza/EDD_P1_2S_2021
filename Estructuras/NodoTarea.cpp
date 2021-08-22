@@ -24,7 +24,10 @@ public:
     string fecha;
     int hora;
     string estado;
+
     string err_carnet;
+    string err_fecha;
+    
 
     NodoTarea *siguiente;
     NodoTarea *anterior;

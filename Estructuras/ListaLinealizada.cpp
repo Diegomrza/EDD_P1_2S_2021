@@ -2,6 +2,7 @@
 #define LISTALINEALIZADA_H
 
 #include <iostream>
+#include <sstream>
 #include "NodoLineal.cpp"
 #include "NodoTarea.cpp"
 
@@ -23,6 +24,8 @@ public:
     void modificar(int);
     void eliminar(int);
     void metodoReporte(int, int, int);
+    string cadenaReporte(string);
+    string devolverErrores(string);
     ~ListaLinealizada();
 };
 
@@ -272,6 +275,61 @@ void ListaLinealizada::metodoReporte(int mes, int dia, int hora){
     if (temp==NULL)
     {
         cout<<"No se encontro la tarea"<<endl;
+    }
+}
+
+string ListaLinealizada::cadenaReporte(string carnet){
+    string cadena="";
+    NodoTarea *temp = this->primero;
+    while (temp!=NULL)
+    {
+        if (to_string(temp->carnet)==carnet)
+        {
+            cadena += "  ¿element type=\"task\"?\n";
+            cadena += "    ¿item Carnet = "+to_string(temp->carnet)+" $?\n";   
+            cadena += "    ¿item Nombre = "+temp->nombre_tarea+" $?\n";   
+            cadena += "    ¿item Descripcion = "+temp->descripcion_tarea+" $?\n";   
+            cadena += "    ¿item Materia = "+temp->materia+" $?\n";
+
+            string var="";
+            stringstream input_stringstream(temp->fecha);
+             
+            getline(input_stringstream, var, '/');
+            string anio=var; cout<<anio<<endl;
+            getline(input_stringstream, var, '/');
+            string mes=var; cout<<mes<<endl;
+            getline(input_stringstream, var, '/');
+            string dia=var; cout<<dia<<endl;
+
+            cadena += "    ¿item Fecha = "+dia+"/"+mes+"/"+anio+" $?\n";   
+            cadena += "    ¿item Hora = "+to_string(temp->hora)+" $?\n";   
+            cadena += "    ¿item Estado = "+temp->estado+" $?\n";
+            cadena += "  ¿$element?\n";   
+        }
+        temp = temp->siguiente;
+    }
+    return cadena;
+}
+
+string ListaLinealizada::devolverErrores(string carnet){
+    NodoTarea *temp=this->primero;
+    string cadena="";
+    while (temp!=NULL)
+    {
+        if (to_string(temp->carnet).compare(carnet)==0)
+        {   
+            if (!(temp->err_carnet.compare("")==0))
+            {
+                cadena+=temp->err_carnet;
+                cadena+="\n";
+            }
+            if (!(temp->err_fecha.compare("")==0))
+            {
+                cadena+=temp->err_fecha;
+            }
+            return cadena;
+        }
+        temp=temp->siguiente;
     }
 }
 

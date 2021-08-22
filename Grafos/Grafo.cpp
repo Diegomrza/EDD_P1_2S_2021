@@ -22,7 +22,7 @@ public:
     int contImag;
     Grafo(/* args */);
     void generarGrafo(ListaDoble *);
-    void grafoCola(Cola *);
+    void grafoCola(Cola *, ListaLinealizada *, ListaDoble *);
     void grafoTareas(ListaLinealizada *);
     ~Grafo();
 };
@@ -38,7 +38,6 @@ void Grafo::generarGrafo(ListaDoble *lista){ //Estudiantes
     string enlace = "";
     string label="";
     
-
     NodoListaDoble *temporal = lista->primero;
 
     while (temporal->siguiente!=lista->primero)
@@ -78,10 +77,55 @@ void Grafo::generarGrafo(ListaDoble *lista){ //Estudiantes
     //file_out.close();
 }
 
-void Grafo::grafoCola(Cola *cola){
+void Grafo::grafoCola(Cola *cola, ListaLinealizada *lista, ListaDoble *doble){
+    string acumulador="digraph G{formar=png;\nrankdir = LR; \n node [shape=box]; \ncompound=true; \n";
+    string nodo = "";
+    string enlace = "";
+    string label="";
 
+    NodoCola *temp = cola->frente;
 
+    while (temp!=NULL)
+    {
+        label+="id: "+to_string(temp->id_error); label+="\nTipo: "; label+=temp->tipo; label+="\n";
+        if (temp->tipo.compare("estudiante")==0){
+            label+="Errores:\n";
+            label+=doble->devolverErrores(temp->id_tipo);
+        } else if (temp->tipo.compare("Tarea")==0){
+            label+="Errores:\n";
+            label+=lista->devolverErrores(temp->id_tipo);   
+        }
+        
+        nodo+="\"" + to_string(temp->id_error) + "\"" + "[label=\"" + label + "\"];\n";
+        enlace+="\"" +  to_string(temp->id_error) + "\" -> \"";
+        if (temp->siguiente==NULL)
+        {
+            string var="NULL";
+            enlace+= var + "\";\n";
+        } else{
+            enlace+=to_string(temp->siguiente->id_error) + "\";\n";
+        }
+        temp=temp->siguiente;
+        label="";
+    }
+    acumulador+=nodo+enlace+ "\n}\n";
 
+    string filename("g"+to_string(contImag)+".dot");
+    fstream file_out;
+
+    file_out.open(filename, std::ios_base::out);
+    if(!file_out.is_open()){
+        cout << "Error al abrir el archivo: " <<filename << '\n';
+    }else{
+        file_out << acumulador << endl;
+        cout << "La escritura fue un exito" << endl;
+    }
+
+    string cmd = "dot -Tpng g"+to_string(contImag)+".dot -o g"+to_string(contImag)+".png";
+
+    system(cmd.c_str());
+    contImag++;
+    //file_out.close();
 }
 
 void Grafo::grafoTareas(ListaLinealizada *lista){

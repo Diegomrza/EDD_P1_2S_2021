@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <cstring>
 #include "NodoListaDoble.cpp"
+#include "ListaLinealizada.cpp"
 
 using namespace std;
 
@@ -24,6 +25,8 @@ public:
     void modificar(string);
     void eliminar(string);
     bool verificarCarnet(string);
+    string devolverErrores(string);
+    string cadenaReporte(ListaLinealizada *);
     ~ListaDoble();
 };
 
@@ -75,6 +78,9 @@ void ListaDoble::mostrar()
         cout << temporal->password << endl;
         cout << temporal->creditos << endl;
         cout << temporal->edad << "\n\n\n";
+        cout << temporal->err_correo << "\n\n\n";
+        cout << temporal->err_dpi << "\n\n\n";
+        cout << temporal->err_noCarnet << "\n\n\n";
         temporal = temporal->siguiente;
         contador++;
     }
@@ -87,6 +93,9 @@ void ListaDoble::mostrar()
     cout << temporal->password << endl;
     cout << temporal->creditos << endl;
     cout << temporal->edad << "\n\n\n";
+    cout << temporal->err_correo << "\n\n\n";
+    cout << temporal->err_dpi << "\n\n\n";
+    cout << temporal->err_noCarnet << "\n\n\n";
 }
 
 void ListaDoble::mostrarUno(string id){
@@ -235,6 +244,87 @@ bool ListaDoble::verificarCarnet(string carnet){
     } else{
         return false;
     }
+}
+
+string ListaDoble::cadenaReporte(ListaLinealizada *lista){
+    string cadena="";
+
+    NodoListaDoble *temp = this->primero;
+    while (temp->siguiente!=this->ultimo)
+    {
+        cadena += "  ¿element type=\"user\"?\n";
+        cadena += "    ¿item Carnet = "+temp->noCarnet+" $?\n";
+        cadena += "    ¿item DPI = "+temp->dpi+" $?\n";
+        cadena += "    ¿item Nombre = "+temp->nombre+" $?\n";
+        cadena += "    ¿item Carrera = "+temp->carrera+" $?\n";
+        cadena += "    ¿item Password = "+temp->password+" $?\n";
+        cadena += "    ¿item Creditos = "+to_string(temp->creditos)+" $?\n";
+        cadena += "    ¿item Edad = "+to_string(temp->edad)+" $?\n";
+        cadena += "  ¿$element?\n";
+        if (lista->cadenaReporte(temp->noCarnet)!="")
+        {
+            cadena+=lista->cadenaReporte(temp->noCarnet);
+        }
+        temp=temp->siguiente;
+    }
+    cadena += "  ¿element type=\"user\"?\n";
+    cadena += "    ¿item Carnet = "+temp->noCarnet+" $?\n";
+    cadena += "    ¿item DPI = "+temp->dpi+" $?\n";
+    cadena += "    ¿item Nombre = "+temp->nombre+" $?\n";
+    cadena += "    ¿item Carrera = "+temp->carrera+" $?\n";
+    cadena += "    ¿item Password = "+temp->password+" $?\n";
+    cadena += "    ¿item Creditos = "+to_string(temp->creditos)+" $?\n";
+    cadena += "    ¿item Edad = "+to_string(temp->edad)+" $?";
+    cadena += "  ¿$element?";
+    if (lista->cadenaReporte(temp->noCarnet)!="")
+    {
+        cadena+=lista->cadenaReporte(temp->noCarnet);
+    }
+    return cadena;
+}
+
+string ListaDoble::devolverErrores(string dpi){
+
+    NodoListaDoble *temp=this->primero;
+    string cadena;
+    while (temp->siguiente!=this->primero)
+    {
+        if (temp->dpi.compare(dpi))
+        {
+            cout<<"Fact 1"<<cadena<<endl;
+            if (!(temp->err_correo.compare("")==0))
+            {
+                cadena+=temp->err_correo;
+                cadena+="\n";
+            }
+            if (!(temp->err_dpi.compare(""))==0)
+            {
+                cadena+=temp->err_dpi ;
+                cadena+="\n";
+            }
+            if (!(temp->err_noCarnet.compare("")==0))
+            {
+                cadena+=temp->err_noCarnet;
+            }
+            return cadena;
+        }
+        temp=temp->siguiente;
+    }
+    if (!(temp->err_correo.compare("")==0))
+    {
+        cadena+=temp->err_correo;
+        cadena+="\n";
+    }
+    if (!(temp->err_dpi.compare(""))==0)
+    {
+        cadena+=temp->err_dpi ;
+        cadena+="\n";
+    }
+    if (!(temp->err_noCarnet.compare("")==0))
+    {
+        cadena+=temp->err_noCarnet;
+    }
+    return cadena;
 }
 
 ListaDoble::~ListaDoble()
