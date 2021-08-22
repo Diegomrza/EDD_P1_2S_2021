@@ -35,6 +35,7 @@ void reportes();
 void menuUsuarios();
 void menuTareas();
 void linealizar();
+void mostrarTareas();
 
 int main()
 {
@@ -76,8 +77,9 @@ void menu()
             cout << "Hay " << lst->size << " Elementos en la lista" << endl;
         } else if (opcion == "7")
         {
-            colaErrores->desencolar(lst);
-
+            //colaErrores->desencolar(lst);
+            cout<<"\nLinealizacion"<<endl;
+            linealizacion->mostrar();
         } else {
             cout << endl;
             cout << "Opcion invalida, seleccione una opcion del 1 al 5, por favor" << endl
@@ -291,15 +293,25 @@ void linealizar(){
     int mes=5;
     int dia=30;
     int hora=9;
-    for (int i = 0; i < 5; i++)
+    for (int i = 1; i <= 5; i++)
     {
-        for (int j = 0; j < 30; j++)
+        for (int j = 1; j <= 30; j++)
         {
-            for (int k = 0; k < 9; k++)
+            for (int k = 1; k <= 9; k++)
             {
-                int pos=(j*mes+i)*hora+k;
-                string var= to_string(i)+ "," + to_string(j)+ "," + to_string(k);
-                linealizacion->insertar(var, pos, listaTareas[i][j][k]);
+                //  i    j   k
+                //  fil col pro
+                //  mes-dia-hora
+                //  (col*Tamfil + fil)*TamPro+pro
+                int pos=((j-1)*mes+(i-1))*hora+(k-1);
+                ////int pos=((j-1)*mes+(i-5))*9+(k-8);
+                
+                /*
+                int pos=0;
+                pos= ((dia-1)*9+(hora-8))*5+(mes-7);
+                */
+                //string var= to_string(i)+ "," + to_string(j)+ "," + to_string(k);
+                linealizacion->insertar("", pos, listaTareas[i-1][j-1][k-1]);
             }
         }
     }
@@ -414,20 +426,61 @@ void menuTareas()
     int opcion;
     cout << "Ingrese una opcion: " << endl;
     cin >> opcion;
+
     if (opcion == 1)
     {
+        cout<<"Ingrese el mes: "<<endl;
+        int mes; cin>>mes;
+        mes=mes-7;          cout<<mes<<endl;
+        cout<<"Ingrese el dia: "<<endl;
+        int dia; cin>>dia;
+        dia=dia-1;          cout<<dia<<endl;
+        cout<<"Ingrese la hora: "<<endl;
+        int hora; cin>>hora;
+        hora=hora-8;        cout<<hora<<endl;
+
+        cout<<"Numero de carnet: "<<endl;
+        int carnet; cin>>carnet;
+
+        cout<<"Nombre de la tarea: "<<endl;
+        string nombre;      cin.ignore();   getline(cin, nombre);
+
+        cout<<"Descripcion de la tarea: "<<endl;
+        string descripcion; /*cin.ignore();*/   getline(cin, descripcion);
+
+        cout<<"Materia: "<<endl;
+        string materia;     /*cin.ignore();*/   getline(cin, materia);
+
+        cout<<"Fecha de la tarea: "<<endl;
+        string fecha;   cin>>fecha;    //cin.ignore();   getline(cin, fecha);
+
+        cout<<"Estado: "<<endl;
+        string estado;    cin>>estado;  //cin.ignore();   getline(cin, estado);
+        //  pro col fil
+        //  fil col pro
+        //  mes-dia-hora
+        //  (col*Tamfil + fil)*TamPro+pro
+        int pos=0;
+        //   ((j-1)*mes+(i-1))*hora+(k-1)
+        pos= (dia*5+mes)*9+hora;
+
+        NodoTarea *nuevo = new NodoTarea(0,carnet,nombre,descripcion,materia,fecha,hora,estado);
+        linealizacion->insertar("",pos,nuevo);
+
     }
     else if (opcion == 2)
     {
-        string dpi;
+        int indice;
         cout << "Ingrese el id de la tarea que desea modificar" << endl;
-        cin >> dpi;
+        cin >> indice;
+        linealizacion->modificar(indice);
     }
     else if (opcion == 3)
     {
-        string dpi;
+        int id;
         cout << "Ingrese el id de la tarea que desea eliminar" << endl;
-        cin >> dpi;
+        cin >> id;
+        linealizacion->eliminar(id);
     }
     else if (opcion == 4)
     {
@@ -443,5 +496,15 @@ void menuTareas()
 //Método de reportes
 void reportes()
 {
-    cout << "Metodo de reportes" << endl;
+    cout << "Reporte sobre la lista de estudiantes" << endl;
+    cout << "Reporte sobre la lista de tareas linealizadas" << endl;
+    cout << "Busqueda en estructura linealizada" << endl;
+    cout << "Busqueda de posicion en lista linealizada" << endl;
+    cout << "Cola de errores" << endl;
+    cout << "Codigo generado de salida" << endl;
+}
+
+void mostrarTareas(){
+
+    
 }

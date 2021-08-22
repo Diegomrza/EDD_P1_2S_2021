@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <cstdlib>
+#include <cstring>
 #include "NodoListaDoble.cpp"
 
 using namespace std;
@@ -18,7 +20,7 @@ public:
     ListaDoble(/* args */);
     void insertar(string, string, string, string, string, string, int, int, string, string, string);
     void mostrar();
-    void mostrarUno(int);
+    void mostrarUno(string);
     void modificar(string);
     void eliminar(string);
     bool verificarCarnet(string);
@@ -87,11 +89,13 @@ void ListaDoble::mostrar()
     cout << temporal->edad << "\n\n\n";
 }
 
-void ListaDoble::mostrarUno(int id){
+void ListaDoble::mostrarUno(string id){
+    cout<<id<<endl;
     NodoListaDoble *aux =this->primero;
-    while (aux != NULL)
+    while (aux->siguiente != this->primero)
     {
-        if (to_string(id)==aux->noCarnet)
+        cout<<"HMMM: "<<(id.compare(aux->noCarnet)==0)<<endl;
+        if (id.compare(aux->noCarnet)==0)
         {
             cout<<"Errores: " <<endl;
             cout<<aux->err_correo<<endl;

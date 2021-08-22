@@ -1,1 +1,1 @@
-linealizacion->insertar(pos, listaTareas[i][j][k]);
+olaErrores->desencolar(lst);
