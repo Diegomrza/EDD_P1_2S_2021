@@ -23,6 +23,7 @@ public:
     void mostrar();
     void mostrarUno(string);
     void modificar(string);
+    void modificarR(string);
     void eliminar(string);
     bool verificarCarnet(string);
     string devolverErrores(string);
@@ -128,14 +129,22 @@ void ListaDoble::modificar(string dpi)
         {
             while (bandera == false)
             {
-                cout<<"ingrese el dato que desea cambiar: "<<endl;cout<<"1. creditos"<<endl;cout<<"2. edad"<<endl;
-                cout<<"3. carnet"<<endl;cout<<"4. dpi"<<endl;cout<<"5. correo"<<endl;cout<<"6. password"<<endl;
-                cout<<"7. nombre"<<endl;cout<<"8. carrera"<<endl;cout<<"9. Terminar cambios"<<endl;
+                cin.ignore();
+                cout<<"\n\nIngrese el dato que desea cambiar: "<<endl;
+                cout<<"1. creditos actuales: "<<temporal->creditos<<endl;
+                cout<<"2. edad actual: "<<temporal->edad<<endl;
+                cout<<"3. carnet actual: "<<temporal->noCarnet<<endl;
+                cout<<"4. dpi actual: "<<temporal->dpi<<endl;
+                cout<<"5. correo actual: "<<temporal->correo<<endl;
+                cout<<"6. password actual: "<<temporal->password<<endl;
+                cout<<"7. nombre actual: "<<temporal->nombre<<endl;
+                cout<<"8. carrera actual: "<<temporal->carrera<<endl;
+                cout<<"9. Terminar cambios: "<<endl;
                 int dato = 0;
                 cin >> dato;
                 if (dato==1)
                 {
-                    cout << "creditos: " << endl; int nuevo_creditos; cin >> nuevo_creditos; temporal->creditos = nuevo_creditos;
+                    cout << "creditos"<< endl; int nuevo_creditos; cin >> nuevo_creditos; temporal->creditos = nuevo_creditos;
                 } else if (dato == 2)
                 {
                     cout << "edad: " << endl; int nuevo_edad; cin >> nuevo_edad; temporal->edad = nuevo_edad;
@@ -153,13 +162,73 @@ void ListaDoble::modificar(string dpi)
                     cout << "password: " << endl; string nuevo_password; cin >> nuevo_password; temporal->password = nuevo_password;
                 } else if (dato == 7)
                 {
-                    cout << "nombre: " << endl; string nuevo_nombre; cin.ignore(); getline(cin, nuevo_nombre); temporal->nombre = nuevo_nombre;
+                    cout << "nombre: " << endl; string nuevo_nombre;  getline(cin, nuevo_nombre); temporal->nombre = nuevo_nombre;
                 } else if (dato == 8)
                 {
-                    cout << "carrera: " << endl; string nuevo_carrera; cin.ignore(); getline(cin, nuevo_carrera); temporal->carrera = nuevo_carrera;
+                    cout << "carrera: " << endl; string nuevo_carrera; getline(cin, nuevo_carrera); temporal->carrera = nuevo_carrera;
                 } else if (dato == 9)
                 {
                     bandera = true;
+                    cout<<"\n\n"<<endl;
+                }
+            }
+            cout << "Cambios realizados con exito" << endl;
+            break;
+        }
+    temporal = temporal->siguiente;
+    }
+}
+
+void ListaDoble::modificarR(string dpi){
+    bool bandera = false;
+    NodoListaDoble *temporal = this->primero;
+    while (temporal->siguiente != this->primero)
+    {
+        if (temporal->dpi == dpi)
+        {
+            while (bandera == false)
+            {
+                cin.ignore();
+                cout<<"\n\nIngrese el dato que desea cambiar: "<<endl;
+                cout<<"1. creditos actuales: "<<temporal->creditos<<endl;
+                cout<<"2. edad actual: "<<temporal->edad<<endl;
+                cout<<"3. carnet actual: "<<temporal->noCarnet<<" - Error: "<<temporal->err_noCarnet<<endl;
+                cout<<"4. dpi actual: "<<temporal->dpi<<" - Error: "<<temporal->err_dpi<<endl;
+                cout<<"5. correo actual: "<<temporal->correo<<" - Error: "<<temporal->err_correo<<endl;
+                cout<<"6. password actual: "<<temporal->password<<endl;
+                cout<<"7. nombre actual: "<<temporal->nombre<<endl;
+                cout<<"8. carrera actual: "<<temporal->carrera<<endl;
+                cout<<"9. Terminar cambios: "<<endl;
+                int dato = 0;
+                cin >> dato;
+                if (dato==1)
+                {
+                    cout << "creditos"<< endl; int nuevo_creditos; cin >> nuevo_creditos; temporal->creditos = nuevo_creditos;
+                } else if (dato == 2)
+                {
+                    cout << "edad: " << endl; int nuevo_edad; cin >> nuevo_edad; temporal->edad = nuevo_edad;
+                } else if (dato == 3)
+                {
+                    cout << "carnet: " << endl; string nuevo_noCarnet; cin >> nuevo_noCarnet; temporal->noCarnet = nuevo_noCarnet;
+                } else if (dato == 4)
+                {
+                    cout << "dpi: " << endl; string nuevo_dpi; cin >> nuevo_dpi; temporal->dpi = nuevo_dpi;
+                } else if (dato == 5)
+                {
+                    cout << "correo: " << endl; string nuevo_correo; cin >> nuevo_correo; temporal->correo = nuevo_correo;
+                } else if (dato == 6)
+                {
+                    cout << "password: " << endl; string nuevo_password; cin >> nuevo_password; temporal->password = nuevo_password;
+                } else if (dato == 7)
+                {
+                    cout << "nombre: " << endl; string nuevo_nombre;  getline(cin, nuevo_nombre); temporal->nombre = nuevo_nombre;
+                } else if (dato == 8)
+                {
+                    cout << "carrera: " << endl; string nuevo_carrera; getline(cin, nuevo_carrera); temporal->carrera = nuevo_carrera;
+                } else if (dato == 9)
+                {
+                    bandera = true;
+                    cout<<"\n\n"<<endl;
                 }
             }
             cout << "Cambios realizados con exito" << endl;

@@ -130,7 +130,7 @@ void Grafo::grafoCola(Cola *cola, ListaLinealizada *lista, ListaDoble *doble){
 
 void Grafo::grafoTareas(ListaLinealizada *lista){
     
-    string acumulador="digraph G{formar=pdf;\nrankdir = LR; \n node [shape=box]; \ncompound=true; \n";
+    string acumulador="digraph G{formar=svg;\nrankdir = LR; \n node [shape=box]; \ncompound=true; \n";
     string nodo = "";
     string enlace = "";
     string label="";
@@ -140,11 +140,20 @@ void Grafo::grafoTareas(ListaLinealizada *lista){
 
     while (temp->siguiente!=NULL)
     {
-        
-        
-        cout<<temp<<endl;
-        label+=to_string(temp->carnet); label+="\n"; label+=temp->nombre_tarea; label+=+"\n"; label+=temp->descripcion_tarea; label+=+"\n";
-        label+= temp->materia; label+=+"\n"; label+=temp->fecha; label+=+"\n"; label+=to_string(temp->hora); label+="\n"; label+=temp->estado;
+        //cout<<temp<<endl;
+        label+=to_string(temp->carnet);
+        label+="\n"; 
+        label+=temp->nombre_tarea; 
+        label+=+"\n"; 
+        label+=temp->descripcion_tarea; 
+        label+=+"\n";
+        label+= temp->materia; 
+        label+=+"\n"; 
+        label+=temp->fecha; 
+        label+=+"\n"; 
+        label+=to_string(temp->hora); 
+        label+="\n"; 
+        label+=temp->estado;
         label+=+"\n"; 
         nodo+="\"" + to_string(temp->id_tarea) + "\"" + "[label=\"" + label + "\"];\n";
         enlace+="\"" + to_string(temp->id_tarea) + "\" -> \"" + to_string(temp->siguiente->id_tarea) + "\"[dir=\"both\"];\n";
@@ -152,7 +161,7 @@ void Grafo::grafoTareas(ListaLinealizada *lista){
         
         temp=temp->siguiente;
         contador++;
-        cout<<contador<<endl;
+        //cout<<contador<<endl;
     }
     
     label="";
@@ -170,13 +179,11 @@ void Grafo::grafoTareas(ListaLinealizada *lista){
         cout << "La escritura fue un exito" << endl;
     }
 
-    string cmd = "dot -Tpdf h"+to_string(contImag)+".dot -o h"+to_string(contImag)+".pdf";
+    string cmd = "dot -Tsvg h"+to_string(contImag)+".dot -o h"+to_string(contImag)+".svg";
 
     system(cmd.c_str()); 
     contImag++;
     //file_out.close();
-    
-
 }
 
 Grafo::~Grafo()

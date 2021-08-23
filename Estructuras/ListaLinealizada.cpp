@@ -22,6 +22,7 @@ public:
     void mostrarUno(int);
     void mostrar();
     void modificar(int);
+    void modificar(string);
     void eliminar(int);
     void metodoReporte(int, int, int);
     string cadenaReporte(string);
@@ -198,6 +199,70 @@ void ListaLinealizada::modificar(int indice)
                 else
                 {
                     cout << "Ingrese una opcion valida" << endl;
+                }
+            }
+            break;
+        }
+        aux = aux->siguiente;
+    }
+    cout << "Datos modificados" << endl;
+}
+
+void ListaLinealizada::modificar(string carnet){
+    NodoTarea *aux = this->primero;
+    while (aux != NULL)
+    {
+        if (carnet.compare(to_string(aux->carnet)) == 0)
+        {
+            bool bandera = false;
+            while (bandera == false)
+            {
+                cout << "\n\nQue dato desea modificar?" << endl;
+                cout << "1. Carnet actual: "<<aux->carnet<<" - Error: "<<aux->err_carnet<< endl;
+                cout << "2. Fecha actual: "<<aux->fecha<<" - Error: "<<aux->err_fecha<<endl;
+                cout << "3. Hora actual: "<<aux->hora<<endl;
+                cout << "4. Estado actual: "<<aux->estado<< endl;
+                cout << "5. Terminar" << endl;
+                int opcion;
+                cin >> opcion;
+                if (opcion == 1)
+                {
+                    cout << "Ingrese el nuevo carnet: " << endl;
+                    int carnetM;
+                    cin >> carnetM;
+                    aux->carnet = carnetM;
+                }
+                else if (opcion == 2)
+                {
+                    cout << "Ingrese la nueva fecha: " << endl;
+                    string fechaM;
+                    cin.ignore();
+                    getline(cin, fechaM);
+                    aux->fecha = fechaM;
+                }
+                else if (opcion == 3)
+                {
+                    cout << "Ingrese la nueva hora: " << endl;
+                    int horaM;
+                    cin >> horaM;
+                    aux->hora = horaM;
+                }
+                else if (opcion == 4)
+                {
+                    cout << "Ingrese el nuevo estado: " << endl;
+                    string estadoM;
+                    cin.ignore();
+                    getline(cin, estadoM);
+                    aux->estado = estadoM;
+                }
+                else if (opcion == 5)
+                {
+                    bandera = true;
+                    cout<<"\n\n"<<endl;
+                }
+                else
+                {
+                    cout << "Ingrese una opcion valida\n" << endl;
                 }
             }
             break;

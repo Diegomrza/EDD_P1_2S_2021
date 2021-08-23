@@ -569,7 +569,7 @@ void reportes()
                 cout<<"Reporte generado con exito"<<endl;
             } else {
                 cout<<"Aun hay errores que resolver"<<endl;
-                
+                colaErrores->arreglarError(lst, linealizacion);
             }
         } else if(opcion==7)
         {

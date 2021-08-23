@@ -1,0 +1,32 @@
+digraph G{formar=png;
+rankdir = LR; 
+ node [shape=box]; 
+compound=true; 
+"0"[label="id: 0
+Tipo: estudiante
+Errores:
+El correo no cumple
+El dpi no cumple con los 13 digitos establecidos
+"];
+"1"[label="id: 1
+Tipo: estudiante
+Errores:
+El dpi no cumple con los 13 digitos establecidos
+"];
+"2"[label="id: 2
+Tipo: estudiante
+Errores:
+El dpi no cumple con los 13 digitos establecidos
+"];
+"3"[label="id: 3
+Tipo: Tarea
+Errores:
+El numero de carnet no existe en la lista de estudiantes
+"];
+"0" -> "1";
+"1" -> "2";
+"2" -> "3";
+"3" -> "NULL";
+
+}
+
