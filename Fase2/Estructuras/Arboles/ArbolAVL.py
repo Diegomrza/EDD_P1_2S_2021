@@ -1,5 +1,4 @@
-from Estructuras.Nodos import NodoAVL
-
+from Nodos import NodoAVL
 #Estructura complicada
 
 class ArbolAVL:
@@ -59,7 +58,7 @@ class ArbolAVL:
         elif nodo.carnet > raiz.carnet:
             raiz.derecha = self.insertar(raiz.derecha, nodo)
         else:
-            print('El nodo ya existe')
+            return raiz
         raiz.altura = self.maximo(self.altura(raiz.izquierda), self.altura(raiz.derecha)) + 1
         balance = self.balance(raiz)
 
@@ -87,26 +86,32 @@ class ArbolAVL:
     
     def mostrar0(self):
         self.mostrar(self.root)
-
     def mostrar(self, raizActual):
         if raizActual == None:
             return
         else:
-            self.enorden2(raizActual.izquierda)
-            print(raizActual.valor," - ", end="")
-            self.enorden2(raizActual.derecha)
+            self.mostrar(raizActual.izquierda)
+            print(raizActual.carnet," - ", end="")
+            self.mostrar(raizActual.derecha)
 
     def mostrar_solo_un_nodo(self):
         pass
 
-nuevo = NodoAVL(201901429,2993323220101,'Diego Robles Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo = NodoAVL(201901421,2993323220101,'Diego Abraham Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo = NodoAVL(201901422,2993323220101,'Abraham Robles Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo = NodoAVL(201901423,2993323220101,'Diego Robles','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo = NodoAVL(201901424,2993323220101,'Diego Abraham','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo = NodoAVL(201901425,2993323220101,'Abraham Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo = NodoAVL(201901426,2993323220101,'Abraham Robles','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo  = NodoAVL(5,2993323220101,'Diego Robles Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo1 = NodoAVL(10,2993323220101,'Diego Abraham Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo2 = NodoAVL(20,2993323220101,'Abraham Robles Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo3 = NodoAVL(201901423,2993323220101,'Diego Robles','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo4 = NodoAVL(30,2993323220101,'Diego Abraham','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo5 = NodoAVL(2,2993323220101,'Abraham Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
+nuevo6 = NodoAVL(1,2993323220101,'Abraham Robles','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
 
 arbol = ArbolAVL()
-arbol.insertar(nuevo)
+arbol.root = arbol.insertar(arbol.root, nuevo)
+arbol.root = arbol.insertar(arbol.root, nuevo1)
+arbol.root = arbol.insertar(arbol.root, nuevo2)
+arbol.root = arbol.insertar(arbol.root, nuevo3)
+arbol.root = arbol.insertar(arbol.root, nuevo4)
+arbol.root = arbol.insertar(arbol.root, nuevo5)
+arbol.root = arbol.insertar(arbol.root, nuevo6)
+
 arbol.mostrar0()

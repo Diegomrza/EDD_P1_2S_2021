@@ -14,8 +14,8 @@ class NodoAVL: #Nodo del arbol de estudiantes
         self.lista_anios = lista_anios #Lista de años
 
         self.altura = 1
-        self.anterior = None
-        self.siguiente = None
+        self.izquierda = None
+        self.derecha = None
 
 
 
