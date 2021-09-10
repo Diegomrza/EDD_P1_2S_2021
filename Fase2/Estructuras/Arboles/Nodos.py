@@ -1,4 +1,4 @@
-
+#from ArbolAVL import ArbolAVL
 
 
 class NodoAVL: #Nodo del arbol de estudiantes
@@ -48,8 +48,14 @@ class NodoDispersa: #Nodo de la matriz dispersa de tareas
 
 
 class NodoTarea:
-    def __init__(self):
-        pass
+    def __init__(self, carnet, nombre, descripcion, materia, fecha, hora, estado):
+        self.carnet = carnet
+        self.nombre = nombre
+        self.descripcion = descripcion
+        self.materia = materia
+        self.fecha = fecha
+        self.hora = hora
+        self.estado = estado
 
 
 
