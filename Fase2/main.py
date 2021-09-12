@@ -1,7 +1,7 @@
-from Estructuras.Arboles.Nodos import NodoAVL, NodoTarea
+from Estructuras.Nodos.NodoAVL import NodoAVL
+from Estructuras.Nodos.NodoTarea import NodoTarea
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import json
 from Analizadores.sintactico import parser, objetos
 
 app = Flask(__name__)
@@ -9,6 +9,8 @@ cors = CORS(app, resources={r"/*": {"origin":"*"}})
 ob = NodoAVL(0,'','','','','',0,0,'')
 obj = NodoTarea(0,'','','','',0,'')
 lista = []
+
+#Para usar Arbol AVL: arbol.root = arbol.insertar(arbol.root, nuevo)
 
 @app.route('/')
 def index():
@@ -18,9 +20,9 @@ def index():
 def metodoEstudiantes():
     return '<h1>Metodo de estudiantes</h1>'
 
-@app.route('/prueba',methods=['GET','POST'])
+@app.route('/Pruebas',methods=['GET','POST'])
 def prueba():
-    return 'Nada'
+    return '<h1><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Usac_logo.png"></h1>'
 
 @app.route('/ply',methods=['POST'])
 def ply():

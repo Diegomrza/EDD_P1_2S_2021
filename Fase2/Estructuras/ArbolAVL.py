@@ -1,5 +1,4 @@
-from Nodos import NodoAVL
-#Estructura complicada
+from Nodos.NodoAVL import NodoAVL
 
 class ArbolAVL:
     def __init__(self):
@@ -50,6 +49,8 @@ class ArbolAVL:
             return aux
         return nodo
 #####################
+    def insertar0(self, nodo):
+        self.root = self.insertar(self.root, nodo)
     def insertar(self, raiz, nodo): #Recibe como parámetro un nodo de tipo avl
         if raiz == None:
             raiz = nodo
@@ -138,9 +139,17 @@ class ArbolAVL:
         elif valor > raiz.carnet:
             raiz.derecha = self.modificar(raiz.derecha, valor)
         else:
-            print('Son iguales')
-        
-    #Mostrar en orden
+            print('Cambios realizados')
+            #raiz.carnet = ''
+            raiz.dpi = ''
+            raiz.nombre = 'F'
+            raiz.carrera = 'F'
+            raiz.correo = 'F'
+            raiz.password = 'F'
+            raiz.creditos = ''
+            raiz.edad = ''
+        return raiz
+    
     def mostrar0(self):
         self.mostrar(self.root)
     def mostrar(self, raizActual):
@@ -159,24 +168,23 @@ class ArbolAVL:
             print()
             self.mostrar(raizActual.derecha)
 
-    def mostrar_solo_un_nodo(self):
-        pass
-
-nuevo  = NodoAVL(5,2993323220101,'Diego Abraham Robles Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',85,23,2)
-nuevo1 = NodoAVL(10,2993323220101,'Angel Josué Ávila Meza','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',83,20,2)
-nuevo2 = NodoAVL(20,2993323220101,'Keila Sarahim Dominguez Olivas','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',120,21,2)
-nuevo3 = NodoAVL(201901423,2993323220101,'Luis Allan Mayorga Palencia','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',35,22,2)
-nuevo4 = NodoAVL(30,2993323220101,'Kelly Mischell Herrera Espino','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',76,22,2)
-nuevo5 = NodoAVL(2,2993323220101,'Susan pamela Herrera','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',69,26,2)
-nuevo6 = NodoAVL(1,2993323220101,'Jaijo Josué Mejía González','Ingenieria en ciencias y sistemas','Diegomrza98@gmail.com','7291384650',0,24,2)
-arbol = ArbolAVL()
-arbol.root = arbol.insertar(arbol.root, nuevo); arbol.root = arbol.insertar(arbol.root, nuevo1)
-arbol.root = arbol.insertar(arbol.root, nuevo2); arbol.root = arbol.insertar(arbol.root, nuevo3)
-arbol.root = arbol.insertar(arbol.root, nuevo4); arbol.root = arbol.insertar(arbol.root, nuevo5)
-arbol.root = arbol.insertar(arbol.root, nuevo6)
-#arbol.eliminar0(5)
-#arbol.eliminar0(20)
-#arbol.mostrar0()
-
-arbol.modificar0(30)
-arbol.modificar0(5)
+    def mostrar_solo_un_nodo0(self,valor):
+        self.mostrar_solo_un_nodo(self.root, valor)
+    def mostrar_solo_un_nodo(self, raiz, valor):
+        if raiz == None:
+            return raiz
+        if valor < raiz.carnet:
+            raiz.izquierda = self.mostrar_solo_un_nodo(raiz.izquierda, valor)
+        elif valor > raiz.carnet:
+            raiz.derecha = self.mostrar_solo_un_nodo(raiz.derecha, valor)
+        else:
+            print(raiz.carnet,"-", end="")
+            print(raiz.dpi,"-", end="")
+            print(raiz.nombre,"-", end="")
+            print(raiz.carrera,"-", end="")
+            print(raiz.correo,"-", end="")
+            print(raiz.password,"-", end="")
+            print(raiz.creditos,"-", end="")
+            print(raiz.edad,"-", end="")
+            print()
+        return raiz

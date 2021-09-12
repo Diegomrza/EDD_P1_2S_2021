@@ -1,8 +1,9 @@
-from Estructuras.Nodos import NodoAnios
+from Nodos import NodoCursos
 
-class ListaAnios:
-    def __init__(self):
-        pass
+class ArbolCursos:
+    def __init__(self, orden):
+        self.orden = orden
+        self.raiz = NodoCursos(orden)
 
     def insertar(self):
         pass

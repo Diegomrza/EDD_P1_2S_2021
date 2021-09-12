@@ -1,7 +1,8 @@
 from sys import api_version
 from Analizadores.lexico import tokens
-from Estructuras.Arboles.Nodos import NodoAVL, NodoTarea
-
+#from Estructuras.Arboles.Nodos import NodoAVL, NodoTarea
+from Estructuras.Nodos.NodoAVL import NodoAVL
+from Estructuras.Nodos.NodoTarea import NodoTarea
 
 estudiante = NodoAVL(0,'','','','','',0,0,'') #0,'','','','','',0,0,''
 tarea = NodoTarea(0,'','','','',0,'') #0,'','','','',0,''
