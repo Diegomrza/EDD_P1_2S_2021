@@ -1,12 +1,13 @@
 from Estructuras.Nodos.NodoAVL import NodoAVL
 from Estructuras.Nodos.NodoTarea import NodoTarea
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from Analizadores.sintactico import parser, objetos
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origin":"*"}})
-ob = NodoAVL(0,'','','','','',0,0,'')
+ob = NodoAVL(0,'','','','','',0,0)
 obj = NodoTarea(0,'','','','',0,'')
 lista = []
 

@@ -1,4 +1,4 @@
-from Dispersa import Dispersa
+from Estructuras.Dispersa import Dispersa
 
 class NodoMeses: #Nodo de los doce meses posibles en un año
     def __init__(self, mes):

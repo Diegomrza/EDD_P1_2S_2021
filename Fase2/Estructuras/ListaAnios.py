@@ -1,4 +1,5 @@
-from Nodos.NodoAnios import NodoAnios
+from Estructuras.Nodos.NodoAnios import NodoAnios
+#from Nodos.NodoAnios import NodoAnios
 
 class ListaAnios:
     def __init__(self):

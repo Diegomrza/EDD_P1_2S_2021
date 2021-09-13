@@ -1,4 +1,4 @@
-from Nodos.NodoMeses import NodoMeses
+from Estructuras.Nodos.NodoMeses import NodoMeses
 
 class ListaMeses:
     def __init__(self):

@@ -1,5 +1,8 @@
-from ListaMeses import ListaMeses
-from ListaSemestres import ListaSemestres
+from Estructuras.ListaMeses import ListaMeses
+from Estructuras.ListaSemestres import ListaSemestres
+
+#from ListaMeses import ListaMeses
+#from ListaSemestres import ListaSemestres
 
 class NodoAnios: #Nodo de todos los años posibles
     def __init__(self, id):

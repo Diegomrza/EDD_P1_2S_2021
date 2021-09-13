@@ -1,5 +1,5 @@
-from Nodos.NodoDispersa import NodoDispersa
-import random
+from Estructuras.Nodos.NodoDispersa import NodoDispersa
+#import random
 
 #Estructuras adicionales para la matriz dispersa
 class NodoEncabezado:
