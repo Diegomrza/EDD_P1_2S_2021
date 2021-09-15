@@ -1,4 +1,4 @@
-from Nodos.NodoTarea import NodoTarea
+from Estructuras.Nodos.NodoTarea import NodoTarea
 
 class ListaTareas:
     def __init__(self):

@@ -17,13 +17,31 @@ lista = []
 def index():
     return '<h1>El servidor está corriendo!</h1>'
 
-@app.route('/estudiantes')
-def metodoEstudiantes():
-    return '<h1>Metodo de estudiantes</h1>'
+@app.route('/carga', methods=['POST'])
+def carga():
+    return ''
 
-@app.route('/Pruebas',methods=['GET','POST'])
-def prueba():
-    return '<h1><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Usac_logo.png"></h1>'
+@app.route('/reporte', methods=['GET'])
+def reporte():
+    return ''
+
+@app.route('/estudiante', methods=['GET','POST','PUT','DELETE'])
+def estudiante():
+    return
+
+
+@app.route('/recordatorios', methods=['GET','POST','PUT','DELETE'])
+def recordatorios():
+    return
+
+@app.route('/cursosEstudiante')
+def cursosEstudiante():
+    return
+
+@app.route('/cursosPensum')
+def cursosPensum():
+    return    
+
 
 @app.route('/ply',methods=['POST'])
 def ply():

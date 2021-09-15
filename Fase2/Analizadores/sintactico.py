@@ -28,7 +28,7 @@ def p_elemento(t):
     'elemento : LQUESTION TELEMENT  tipoElemento RQUESTION items LQUESTION DOLAR TELEMENT RQUESTION'
     global estudiante, tarea, tipo
     if tipo == '"user"':
-        nuevo = NodoAVL(estudiante.carnet, estudiante.dpi, estudiante.nombre,estudiante.carrera, estudiante.correo,estudiante.password,estudiante.creditos,estudiante.edad,'') 
+        nuevo = NodoAVL(estudiante.carnet, estudiante.dpi, estudiante.nombre,estudiante.carrera, estudiante.correo,estudiante.password,estudiante.creditos,estudiante.edad) 
         objetos.append(nuevo)
     elif tipo == '"task"':
         nuevo = NodoTarea(tarea.carnet, tarea.nombre, tarea.descripcion, tarea.materia,tarea.fecha,tarea.hora,tarea.estado)

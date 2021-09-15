@@ -9,7 +9,7 @@ class NodoAnios: #Nodo de todos los años posibles
         self.siguiente = None
         self.anterior = None
 
-        self.id = id #Id del mes Ej: 2020, 2021, 2022, etc...
+        self.id = id #Id del año Ej: 2020, 2021, 2022, etc...
 
         self.meses = ListaMeses() #Lista de meses
         self.semestre = ListaSemestres() #Lista de semestres

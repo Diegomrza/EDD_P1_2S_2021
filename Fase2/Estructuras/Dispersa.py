@@ -1,4 +1,4 @@
-from Estructuras.Nodos.NodoDispersa import NodoDispersa
+from Nodos.NodoDispersa import NodoDispersa
 #import random
 
 #Estructuras adicionales para la matriz dispersa
@@ -121,10 +121,3 @@ class Dispersa:
                 actual = actual.abajo
             eColumna = eColumna.siguiente
         print('*********** fin recorrido por columnas ************')
-
-'''d = Dispersa()
-
-for x in range(1,26):
-    d.insertar(x-1,x,'Jiji')
-
-d.recorrerColumnas()'''

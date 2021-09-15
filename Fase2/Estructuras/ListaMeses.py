@@ -4,6 +4,7 @@ class ListaMeses:
     def __init__(self):
         self.primero = None
         self.contador_meses = 0
+        self.lista_meses = []
 
     def insertar(self, mes):
         if (mes >= 1 and mes <= 12) and self.contador_meses < 13: 
@@ -11,11 +12,13 @@ class ListaMeses:
             if self.primero == None:
                 self.primero = nuevo
                 self.contador_meses += 1
+                self.lista_meses.append(nuevo.mes)
             elif mes < self.primero.mes:
                 nuevo.siguiente = self.primero
                 self.primero.anterior = nuevo
                 self.primero = nuevo
                 self.contador_meses += 1
+                self.lista_meses.append(nuevo.mes)
             else:
                 temp = self.primero
                 while temp.siguiente != None:
@@ -28,13 +31,14 @@ class ListaMeses:
                         nuevo.anterior = temp
                         temp.siguiente = nuevo
                         self.contador_meses += 1
+                        self.lista_meses.append(nuevo.mes)
                         break
-                    
                     temp = temp.siguiente
-                if temp.siguiente == None: #self.repetidos(mes) != True and 
+                if temp.siguiente == None and self.comparando(nuevo.mes): 
                     temp.siguiente = nuevo
                     nuevo.anterior = temp
                     self.contador_meses += 1
+                    self.lista_meses.append(nuevo.mes)
         else:
             print('El mes está fuera de rango')
 
@@ -71,3 +75,25 @@ class ListaMeses:
             print('Mes: ',temp.mes)
             temp = temp.siguiente
         print('\n')
+
+    def comparando(self, id):
+        if id in self.lista_meses:
+            return False
+        else:
+            return True
+'''
+l = ListaMeses()
+l.insertar(1)
+l.insertar(1)
+l.insertar(1)
+l.insertar(11)
+l.insertar(15)
+l.insertar(3)
+l.insertar(5)
+l.insertar(12)
+l.insertar(12)
+l.insertar(12)
+l.insertar(12)
+l.insertar(12)
+
+l.mostrar()'''

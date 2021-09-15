@@ -1,4 +1,4 @@
-from Nodos.NodoAVL import NodoAVL
+from Estructuras.Nodos.NodoAVL import NodoAVL
 
 class ArbolAVL:
     def __init__(self):

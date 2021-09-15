@@ -1,11 +1,10 @@
 from Estructuras.Nodos.NodoCursos import NodoCursos
 import copy
 
-class Arbol_B:
-    def __init__(self, _orden):
-        self.orden = _orden
+class ArbolCursos:
+    def __init__(self, orden):
+        self.orden = orden
         self.raiz = NodoCursos(5)
-
 
     def insertar(self,valor):
 
@@ -16,9 +15,9 @@ class Arbol_B:
 
         if array_valores[0]:
             array_valores[3] = NodoCursos(self.orden)
-            array_valores[3].cuenta = 1;
-            array_valores[3].claves[1] = array_valores[1];
-            array_valores[3].ramas[0] = self.raiz;
+            array_valores[3].cuenta = 1
+            array_valores[3].claves[1] = array_valores[1]
+            array_valores[3].ramas[0] = self.raiz
             array_valores[3].ramas[1] = array_valores[2]
             self.raiz = array_valores[3]
 
@@ -102,3 +101,19 @@ class Arbol_B:
         # rama 0 del nuevo nodo es la rama de la mediana
         flag_pagina[2].ramas[0] = pagina_actual.ramas[pagina_actual.cuenta]
         pagina_actual.cuenta = pagina_actual.cuenta -1
+
+
+    def eliminar(self):
+        pass
+
+    def mostrar(self):
+        pass
+
+ar = ArbolCursos(5)
+
+ar.insertar(1)
+ar.insertar(3)
+ar.insertar(8)
+ar.insertar(2)
+ar.insertar(5)
+ar.insertar(6)

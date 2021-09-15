@@ -3,8 +3,14 @@ class NodoCursos:
     def __init__(self, orden):
         self.cuenta = 0
         self.m = orden
-        self.claves = [ NodoCursos  for x in range(orden)]
-        self.ramas = [NodoCursos for x in range(orden)]
+        self.claves = [ 0 for x in range(orden)]
+        self.ramas = [ NodoCursos for x in range(orden)]
+
+        self.codigo_curso = None
+        self.nombre = None
+        self.creditos = None
+        self.creditos_prerrequisito = None
+        self.tipo = None #Obligatorio o no
 
         for i in range(orden):
             self.ramas [i] = None
@@ -13,4 +19,4 @@ class NodoCursos:
         return self.cuenta == self.m -1
 
     def pagina_semillena(self):
-        return self.cuenta < int(self.m/2)
+        return self.cuenta < self.m/2
