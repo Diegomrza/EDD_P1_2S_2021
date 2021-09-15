@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+Fase2/Analizadores/__pycache__/lexico.cpython-38.pyc
+Fase2/Analizadores/__pycache__/lexico.cpython-38.pyc
+Fase2/Analizadores/__pycache__/parsetab.cpython-38.pyc
+Fase2/Analizadores/__pycache__/parsetab.cpython-38.pyc
+*.pyc
