@@ -12,8 +12,11 @@ class grafo:
         self.contadorArbolEstudiante = 0
 
     def grafoArbolAVL(self, arbolAVL):
-        pass
-
+        arbolAVL.mostrar0()
+        listaN = arbolAVL.listaNodos
+        for y in listaN:
+            print(vars(y))
+        
     def matrizDispersa(self, matriz):
         lista_nodos = []
         lista_cabecera_filas = []
@@ -146,34 +149,49 @@ class grafo:
             listaC.clear()
 
         cad_aux += '}\n}\n'
-        print(cad_aux) 
-        archivo = open('grafo.dot','w')
+        #print(cad_aux)
+        nombre = ''
+        nombre += 'matriz' + str(self.contadorDispersa)
+        self.contadorDispersa += 1
+        archivo = open(nombre+'.dot','w')
         archivo.write(cad_aux)
         archivo.close()
 
-        system('dot -Tpng grafo.dot -o grafo.png')
-        #system('cd ./grafo.png')
-        startfile('grafo.png')
+        system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
+        system('cd ./matriz.png')
+        startfile(nombre+'.png')
 
     def listaTareas(self, listaTareas):
-        cadena = ''
+        print('Grafo tareas')
 
-        g = Digraph('G', format='png', node_attr={'shape': 'record', 'height': '.1'}, edge_attr={ 'dir':'both'})
-        g.attr(label = 'Imagen original')
+        g = Digraph('G', format='png', node_attr={'shape': 'box', 'height': '.1','rank':'same'}, edge_attr={ 'dir':'both'})
+        g.attr(rankdir='LR')
         
-        for x in range(1,10):
-            g.node(str(x), label=''+'|'+str(x)+'|'+'')
-        g.node(str(10), label=''+'|'+'10'+'|'+'')
-            
-        
-        for x in range(1, 10):
-            g.edge(str(x),str(x+1))
-        
+        aux = listaTareas.primero
+        lista = []
+        while aux != None:
+            cad = ''
+            cad += str(aux.carnet) + '\n'
+            cad += aux.nombre    + '\n'
+            cad += aux.descripcion + '\n'
+            cad += aux.materia + '\n'
+            cad += aux.fecha + '\n'
+            cad += str(aux.hora) + '\n'
+            cad += aux.estado + '\n'
+            g.node(str(aux.carnet), label=cad)
+            lista.append(aux.carnet)
+            aux = aux.siguiente
 
-
-        nombre = 'grafo'+str(self.contadorListaTareas)
+        for x in range(len(lista)):
+            if x < len(lista)-1:
+                g.edge(str(lista[x]),str(lista[x+1]))
+            else:
+                continue
+        
+        nombre = 'ListaTareas'+str(self.contadorListaTareas)
         g.render(nombre)
         self.contadorListaTareas += 1
+        startfile(nombre+'.png')
 
     def arbolB_cursosGeneral(self, arbolB_general):
         pass
@@ -181,16 +199,3 @@ class grafo:
     def arbolB_cursosEstudiante(self, arbolB_Estudiante):
         pass
 
-
-#Parte de graficar dispersa
-'''if len(lista_nodos_separados) > 1:
-                        print('heloou')
-                        for nodosSeparados in range(0,len(lista_nodos_separados)):
-                            if nodosSeparados+1 < len(lista_nodos_separados):
-                                separar = lista_nodos_separados[nodosSeparados].split(',')
-                                separar2 = lista_nodos_separados[nodosSeparados+1].split(',')
-
-                                cad_aux += 'nodo'+str(separar[0]+'_'+str(separar[1]))+'->'
-                                cad_aux += 'nodo'+str(separar2[0]+'_'+str(separar2[1]))+';\n'
-                            rankFilas += 'nodo'+str(separar[0]+'_'+str(separar[1]))+';'
-                    else:'''

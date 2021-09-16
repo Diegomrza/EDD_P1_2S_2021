@@ -1,8 +1,10 @@
 from Estructuras.Nodos.NodoAVL import NodoAVL
+#from grafo import grafo
 
 class ArbolAVL:
     def __init__(self):
         self.root = None
+        self.listaNodos = []
 
 #####################
     def altura(self, nodo): #retorna la altura de un nodo
@@ -157,17 +159,18 @@ class ArbolAVL:
             return
         else:
             self.mostrar(raizActual.izquierda)
-            print(raizActual.carnet,"-", end="")
-            print(raizActual.dpi,"-", end="")
-            print(raizActual.nombre,"-", end="")
-            print(raizActual.carrera,"-", end="")
-            print(raizActual.correo,"-", end="")
-            print(raizActual.password,"-", end="")
-            print(raizActual.creditos,"-", end="")
-            print(raizActual.edad,"-", end="")
-            print()
+            #print(raizActual.carnet,"-", end="")
+            #print(raizActual.dpi,"-", end="")
+            #print(raizActual.nombre,"-", end="")
+            #print(raizActual.carrera,"-", end="")
+            #print(raizActual.correo,"-", end="")
+            #print(raizActual.password,"-", end="")
+            #print(raizActual.creditos,"-", end="")
+            #print(raizActual.edad,"-", end="")
+            #print()
+            self.listaNodos.append(raizActual)
             self.mostrar(raizActual.derecha)
-
+            
     def mostrar_solo_un_nodo0(self,valor):
         self.mostrar_solo_un_nodo(self.root, valor)
     def mostrar_solo_un_nodo(self, raiz, valor):
@@ -188,3 +191,4 @@ class ArbolAVL:
             print(raiz.edad,"-", end="")
             print()
         return raiz
+

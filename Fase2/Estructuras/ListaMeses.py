@@ -6,14 +6,14 @@ class ListaMeses:
         self.contador_meses = 0
         self.lista_meses = []
 
-    def insertar(self, mes):
-        if (mes >= 1 and mes <= 12) and self.contador_meses < 13: 
-            nuevo = NodoMeses(mes)
+    def insertar(self, nuevo):
+        if (nuevo.mes >= 1 and nuevo.mes <= 12) and self.contador_meses < 13: 
+            #nuevo = NodoMeses()
             if self.primero == None:
                 self.primero = nuevo
                 self.contador_meses += 1
                 self.lista_meses.append(nuevo.mes)
-            elif mes < self.primero.mes:
+            elif nuevo.mes < self.primero.mes:
                 nuevo.siguiente = self.primero
                 self.primero.anterior = nuevo
                 self.primero = nuevo
@@ -22,10 +22,10 @@ class ListaMeses:
             else:
                 temp = self.primero
                 while temp.siguiente != None:
-                    if mes == temp.mes:
+                    if nuevo.mes == temp.mes:
                         print('El valor ya existe')
                         break
-                    elif mes < temp.siguiente.mes:
+                    elif nuevo.mes < temp.siguiente.mes:
                         nuevo.siguiente = temp.siguiente
                         temp.siguiente.anterior = nuevo
                         nuevo.anterior = temp

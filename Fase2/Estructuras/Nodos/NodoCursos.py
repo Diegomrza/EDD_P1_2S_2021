@@ -9,7 +9,7 @@ class NodoCursos:
         self.codigo_curso = None
         self.nombre = None
         self.creditos = None
-        self.creditos_prerrequisito = None
+        self.codigos_prerrequisito = None
         self.tipo = None #Obligatorio o no
 
         for i in range(orden):

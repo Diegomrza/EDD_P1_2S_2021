@@ -6,8 +6,8 @@ class ListaAnios:
         self.primero = None
         self.lista_anios = []
 
-    def insertar(self, anio):
-        nodo = NodoAnios(anio)
+    def insertar(self, nodo):
+        #nodo = NodoAnios(anio)
         if self.primero == None:
             self.primero = nodo
             self.lista_anios.append(nodo.id)
