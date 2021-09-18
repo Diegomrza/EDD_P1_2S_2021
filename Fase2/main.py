@@ -27,6 +27,7 @@ cors = CORS(app, resources={r"/*": {"origin":"*"}})
 
 ob = NodoAVL(0,'','','','','',0,0)
 obj = NodoTarea(0,'','','','',0,'')
+estudiantes = ArbolAVL()
 #lista = []
 
 #Para usar Arbol AVL: arbol.root = arbol.insertar(arbol.root, nuevo)
@@ -41,8 +42,7 @@ def carga():
     ruta = request.json['path']
 
     if tipo.lower() == 'estudiante':
-        print('Tipo estudiante: ',end='')
-        print(tipo + ' - ' + ruta)
+        #print('Tipo estudiante: ',end='') print(tipo + ' - ' + ruta)
         ply(ruta)
     elif tipo.lower() == 'recordatorio':
         print('Tipo recordatorio: ',end='')
@@ -74,19 +74,20 @@ def reporte():
         arbol = ArbolAVL()
         g = grafo()
         for x in range(10):
-            nodo = NodoAVL(201901429+x,'2993323220101','Diego Robles'+str(x),'Sistemas','diego@gmail.com','123',85,23)
+            print(x)
+            nodo = NodoAVL(10+x,'2993323220101','Diego Robles'+str(x),'Sistemas','diego@gmail.com','123',85,23)
             nodoAnio = NodoAnios(2021)
             nodoMes = NodoMeses(6)
             for i in range(10):
                 for j in range(10):
                     nodoMes.actividades.insertar(i,j,'Hi')
 
-            g.matrizDispersa(nodoMes.actividades)
+            #g.matrizDispersa(nodoMes.actividades)
             nodoAnio.meses.insertar(nodoMes)
             nodo.lista_anios.insertar(nodoAnio)
             arbol.insertar0(nodo)
         
-        #g.grafoArbolAVL(arbol)
+        g.grafoArbolAVL(arbol)
     elif int(tipo) == 1 and carnet != 'None' and anio != 'None' and mes != 'None': 
         print('Tipo 1: ',end='')
         print(carnet, anio, mes)
@@ -95,6 +96,16 @@ def reporte():
         print(carnet, anio, mes, hora)
     elif int(tipo) == 3:
         print('Tipo 3: ')
+        arbolB = ArbolCursos(5)
+        for x in range(21):
+            nuevo = NodoCursos(5)
+            nuevo.codigo_curso = 5+x
+            nuevo.codigos_prerrequisito == 10+x
+            nuevo.creditos = 50+x
+            nuevo.nombre = 'Nombre Curso'+str(x)
+            arbolB.insertar(x)
+        g = grafo()
+        g.arbolB_cursosGeneral(arbolB)
     elif int(tipo) == 4 and carnet != 'None' and anio != 'None' and semestre != 'None':
         print('Tipo 4: ',end='')
         print(carnet, anio, semestre)
@@ -160,6 +171,8 @@ def cursosPensum():
 
 @app.route('/ply',methods=['POST'])
 def ply(ru):
+    global estudiantes
+
     ruta = r'C:\Users\Squery\Documents\GitHub\EDD_SmartClass_201901429'
     ruta += "\\" + ru #request.json['ruta']
     archivo = open(ruta, "r", encoding='utf-8')
@@ -168,27 +181,12 @@ def ply(ru):
 
     print(len(objetos))
     for x in objetos:
-        if type(x) == type(ob):
+        if type(x) == type(ob):  #Tipo user
             #print(vars(x))
-            print("J: ",x.carnet)
-            print("J: ",x.dpi)
-            print("J: ",x.nombre)
-            print("J: ",x.carrera)
-            print("J: ",x.correo)
-            print("J: ",x.password)
-            print("J: ",x.creditos)
-            print("J: ",x.edad)
-            print('\n')
-        elif type(x) == type(obj):
+            estudiantes.insertar0(x)
+        elif type(x) == type(obj): #Tipo task
             #print(vars(x))
-            print('K: ', x.carnet)
-            print('K: ', x.nombre)
-            print('K: ', x.descripcion)
-            print('K: ', x.materia)
-            print('K: ', x.fecha)
-            print('K: ', x.hora)
-            print('K: ', x.estado)
-            print('\n')
+            pass
     archivo.close()
     return jsonify({
         'Contenido': contenido

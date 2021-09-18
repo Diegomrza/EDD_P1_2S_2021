@@ -81,19 +81,3 @@ class ListaMeses:
             return False
         else:
             return True
-'''
-l = ListaMeses()
-l.insertar(1)
-l.insertar(1)
-l.insertar(1)
-l.insertar(11)
-l.insertar(15)
-l.insertar(3)
-l.insertar(5)
-l.insertar(12)
-l.insertar(12)
-l.insertar(12)
-l.insertar(12)
-l.insertar(12)
-
-l.mostrar()'''

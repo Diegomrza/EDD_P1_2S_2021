@@ -6,8 +6,7 @@ class ArbolCursos:
         self.orden = orden
         self.raiz = NodoCursos(5)
 
-    def insertar(self,valor):
-
+    def insertar(self, valor):
                     # [SUBE_ARRIBA, MEDIANA, ND, P]
         array_valores = [False,0,None, None]
 
@@ -20,7 +19,7 @@ class ArbolCursos:
             array_valores[3].ramas[0] = self.raiz
             array_valores[3].ramas[1] = array_valores[2]
             self.raiz = array_valores[3]
-
+        #return array_valores
 
 
     # flag_pagina = [bool sube_arriba, int mediana, pagina nuevo,P)
@@ -33,7 +32,7 @@ class ArbolCursos:
         else:
             esta = self.buscarPagina(pagina_actual, valor, camino)
             if esta:
-                print("hay una clave duplicada: " + valor)
+                print("hay una clave duplicada: ", valor)
                 flag_pagina[0] = False
                 return
             self.empujar(pagina_actual.ramas[camino[0]], valor, flag_pagina)
@@ -43,7 +42,6 @@ class ArbolCursos:
                 else:
                     flag_pagina[0] = False
                     self.meterHoja(pagina_actual,flag_pagina[1],flag_pagina[2],camino[0])
-
 
     def buscarPagina(self,pagina_actual, valor, camino):
         # Tomar en cuenta que "camino" es la direccion de las ramas por las que puede bajar la busqueda
@@ -56,7 +54,7 @@ class ArbolCursos:
 
             camino[0] = pagina_actual.cuenta     #iniciamos desde la clave actual
 
-            # Busacamos una posicion hasta donde el valor deje de ser menor
+            # Buscamos una posicion hasta donde el valor deje de ser menor
             # (por si viene un valor a los que hay en le nodo )
             while (valor < pagina_actual.claves[camino[0]]) and (camino[0] > 1):
                 camino[0] = camino[0] - 1
@@ -75,7 +73,6 @@ class ArbolCursos:
         actual.ramas[k + 1] = rd
         actual.cuenta = actual.cuenta + 1
 
-
     def dividirNodo(self, pagina_actual, valor, rd, camino, flag_pagina):
         posMdna = self.orden / 2 if (camino[0] <= self.orden / 2) else self.orden / 2 + 1
         posMdna = int(posMdna)
@@ -90,10 +87,10 @@ class ArbolCursos:
         pagina_actual.cuenta = posMdna # numero de claves en el nodo origen
 
         # Es insertada la clave y rama en el nodo que le corresponde
-        if camino[0] <= self.orden / 2: # si el camino[0 es menor al minimo de claves que puede haber en la pagina
-            self.meterHoja(copy.deepcopy(pagina_actual),valor, rd, camino[0])
+        if camino[0] <= self.orden / 2: # si el camino[0] es menor al minimo de claves que puede haber en la pagina
+            self.meterHoja(pagina_actual,valor, rd, camino[0])
         else:
-            self.meterHoja(copy.deepcopy(flag_pagina[2]), valor, rd, camino[0] - posMdna) # se inserta el nuevo alvor que trajimos en el nodo nuevo
+            self.meterHoja(flag_pagina[2], valor, rd, camino[0] - posMdna) #Se inserta el nuevo alvor que trajimos en el nodo nuevo
 
         # se extrae la clave media del nodo origen
         flag_pagina[1] = pagina_actual.claves[pagina_actual.cuenta]
@@ -103,17 +100,10 @@ class ArbolCursos:
         pagina_actual.cuenta = pagina_actual.cuenta -1
 
 
+
     def eliminar(self):
         pass
 
     def mostrar(self):
         pass
 
-ar = ArbolCursos(5)
-
-ar.insertar(1)
-ar.insertar(3)
-ar.insertar(8)
-ar.insertar(2)
-ar.insertar(5)
-ar.insertar(6)

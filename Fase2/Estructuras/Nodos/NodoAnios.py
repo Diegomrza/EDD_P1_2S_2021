@@ -11,5 +11,5 @@ class NodoAnios: #Nodo de todos los años posibles
 
         self.id = id #Id del año Ej: 2020, 2021, 2022, etc...
 
-        self.meses = ListaMeses() #Lista de meses
         self.semestre = ListaSemestres() #Lista de semestres
+        self.meses = ListaMeses() #Lista de meses

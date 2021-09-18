@@ -43,12 +43,3 @@ class ListaTareas:
         while aux != None:
             print(aux.carnet)
             aux = aux.siguiente
-
-'''a = ListaTareas()
-
-for x in range(1,5):
-    nodo = NodoTarea(x+2000,'Diego'+str(x),'Desc'+str(x),'Mate'+str(x),'10/10/2021',x,'Pendiente')
-    a.insertar(nodo)
-
-g = grafo()
-g.listaTareas(a)'''
