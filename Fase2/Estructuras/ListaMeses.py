@@ -81,3 +81,13 @@ class ListaMeses:
             return False
         else:
             return True
+    
+    def buscarMes(self, mes):
+        aux =  self.primero
+        while aux != None:
+            if aux.mes == mes:
+                return aux
+            aux = aux.siguiente
+        return None
+    
+    

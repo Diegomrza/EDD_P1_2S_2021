@@ -41,5 +41,5 @@ class ListaTareas:
     def mostrar(self):
         aux = self.primero
         while aux != None:
-            print(aux.carnet)
+            print(vars(aux))
             aux = aux.siguiente

@@ -75,16 +75,10 @@ class ListaAnios:
         else:
             return True
 
-'''listaAños = ListaAnios()
-
-listaAños.insertar(2020)
-listaAños.insertar(2020)
-listaAños.insertar(2020)
-listaAños.insertar(2021)
-listaAños.insertar(2023)
-listaAños.insertar(2023)
-listaAños.insertar(2025)
-listaAños.insertar(2025)
-listaAños.insertar(2025)
-
-listaAños.mostrar()'''
+    def buscar(self, anio):
+        aux = self.primero
+        while aux != None:
+            if anio == aux.id:
+                return aux
+            aux = aux.siguiente
+        return None

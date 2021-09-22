@@ -121,3 +121,17 @@ class Dispersa:
                 actual = actual.abajo
             eColumna = eColumna.siguiente
         print('*********** fin recorrido por columnas ************')
+
+    def buscarLista(self, fila, columna):
+        #Se hace un recorrido por columnas
+        eColumna = self.encabezado_columnas.primero #Encabezado columnas
+        while eColumna != None:
+            actual = eColumna.acceso
+            while actual != None:
+                if fila == actual.fila and columna == actual.columna:
+                    #print(str(actual.fila)+"-"+str(actual.columna))
+                    return actual
+                actual = actual.abajo
+            eColumna = eColumna.siguiente
+        return None
+        

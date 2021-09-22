@@ -17,17 +17,40 @@ class grafo:
 
     def grafoArbolAVL(self, arbolAVL):
         print('Método grafo avl')
+
+        cadena = '''digraph G {\nnode[shape=box]
+        '''
         
-        cola = Cola()
-        cola.encolar(arbolAVL.root)
+        cola = Cola() #Creando la cola
+        au = ['',arbolAVL.root]
+        cola.encolar(au) #Metiendo la raiz a la cola
+
         while cola.es_vacia() != True:
             nodo = cola.desencolar()
-            print(vars(nodo),'\n')
-            if nodo.izquierda != None:
-                cola.encolar(nodo.izquierda)
-            if nodo.derecha != None:
-                cola.encolar(nodo.derecha)
-      
+            if nodo[0] != '':
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+nodo[1].nombre+'\n'+nodo[1].carrera+'"];\n'
+                cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
+            else:
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+nodo[1].nombre+'\n'+nodo[1].carrera+'"];\n'
+            if nodo[1].izquierda != None:
+                aux = [nodo[1], nodo[1].izquierda]
+                cola.encolar(aux)
+            if nodo[1].derecha != None:
+                aux2 = [nodo[1], nodo[1].derecha]
+                cola.encolar(aux2)
+        
+            
+        cadena += '''}'''
+        print(cadena)
+        nombre = 'arbolAVL'
+        archivo = open(nombre+'.dot','w')
+        archivo.write(cadena)
+        archivo.close()
+
+        system('dot -Tpng'+' '+nombre+'.dot -o '+nombre+'.png')
+        #system('cd ./'+nombre+'.png')
+        startfile(nombre+'.png')
+
     def matrizDispersa(self, matriz):
         lista_nodos = []
         lista_cabecera_filas = []
@@ -40,11 +63,20 @@ class grafo:
         rankdir = '{rank=same;raiz;'
         stringNodos = ''
 
+        inicioFilas = ''
+        inicioColumnas = ''
+        contadorConstante = 0
+
         while eFila != None:
             actual = eFila.acceso
 
             cad_aux += 'Fila'+str(actual.fila)+'[label="'+str(actual.fila)+'", group=1];\n'
             cad_aux += 'Fila'+str(actual.fila)+'->'+'Fila'+str(eFila.siguiente.acceso.fila)+';\n'
+            
+            if contadorConstante == 0:
+                inicioFilas = str(actual.fila)
+                contadorConstante += 1
+
             lista_cabecera_filas.append(str(actual.fila))
             eFila = eFila.siguiente
 
@@ -57,9 +89,10 @@ class grafo:
         while eColumna != None:
             actual2 = eColumna.acceso
 
+            
             aux = actual2   #variable temporal para obtener los nodos sin afectar la creacion de filas y columnas
             while aux != None:
-                stringNodos += 'nodo'+str(aux.fila)+'_'+str(actual2.columna)+'[label="'+str(aux.fila)+','+str(actual2.columna)+'", group='+str(actual2.columna+1)+']\n' #Creacion de nodos del grafo
+                stringNodos += 'nodo'+str(aux.fila)+'_'+str(actual2.columna)+'[label="'+str(aux.celdas.contadorTareas)+'", group='+str(actual2.columna+1)+']\n' #Creacion de nodos del grafo
                 lista_nodos.append(str(aux.fila)+','+str(actual2.columna))
                 aux = aux.abajo 
 
@@ -67,6 +100,10 @@ class grafo:
             cad_aux += 'Columna'+str(actual2.columna)+'->'+'Columna'+str(eColumna.siguiente.acceso.columna)+';\n'
             rankdir += 'Columna'+str(actual2.columna)+';'
             contadorGrupos+=1
+
+            if contadorConstante == 1:
+                inicioColumnas = str(actual2.columna)
+                contadorConstante += 1
 
             lista_cabecera_columnas.append(str(actual2.columna))
             
@@ -78,7 +115,7 @@ class grafo:
 
                 aux2 = actual2
                 while aux2 != None:
-                    stringNodos += 'nodo'+str(aux2.fila)+'_'+str(actual2.columna)+'[label="'+str(aux2.fila)+','+str(actual2.columna)+'", group='+str(actual2.columna+1)+']\n' #Creacion del ultimo nodo del grafo
+                    stringNodos += 'nodo'+str(aux2.fila)+'_'+str(actual2.columna)+'[label="'+str(aux2.celdas.contadorTareas)+'", group='+str(actual2.columna+1)+']\n' #Creacion del ultimo nodo del grafo
                     lista_nodos.append(str(aux2.fila)+','+str(actual2.columna))
                     aux2 = aux2.abajo
 
@@ -86,7 +123,7 @@ class grafo:
                 lista_cabecera_columnas.append(str(actual2.columna))
                 break
 
-        cad_aux += 'raiz->Fila1;\nraiz->Columna1\n'
+        cad_aux += 'raiz->Fila'+inicioFilas+';'+'\nraiz->Columna'+inicioColumnas+';\n'
         cad_aux += rankdir.rstrip(';')+'}\n'
         cad_aux += stringNodos
         
@@ -169,7 +206,7 @@ class grafo:
         archivo.close()
 
         system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
-        system('cd ./matriz.png')
+        #system('cd ./matriz.png')
         startfile(nombre+'.png')
 
     def listaTareas(self, listaTareas):
@@ -206,7 +243,7 @@ class grafo:
 
     def arbolB_cursosGeneral(self, arbolB_general):
         # [ ACUMULADOR, ACUMULADORE DE ENLACES, CONTADOR PAGINA, CONTADOR AUX ]
-        acumulador = ["digraph G\n{\nnode[shape = record, height= .1];\n", "", 0, 0]
+        acumulador = ["digraph G\n{\nnode[shape = record,width=.1];\n", "", 0, 0]
 
         if arbolB_general.raiz != None:
             cola = queue.Queue()
@@ -215,7 +252,7 @@ class grafo:
             while not(cola.empty()): # Mientras la cola no este vacia
                 tmpPagina = cola.get()
                 self.imprimir(tmpPagina, acumulador)
-                print(acumulador,'\n\n') #tmpPagina, 
+                #print(acumulador,'\n\n') #tmpPagina, 
                 i = 0
                 while i <= tmpPagina.cuenta:
                     if tmpPagina.ramas[i] != None:
@@ -225,16 +262,17 @@ class grafo:
             acumulador[0] += "\n" + acumulador[1]
 
         acumulador[0] += "}\n"
+        print(acumulador[0])
 
-        f = open('grafo.dot', 'w')
-        try:
-            f.write(acumulador[0])
-        finally:
-            f.close()
+        nombre = 'arbolPensum'
+        archivo = open(nombre+'.dot','w')
+        archivo.write(acumulador[0])
+        archivo.close()
 
-        prog = "dot -Tsvg  grafo.dot -o grafo.svg"
-        os.system(prog)
-
+        system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
+        #system('cd ./'+nombre+'.png')
+        startfile(nombre+'.svg')
+        
     def imprimir(self, actual, acumulador):
         acumulador[0] += 'node{}[label="<r0>'.format(str(acumulador[2]))
 
@@ -244,7 +282,7 @@ class grafo:
 
         i = 1
         while i <= actual.cuenta:
-            acumulador[0] += '|<c{}> {} |<r{}>'.format(str(i),'Codigo: '+str(actual.claves[i]),str(i))
+            acumulador[0] += '|<c{}> {} |<r{}>'.format(str(i),str(actual.claves[i].codigo)+'\\n '+str(actual.claves[i].nombre),str(i))
 
             if actual.ramas[i] != None:
                 acumulador[3] += 1 # contador auxiliar
@@ -254,4 +292,3 @@ class grafo:
 
     def arbolB_cursosEstudiante(self, arbolB_Estudiante):
         pass
-

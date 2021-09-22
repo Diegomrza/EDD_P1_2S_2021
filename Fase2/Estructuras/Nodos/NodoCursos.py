@@ -1,19 +1,12 @@
 #Nodo de Arbol B
 from Estructuras.Nodos.NodoAVL import NodoAVL
 
-class NodoCursos: 
+class Pagina: 
     def __init__(self, orden):
         self.cuenta = 0
         self.m = orden
-        #               Nodo estudiantes
-        self.claves = [ 0 for x in range(orden)]
-        self.ramas = [ NodoCursos for x in range(orden)]
-
-        self.codigo_curso = None
-        self.nombre = None
-        self.creditos = None
-        self.codigos_prerrequisito = None
-        self.tipo = None #Obligatorio o no
+        self.claves = [ NodoCurso(0,"","",False) for x in range(orden)]
+        self.ramas = [ Pagina for x in range(orden)]
 
         for i in range(orden):
             self.ramas [i] = None
@@ -23,3 +16,10 @@ class NodoCursos:
 
     def pagina_semillena(self):
         return self.cuenta < self.m/2
+
+class NodoCurso:
+    def __init__(self, codigo, nombre, prerrequisito, tipo):
+        self.codigo = codigo
+        self.nombre = nombre
+        self.prerrequisito = prerrequisito
+        self.tipo = tipo

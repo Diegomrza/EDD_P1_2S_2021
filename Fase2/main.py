@@ -1,12 +1,10 @@
 #Importaciones nodos estructuras
-import re
 from Estructuras.Nodos.NodoMeses import NodoMeses
 from Estructuras.Nodos.NodoAnios import NodoAnios
 from Estructuras.Nodos.NodoAVL import NodoAVL
-from Estructuras.Nodos.NodoCursos import NodoCursos
+from Estructuras.Nodos.NodoCursos import NodoCurso
 from Estructuras.Nodos.NodoDispersa import NodoDispersa
 from Estructuras.Nodos.NodoTarea import NodoTarea
-
 #Importaciones estructuras
 from Estructuras.ArbolAVL import ArbolAVL
 from Estructuras.ArbolCursos import ArbolCursos
@@ -16,7 +14,6 @@ from Estructuras.ListaMeses import ListaMeses
 from Estructuras.ListaSemestres import ListaSemestres
 from Estructuras.ListaTareas import ListaTareas
 from Estructuras.grafo import grafo
-
 #importaciones flask
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -27,10 +24,9 @@ cors = CORS(app, resources={r"/*": {"origin":"*"}})
 
 ob = NodoAVL(0,'','','','','',0,0)
 obj = NodoTarea(0,'','','','',0,'')
-estudiantes = ArbolAVL()
-#lista = []
 
-#Para usar Arbol AVL: arbol.root = arbol.insertar(arbol.root, nuevo)
+estudiantes = ArbolAVL() #Arbol AVL de estudiantes
+pensum = ArbolCursos(5) #Arbol B de cursos
 
 @app.route('/')
 def index():
@@ -42,7 +38,6 @@ def carga():
     ruta = request.json['path']
 
     if tipo.lower() == 'estudiante':
-        #print('Tipo estudiante: ',end='') print(tipo + ' - ' + ruta)
         ply(ruta)
     elif tipo.lower() == 'recordatorio':
         print('Tipo recordatorio: ',end='')
@@ -62,6 +57,9 @@ def carga():
 
 @app.route('/reporte', methods=['GET'])
 def reporte():
+    global estudiantes #Arbol AVL
+    global pensum #Arbol B
+
     tipo = request.args.get('tipo','None')
     carnet = request.args.get('carnet','None')
     anio = request.args.get('anio','None')
@@ -70,42 +68,15 @@ def reporte():
     hora = request.args.get('hora','None')
     semestre = request.args.get('semestre','None')
     
+    g = grafo()
     if int(tipo) == 0:
-        arbol = ArbolAVL()
-        g = grafo()
-        for x in range(10):
-            print(x)
-            nodo = NodoAVL(10+x,'2993323220101','Diego Robles'+str(x),'Sistemas','diego@gmail.com','123',85,23)
-            nodoAnio = NodoAnios(2021)
-            nodoMes = NodoMeses(6)
-            for i in range(10):
-                for j in range(10):
-                    nodoMes.actividades.insertar(i,j,'Hi')
-
-            #g.matrizDispersa(nodoMes.actividades)
-            nodoAnio.meses.insertar(nodoMes)
-            nodo.lista_anios.insertar(nodoAnio)
-            arbol.insertar0(nodo)
-        
-        g.grafoArbolAVL(arbol)
+        g.grafoArbolAVL(estudiantes)
     elif int(tipo) == 1 and carnet != 'None' and anio != 'None' and mes != 'None': 
-        print('Tipo 1: ',end='')
-        print(carnet, anio, mes)
+        estudiantes.mostrar_solo_un_nodo0(int(carnet), int(anio), int(mes))
     elif int(tipo) == 2 and carnet != 'None' and anio != 'None' and mes != 'None' and dia != 'None' and hora != 'None':
-        print('Tipo 2: ',end='')
-        print(carnet, anio, mes, hora)
+        estudiantes.mostrar_tareas0(int(carnet), int(anio), int(mes), int(dia), int(hora))
     elif int(tipo) == 3:
-        print('Tipo 3: ')
-        arbolB = ArbolCursos(5)
-        for x in range(21):
-            nuevo = NodoCursos(5)
-            nuevo.codigo_curso = 5+x
-            nuevo.codigos_prerrequisito == 10+x
-            nuevo.creditos = 50+x
-            nuevo.nombre = 'Nombre Curso'+str(x)
-            arbolB.insertar(x)
-        g = grafo()
-        g.arbolB_cursosGeneral(arbolB)
+        g.arbolB_cursosGeneral(pensum)
     elif int(tipo) == 4 and carnet != 'None' and anio != 'None' and semestre != 'None':
         print('Tipo 4: ',end='')
         print(carnet, anio, semestre)
@@ -120,40 +91,83 @@ def reporte():
 
 @app.route('/estudiante', methods=['GET','POST','PUT','DELETE'])
 def estudiante():
-    if request.method == 'GET':
+    global estudiantes
+
+    if request.method == 'GET': #Mostrar un estudiante
+        carnet = int(request.json['carnet'])
+        estudiantes.mostrar_estudiante0(carnet)
+
         return jsonify({
             'Método':'get'
         })
-    elif request.method == 'POST':
+    elif request.method == 'POST': #Crear un estudiante
+        carnet = int(request.json['carnet'])
+        dpi = request.json['dpi']
+        nombre = request.json['nombre']
+        carrera = request.json['carrera']
+        correo = request.json['correo']
+        password = request.json['password']
+        creditos = int(request.json['creditos'])
+        edad = int(request.json['edad'])
+        nuevo = NodoAVL(carnet, dpi, nombre, carrera, correo, password, creditos, edad)
+        estudiantes.insertar0(nuevo)
+
         return jsonify({
-            'Método':'post'
+            'message':'post'
         })
-    elif request.method == 'PUT':
+    elif request.method == 'PUT': #Cambiar un estudiante
+        carnet = int(request.json['carnet'])
+        dpi = request.json['dpi']
+        nombre = request.json['nombre']
+        carrera = request.json['carrera']
+        correo = request.json['correo']
+        password = request.json['password']
+        creditos = int(request.json['creditos'])
+        edad = int(request.json['edad'])
+        arr = [carnet, dpi, nombre, carrera, correo, password, creditos, edad]
+        estudiantes.modificar0(arr)
+
         return jsonify({
-            'Método':'put'
+            'message':'put'
         })
-    elif request.method == 'DELETE':
+    elif request.method == 'DELETE': #Eliminar un estudiante
+        carnet = int(request.json['carnet'])
+        estudiantes.eliminar0(carnet)
         return({
-            'Método':'delete'
+            'message':'delete'
         })
 
 @app.route('/recordatorios', methods=['GET','POST','PUT','DELETE'])
 def recordatorios():
+    global estudiantes
+
     if request.method == 'GET':
         return jsonify({
-            'Método':'get'
+            'message':'get'
         })
     elif request.method == 'POST':
+        carnet = request.json['Carnet']
+        nombre = request.json['Nombre']
+        descripcion = request.json['Descripcion']
+        materia = request.json['Materia'] 
+        fecha = request.json['Fecha'].split('/') #split
+        hora = request.json['Hora'] 
+        estado = request.json['Estado']
+
+        datos = [nombre, descripcion, materia, estado]
+
+        estudiantes.get_(estudiantes.root, int(carnet), int(fecha[2]), int(fecha[1]), int(fecha[0]), int(hora), datos)
+
         return jsonify({
-            'Método':'post'
+            'message':'post'
         })
     elif request.method == 'PUT':
         return jsonify({
-            'Método':'put'
+            'message':'put'
         })
     elif request.method == 'DELETE':
         return({
-            'Método':'delete'
+            'message':'delete'
         })
 
 @app.route('/cursosEstudiante', methods=['POST'])
@@ -164,10 +178,18 @@ def cursosEstudiante():
 
 @app.route('/cursosPensum', methods=['POST'])
 def cursosPensum():
-    return jsonify({
-        
-    })   
+    global pensum
 
+    cursos = request.json['Cursos']
+    for x in cursos:
+        codigo = int(x['Codigo'])
+        nombre = x['Nombre']
+        prerrequisito = ['Prerequisitos']
+        tipo = x['Obligatorio']
+        pensum.insertar(codigo, nombre, prerrequisito, tipo)
+    return jsonify({
+        "message":"Success"
+    })   
 
 @app.route('/ply',methods=['POST'])
 def ply(ru):
@@ -179,14 +201,35 @@ def ply(ru):
     contenido = archivo.read()
     parser.parse(contenido)
 
-    print(len(objetos))
+    lista_users = []
+    lista_task = []
+
     for x in objetos:
         if type(x) == type(ob):  #Tipo user
-            #print(vars(x))
-            estudiantes.insertar0(x)
+            #print('Usuario: ',vars(x))
+            lista_users.append(x)
         elif type(x) == type(obj): #Tipo task
-            #print(vars(x))
-            pass
+            #print('Task: ',vars(x))
+            lista_task.append(x)
+
+    for y in lista_users:
+        nuevo = y
+        carnet = (y.carnet.rstrip('"')).lstrip('"')
+        dpi = (y.dpi.rstrip('"')).lstrip('"')
+        nombre = (y.nombre.rstrip('"')).lstrip('"')
+        carrera = (y.carrera.rstrip('"')).lstrip('"')
+        correo = (y.correo.rstrip('"')).lstrip('"')
+        password = (y.password.rstrip('"')).lstrip('"')
+
+        nuevo.carnet = int(carnet)
+        nuevo.nombre = nombre
+        nuevo.carrera = carrera
+        nuevo.dpi = dpi
+        nuevo.correo = correo
+        nuevo.password = password
+        print('Usuario: ',vars(nuevo))
+        estudiantes.insertar0(nuevo)
+
     archivo.close()
     return jsonify({
         'Contenido': contenido
