@@ -10,12 +10,14 @@ class ListaTareas:
         if self.primero == None:
             self.primero = nuevo
             self.contadorTareas += 1
+            nuevo.pos = self.contadorTareas
         else:
             aux = self.primero
             while aux.siguiente != None:
                 aux = aux.siguiente
             aux.siguiente = nuevo
             self.contadorTareas += 1
+            nuevo.pos = self.contadorTareas
 
     def modificar(self, id):
         aux = self.primero
@@ -38,8 +40,17 @@ class ListaTareas:
                 break
             aux = aux.siguiente
 
+    #Muestra toda la lista
     def mostrar(self):
         aux = self.primero
         while aux != None:
             print(vars(aux))
             aux = aux.siguiente
+    
+    def obtener_un_elemento(self, pos):
+        aux = self.primero
+        while aux != None:
+            if pos == aux.pos:
+                return aux
+            aux = aux.siguiente
+        return None

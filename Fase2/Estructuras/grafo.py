@@ -32,6 +32,7 @@ class grafo:
                 cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
             else:
                 cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+nodo[1].nombre+'\n'+nodo[1].carrera+'"];\n'
+
             if nodo[1].izquierda != None:
                 aux = [nodo[1], nodo[1].izquierda]
                 cola.encolar(aux)
@@ -41,12 +42,13 @@ class grafo:
         
             
         cadena += '''}'''
-        print(cadena)
+        #
+        #print(cadena)
         nombre = 'arbolAVL'
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
         archivo.close()
-
+        cadena = ''
         system('dot -Tpng'+' '+nombre+'.dot -o '+nombre+'.png')
         #system('cd ./'+nombre+'.png')
         startfile(nombre+'.png')
@@ -145,7 +147,7 @@ class grafo:
 
                     #Parte de graficar nodo matriz dispersa
                     if len(lista_nodos_separados) > 1:
-                        print('heloou')
+                        #print('heloou')
                         for nodosSeparados in range(0,len(lista_nodos_separados)):
                             if nodosSeparados+1 < len(lista_nodos_separados):
                                 separar = lista_nodos_separados[nodosSeparados].split(',')
@@ -171,7 +173,7 @@ class grafo:
                     cad_aux += 'Columna'+k+'->'+'nodo'+nodoTemp[0]+'_'+nodoTemp[1]+';\n'
                     break
         
-        print('Filas: ')
+        #print('Filas: ')
         for nF in lista_cabecera_filas:
             listaF = []
             for n in lista_nodos:
@@ -183,14 +185,14 @@ class grafo:
                     cad_aux += 'nodo'+str(nF)+'_'+str(listaF[elementoF])+'->nodo'+str(nF)+'_'+str(listaF[elementoF+1])+';\n'
             listaF.clear()
         #
-        print('Columnas: ')
+        #print('Columnas: ')
         for nC in lista_cabecera_columnas:
             listaC = []
             for n2 in lista_nodos:
                 nodo2 = n2.split(',')
                 if nC == nodo2[1]:
                     listaC.append(int(nodo2[0]))
-            print('Col: ',nC, 'ListaC: ',listaC)
+            #print('Col: ',nC, 'ListaC: ',listaC)
             if len(listaC) > 1:
                 for elementoC in range(len(listaC)-1):
                     cad_aux += 'nodo'+str(listaC[elementoC])+'_'+str(nC)+'->nodo'+str(listaC[elementoC+1])+'_'+str(nC)+';\n'
@@ -200,7 +202,7 @@ class grafo:
         #print(cad_aux)
         nombre = ''
         nombre += 'matriz' + str(self.contadorDispersa)
-        self.contadorDispersa += 1
+        
         archivo = open(nombre+'.dot','w')
         archivo.write(cad_aux)
         archivo.close()
@@ -208,9 +210,10 @@ class grafo:
         system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
         #system('cd ./matriz.png')
         startfile(nombre+'.png')
+        self.contadorDispersa += 1
 
     def listaTareas(self, listaTareas):
-        print('Grafo tareas')
+        #print('Grafo tareas')
 
         g = Digraph('G', format='png', node_attr={'shape': 'box', 'height': '.1','rank':'same'}, edge_attr={ 'dir':'both'})
         g.attr(rankdir='LR')
@@ -262,7 +265,7 @@ class grafo:
             acumulador[0] += "\n" + acumulador[1]
 
         acumulador[0] += "}\n"
-        print(acumulador[0])
+        #print(acumulador[0])
 
         nombre = 'arbolPensum'
         archivo = open(nombre+'.dot','w')

@@ -8,4 +8,5 @@ class NodoTarea:
         self.hora = hora
         self.estado = estado
 
+        self.pos = 0
         self.siguiente = None

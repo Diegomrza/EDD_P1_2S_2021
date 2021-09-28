@@ -81,3 +81,11 @@ class ListaSemestres:
             return False
         else:
             return True
+
+    def buscarSemestre(self, semestre):
+        aux = self.primero
+        while aux != None:
+            if aux.id == semestre:
+                return aux
+            aux = aux.siguiente
+        return None
