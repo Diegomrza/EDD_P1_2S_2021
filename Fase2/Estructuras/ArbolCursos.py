@@ -6,8 +6,8 @@ class ArbolCursos:
         self.orden = orden
         self.raiz = Pagina(5)
 
-    def insertar(self, valor,nombre,prerrequisito,tipo):
-        nuevo = NodoCurso(valor,nombre,prerrequisito,tipo)
+    def insertar(self, valor,nombre,prerrequisito,tipo,creditos):
+        nuevo = NodoCurso(valor,nombre,prerrequisito,tipo,creditos)
                     # [SUBE_ARRIBA, MEDIANA, ND, P]
         array_valores = [False,0,None, None]
 
@@ -100,10 +100,8 @@ class ArbolCursos:
         pagina_actual.cuenta = pagina_actual.cuenta -1
 
 
-
     def eliminar(self):
         pass
 
     def mostrar(self):
         pass
-

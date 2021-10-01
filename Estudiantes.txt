@@ -4,6 +4,7 @@
         ¿item DPI = "3502451230508" $?
         ¿item Nombre = "Emilia Miramontes" $?
         ¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
+	¿item Correo = "AlvinHuckett_60@outlook.org" $?
         ¿item Password = "roxodiciqi" $?
         ¿item Creditos = 205 $?
         ¿item Edad = 21 $?
@@ -22,6 +23,7 @@
         ¿item DPI = "7249529279753" $?
         ¿item Nombre = "Juan Curiel" $?
         ¿item Carrera = "Ingenieria Industrial" $?
+	¿item Correo = "NertieLaurenzi.75@hotmail.es" $?
         ¿item Password = "zanolexima" $?
         ¿item Creditos = 245 $?
         ¿item Edad = 24 $?
@@ -31,6 +33,7 @@
         ¿item DPI = "9298434863898" $?
         ¿item Nombre = "Eloisa Rincón" $?
         ¿item Carrera = "Ingenieria Civil" $?
+	¿item Correo = "LamontBarthrup_34@outlook.org" $?
         ¿item Password = "toqelijanu" $?
         ¿item Creditos = 95 $?
         ¿item Edad = 19 $?
@@ -49,6 +52,7 @@
         ¿item DPI = "9298434863898" $?
         ¿item Nombre = "Eloisa Rincón" $?
         ¿item Carrera = "Ingenieria Civil" $?
+	¿item Correo = "BernadettePescud.10@outlook.com" $?
         ¿item Password = "toqelijanu" $?
         ¿item Creditos = 95 $?
         ¿item Edad = 19 $?
@@ -67,6 +71,7 @@
         ¿item DPI = "9298434863898" $?
         ¿item Nombre = "Eloisa Rincón" $?
         ¿item Carrera = "Ingenieria Civil" $?
+	¿item Correo = "BobinaDelacroux_46@hotmail.com" $?
         ¿item Password = "toqelijanu" $?
         ¿item Creditos = 95 $?
         ¿item Edad = 19 $?

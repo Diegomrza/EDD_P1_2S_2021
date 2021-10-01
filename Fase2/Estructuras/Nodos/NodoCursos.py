@@ -5,7 +5,7 @@ class Pagina:
     def __init__(self, orden):
         self.cuenta = 0
         self.m = orden
-        self.claves = [ NodoCurso(0,"","",False) for x in range(orden)]
+        self.claves = [ NodoCurso(0,"","",False,0) for x in range(orden)]
         self.ramas = [ Pagina for x in range(orden)]
 
         for i in range(orden):
@@ -18,8 +18,9 @@ class Pagina:
         return self.cuenta < self.m/2
 
 class NodoCurso:
-    def __init__(self, codigo, nombre, prerrequisito, tipo):
+    def __init__(self, codigo, nombre, prerrequisito, tipo, creditos):
         self.codigo = codigo
         self.nombre = nombre
         self.prerrequisito = prerrequisito
         self.tipo = tipo
+        self.creditos = creditos

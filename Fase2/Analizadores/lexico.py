@@ -7,6 +7,7 @@ reserved = {
     'DPI' : 'TDPI',
     'Nombre' : 'TNOMBRE',
     'Carrera' : 'TCARRERA',
+    'Correo': 'TCORREO',
     'Password' : 'TPASSWORD',
     'Creditos' : 'TCREDITOS',
     'Edad' : 'TEDAD',
@@ -14,8 +15,7 @@ reserved = {
     'Materia' : 'TMATERIA',
     'Fecha' : 'TFECHA',
     'Hora' : 'THORA',
-    'Estado' : 'TESTADO',
-    'Correo': 'TCORREO'
+    'Estado' : 'TESTADO'
 }
 
 tokens = [
@@ -48,14 +48,14 @@ def t_NORMSTRING(t):
     return t
 
 # Ignored characters
-t_ignore = ' \t\r\n'
+t_ignore = '\t\r\n'
 
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += t.value.count("\n")
 
 def t_error(t):
-    print("Illegal character '%s'" % t.value[0])
+    #print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
 import ply.lex as lex

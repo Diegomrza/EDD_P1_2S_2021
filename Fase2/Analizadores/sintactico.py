@@ -104,6 +104,7 @@ def p_tipeItem(t):
                 | TFECHA
                 | THORA
                 | TESTADO
+                | TCORREO
                 """
     t[0] = t[1]
     

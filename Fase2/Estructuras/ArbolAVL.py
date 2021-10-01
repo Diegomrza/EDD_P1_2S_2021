@@ -1,3 +1,4 @@
+from Estructuras.ListaSemestres import NodoSemestre
 from Estructuras.ListaTareas import ListaTareas
 from Estructuras.Nodos.NodoAnios import NodoAnios
 from Estructuras.Nodos.NodoMeses import NodoMeses
@@ -9,13 +10,7 @@ class ArbolAVL:
         self.root = None
         self.listaNodos = [] #Para el avl
 
-        self.auxiliar = []
-
-        self.buscadosCrear = [] #Aqui se guardan los estudiantes que se crean para comprobar si se repiten
-        self.buscados = [] #Aqui se guardan todos los estudiantes que se mandan a buscar
-        self.buscadosModificar = [] #Aqui se guardan los estudiantes a modificar
-        self.buscadosEliminar = [] #Aqui se guardan los estudiantes a eliminar
-
+        self.auxiliar = [] #Lista auxiliar para los metodos
 #####################
     def altura(self, nodo): #retorna la altura de un nodo
         if nodo == None:
@@ -53,8 +48,9 @@ class ArbolAVL:
 
     def rotar_izquierda(self, nodo):
         if nodo != None:
+            #print(vars(nodo))
             aux = nodo.derecha
-            nodo.derecha = aux.izquierda
+            nodo.derecha = aux.izquierda #aux = None
             aux.izquierda = nodo
             nodo.altura = self.maximo(self.altura(nodo.izquierda), self.altura(nodo.derecha)) + 1
             aux.altura = self.maximo(self.altura(aux.izquierda), self.altura(aux.derecha)) + 1
@@ -128,7 +124,7 @@ class ArbolAVL:
                 raiz.edad = temporal.edad
                 #raiz = temporal
                 raiz.derecha = self.eliminar(raiz.derecha, temporal.carnet)
-
+            return raiz
         if raiz == None:
             return raiz
         raiz.altura = self.maximo(self.altura(raiz.izquierda), self.altura(raiz.derecha)) + 1
@@ -141,12 +137,12 @@ class ArbolAVL:
             return self.rotar_izquierda(raiz)
         #rotacion izquierda derecha
         if balance < -1 and valor > raiz.izquierda.carnet:
-            print('Rotacion doble')
+            #print('Rotacion doble')
             raiz.izquierda = self.rotar_izquierda(raiz.izquierda)
             return self.rotar_derecha(raiz)
         #rotacion derecha izquierda
         if balance > 1 and valor < raiz.derecha.carnet:
-            print('Rotacion doble')
+            #print('Rotacion doble')
             raiz.derecha = self.rotar_derecha(raiz.derecha)
             return self.rotar_izquierda(raiz)
 
@@ -279,7 +275,6 @@ class ArbolAVL:
             raiz.derecha = self.mostrar_estudiante(raiz.derecha, carnet)
         else:
             self.auxiliar.append(raiz)
-            #self.buscados.append(raiz)
         return raiz
 
     #POST recordatorios
@@ -293,8 +288,9 @@ class ArbolAVL:
         elif carnet > raiz.carnet:
             raiz.derecha = self.crearRecordatorio(raiz.derecha, carnet, anio, mes, dia, hora, datos)
         else:
-
+            #year voy a almacenar un año
             year = raiz.lista_anios.buscar(anio)
+
             fecha = str(dia)+'/'+str(mes)+'/'+str(anio)
             nuevaTarea = NodoTarea(carnet, datos[0], datos[1], datos[2], fecha, hora, datos[3])
 
@@ -304,57 +300,67 @@ class ArbolAVL:
                     matriz = mesAux.actividades.buscarLista(hora,dia)
                     if matriz != None: #Si la celda existe
                         matriz.celdas.insertar(nuevaTarea)
+
+                        self.auxiliar.append(raiz) #si
                     else: 
                         listaT = ListaTareas()
                         listaT.insertar(nuevaTarea)
                         mesAux.actividades.insertar(hora,dia,listaT)
+
+                        self.auxiliar.append(raiz) #si
                 else: 
                     nuevoMes0 = NodoMeses(mes)
                     listaT0 = ListaTareas()
                     listaT0.insertar(nuevaTarea)
                     nuevoMes0.actividades.insertar(hora, dia, listaT0)
                     year.meses.insertar(nuevoMes0)
+
+                    self.auxiliar.append(raiz) #si
             else:
                 nuevoAnio = NodoAnios(anio)
                 nuevoMes = NodoMeses(mes)
                 tareas = ListaTareas()
 
                 tareas.insertar(nuevaTarea)
-                nuevoAnio.meses.insertar()
                 nuevoMes.actividades.insertar(hora, dia, tareas)
+                nuevoAnio.meses.insertar(nuevoMes)
 
                 raiz.lista_anios.insertar(nuevoAnio)
+
+                self.auxiliar.append(raiz) #si
         return raiz
 
-    def get_(self, raiz, carnet, anio, mes, dia, hora, datos):
-        #aux = None
+    #PUT recordatorios
+    def modificarRecordatorio0(self,carnet,datos):
+        self.root = self.modificarRecordatorio(self.root,carnet,datos)
+    def modificarRecordatorio(self, raiz, carnet, datos):
         if raiz == None:
-            return None
+            return raiz
         if carnet < raiz.carnet:
-            raiz.izquierda = self.get_(raiz.izquierda, carnet, anio, mes, dia, hora, datos) 
+            raiz.izquierda = self.modificarRecordatorio(raiz.izquierda, carnet, datos)
         elif carnet > raiz.carnet:
-            raiz.derecha = self.get_(raiz.derecha, carnet, anio, mes, dia, hora, datos)
+            raiz.derecha = self.modificarRecordatorio(raiz.derecha, carnet, datos)
         else:
-            anio_encontrado = raiz.lista_anios.buscar(anio)
-            if anio_encontrado != None:
-                #print('Encontrado')
-                mes_encontrado = anio_encontrado.meses.buscarMes(mes)
-                if mes_encontrado != None:
-                    #print('Encontrado')
-                    matriz = mes_encontrado.actividades.buscarLista(hora,dia)
-                    if matriz != None:
-                        #print('Encontrado')
-                        nuevo = NodoTarea(carnet, datos[0], datos[1], datos[2], str(dia)+'/'+str(mes)+'/'+str(anio), hora, datos[3])
-                        matriz.celdas.insertar(nuevo)
+            fecha = datos[4].split('/')
+            hora = datos[5].split(':')
+            anio = raiz.lista_anios.buscar(int(fecha[2]))
+            if anio != None:
+                mes = anio.meses.buscarMes(int(fecha[1]))
+                if mes != None:
+                    tareas = mes.actividades.buscarLista(int(hora[0]),int(fecha[0]))
+                    if tareas != None:
+                        var = tareas.celdas.modificar(int(datos[7]),datos)
+                        if var== True:
+                            self.auxiliar.append('Recordatorio modificado')
+                        else:
+                            self.auxiliar.append('No se encontró la tarea')
                     else:
-                        print('Matriz')
+                        self.auxiliar.append('No se encontró la lista de actividades')
                 else:
-                    print('Mes no existe')
+                    self.auxiliar.append('No se encuentra el mes')
             else:
-                print('Año no existe')
-            
+                self.auxiliar.append('No se encuentra el año')
         return raiz
-
 
     #GET recordatorios
     def obtener_recordatorio0(self,carnet, dia, mes, anio, hora, pos):
@@ -367,26 +373,125 @@ class ArbolAVL:
         elif carnet > raiz.carnet:
             raiz.derecha = self.obtener_recordatorio(raiz.derecha, carnet, dia, mes, anio, hora, pos)
         else:
-            #NodoAño
             anioGET = raiz.lista_anios.buscar(anio)
             if anioGET != None:
-                #NodoMes
                 mesGET = anioGET.meses.buscarMes(mes)
                 if mesGET != None:
-                    #Lista
                     dispersaGET = mesGET.actividades.buscarLista(hora, dia)
                     if dispersaGET != None:
                         aux = dispersaGET.celdas.obtener_un_elemento(pos)
                         if aux != None:
-                            self.buscados.append(aux)
-                        else:
-                            print('No')
-                    else:
-                        print('No')
-                else:
-                    print('No')
-            else:
-                print('No')
+                            self.auxiliar.append(aux)
+                          
         return raiz
 
-    #DELETE
+    #DELETE recordatorios
+    def eliminarRecordatorio0(self, carnet, datos):
+        self.root = self.eliminarRecordatorio(self.root, carnet, datos)
+    def eliminarRecordatorio(self, raiz, carnet, datos):
+        if raiz == None:
+            return raiz
+        if carnet < raiz.carnet:
+            raiz.izquierda = self.eliminarRecordatorio(raiz.izquierda, carnet, datos)
+        elif carnet > raiz.carnet:
+            raiz.derecha = self.eliminarRecordatorio(raiz.derecha, carnet, datos)
+        else:
+            fecha = datos[0].split('/')
+            hora = datos[1].split(':')
+            anio = raiz.lista_anios.buscar(int(fecha[2]))
+            if anio != None:
+                mes = anio.meses.buscarMes(int(fecha[1]))
+                if mes != None:
+                    tareas = mes.actividades.buscarLista(int(hora[0]),int(fecha[0]))
+                    if tareas != None:
+                        tareas.celdas.eliminar(int(datos[2]))
+                        self.auxiliar.append('Recordatorio eliminado')
+                    else:
+                        self.auxiliar.append('Lista no encontrada')
+                else:
+                    self.auxiliar.append('Mes no encontrado')
+            else:
+                self.auxiliar.append('Año no encontrado')
+            
+        return raiz
+        
+    #cursosEstudiante
+    def cursosEstudiante0(self,carnet, anio, semestre, lista):
+        self.root = self.cursosEstudiante(self.root, carnet, anio, semestre, lista)
+    def cursosEstudiante(self, raiz, carnet, anio, semestre, lista):
+        if raiz == None:
+            return raiz
+        if carnet < raiz.carnet:
+            raiz.izquierda = self.cursosEstudiante(raiz.izquierda, carnet, anio, semestre, lista)
+        elif carnet > raiz.carnet:
+            raiz.derecha = self.cursosEstudiante(raiz.derecha, carnet, anio, semestre, lista)
+        else:
+            year = raiz.lista_anios.buscar(anio)
+            if year != None:
+                semestreAux = year.semestre.buscarSemestre(semestre)
+                if semestreAux != None:
+                    for x in lista:
+                        semestreAux.cursos.insertar(x.codigo, x.nombre, x.prerrequisito, x.tipo, x.creditos)
+                else:
+                    year.semestre.insertar(semestre)
+                    nuevoSemestre = year.semestre.buscarSemestre(semestre)
+                    for i in lista:
+                        nuevoSemestre.cursos.insertar(i.codigo, i.nombre, i.prerrequisito, i.tipo, i.creditos)
+            else:
+                nuevoAnio = NodoAnios(anio)
+                nuevoAnio.semestre.insertar(semestre)
+                raiz.lista_anios.insertar(nuevoAnio)
+
+                aux = raiz.lista_anios.buscar(anio)
+                semAux = aux.semestre.buscarSemestre(semestre)
+                for x in lista:
+                    semAux.cursos.insertar(x.codigo, x.nombre, x.prerrequisito, x.tipo, x.creditos)
+        return raiz
+
+    #Task
+    def ingresarTask0(self, datos):
+        self.root = self.ingresarTask(self.root, datos)
+    def ingresarTask(self, raiz, datos):
+        if raiz == None:
+            return raiz
+        if datos[0] < raiz.carnet:
+            raiz.izquierda = self.ingresarTask(raiz.izquierda, datos)
+        elif datos[0] > raiz.carnet:
+            raiz.derecha = self.ingresarTask(raiz.derecha, datos)
+        else:
+            #print(datos[0])
+            fecha = datos[4].split('/')
+            hora = datos[5].split(':')
+            nuevaTarea = NodoTarea(datos[0],datos[1],datos[2],datos[3],datos[4],int(hora[0]),datos[6])
+
+            anio = raiz.lista_anios.buscar(int(fecha[2]))
+            if anio != None:
+                mes = anio.meses.buscarMes(int(fecha[1]))
+                if mes != None:
+                    tareas = mes.actividades.buscarLista(int(hora[0]), int(fecha[0]))
+                    if tareas != None:
+                        tareas.celdas.insertar(nuevaTarea)
+                    else:
+                        tareasAux = ListaTareas()
+                        tareasAux.insertar(nuevaTarea)
+                        mes.actividades.insertar(int(hora[0]),int(fecha[0]),tareasAux)
+                else:
+                    nuevoMes0 = NodoMeses(int(fecha[1]))
+                    nuevaLista0 = ListaTareas()
+                    nuevaLista0.insertar(nuevaTarea)
+                    nuevoMes0.actividades.insertar(int(hora[0]),int(fecha[0]),nuevaLista0)
+                    anio.meses.insertar(nuevoMes0)
+            else:
+                #El año no existe, es necesario crear uno
+                nuevoAnio = NodoAnios(int(fecha[2]))
+                nuevoMes = NodoMeses(int(fecha[1]))
+                nuevaLista = ListaTareas()
+
+                nuevaLista.insertar(nuevaTarea)
+                nuevoMes.actividades.insertar(int(hora[0]),int(fecha[0]),nuevaLista)
+                nuevoAnio.meses.insertar(nuevoMes)
+
+                raiz.lista_anios.insertar(nuevoAnio)
+                
+        return raiz
+

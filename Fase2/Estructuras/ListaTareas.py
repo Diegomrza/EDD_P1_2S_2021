@@ -19,23 +19,33 @@ class ListaTareas:
             self.contadorTareas += 1
             nuevo.pos = self.contadorTareas
 
-    def modificar(self, id):
+    def modificar(self, pos, datos):
         aux = self.primero
         while aux != None:
-            if aux.carnet == id:
-                print('cambiando')
+            if aux.pos == pos:
+                aux.carnet = datos[0]
+                aux.nombre = datos[1]
+                aux.descripcion = datos[2]
+                aux.materia = datos[3]
+                aux.fecha = datos[4]
+                aux.hora = datos[5]
+                aux.estado = datos[6]
+                return True
             aux = aux.siguiente
-
-    def eliminar(self, id):
+        return False
+        
+    def eliminar(self, pos):
         aux = self.primero
         while aux != None:
-            if id == self.primero.carnet:
+            if pos == self.primero.pos:
                 self.primero = aux.siguiente
                 aux = None
+                self.contadorTareas-=1
                 break
-            elif aux.siguiente.carnet == id:
+            elif aux.siguiente.pos == pos:
                 #temp = aux.siguiente
                 aux.siguiente = aux.siguiente.siguiente
+                self.contadorTareas-=1
                 #temp = None
                 break
             aux = aux.siguiente

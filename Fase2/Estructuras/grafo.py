@@ -44,167 +44,106 @@ class grafo:
         cadena += '''}'''
         #
         #print(cadena)
-        nombre = 'arbolAVL'
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolAVL'+str(self.contadorArbolAVL)
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
         archivo.close()
         cadena = ''
-        system('dot -Tpng'+' '+nombre+'.dot -o '+nombre+'.png')
+        system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
         #system('cd ./'+nombre+'.png')
-        startfile(nombre+'.png')
+        startfile(nombre+'.svg')
+        self.contadorArbolAVL += 1
 
     def matrizDispersa(self, matriz):
-        lista_nodos = []
-        lista_cabecera_filas = []
-        lista_cabecera_columnas = []
+        principal = 'digraph g{\nlabel="Matriz dispersa"\nnode[shape=box]\nsubgraph h{\n'
+        principal += 'raiz[label="Inicio",group="1"]\nedge[dir="both"]\n\n'
 
-        cad_aux = '''digraph g{\nnode[shape=box]\nsubgraph h{\nlabel="Matriz dispersa"\nraiz[label="0,0"]\nedge[dir="both"]\n'''
-        eColumna = matriz.encabezado_columnas.primero
-        eFila = matriz.encabezado_filas.primero
-        contadorGrupos = 1
-        rankdir = '{rank=same;raiz;'
-        stringNodos = ''
+        grupos = 2
 
-        inicioFilas = ''
-        inicioColumnas = ''
-        contadorConstante = 0
+        F='Fila'; C='Columna'; N='nodo' #constantes para facilitar las filas y columnas
+        listaFilas = [] #Se almacenan las filas de la matriz
+        listaColumnas = [] #Se almacenan las columnas de la matriz
+
+        recorridoFilas = [] #Aquí se guardarán todas las filas
+        recorridoColumnas = [] #Aquí se guardarán todas las columnas
+
+        eFila = matriz.encabezado_filas.primero #primer elemento de la lista de filas
+        eColumna = matriz.encabezado_columnas.primero #primer elemento de la lista de columnas
 
         while eFila != None:
             actual = eFila.acceso
+            listaFilas.append(actual)
+            listaAux = []
 
-            cad_aux += 'Fila'+str(actual.fila)+'[label="'+str(actual.fila)+'", group=1];\n'
-            cad_aux += 'Fila'+str(actual.fila)+'->'+'Fila'+str(eFila.siguiente.acceso.fila)+';\n'
-            
-            if contadorConstante == 0:
-                inicioFilas = str(actual.fila)
-                contadorConstante += 1
-
-            lista_cabecera_filas.append(str(actual.fila))
+            while actual != None:
+                listaAux.append(actual)
+                actual = actual.derecha
+                
+            recorridoFilas.append(listaAux)
             eFila = eFila.siguiente
-
-            if eFila.siguiente == None:
-                actual = eFila.acceso
-                cad_aux += 'Fila'+str(actual.fila)+'[label="'+str(actual.fila)+'", group=1];\n'
-                lista_cabecera_filas.append(str(actual.fila))
-                break
-
         while eColumna != None:
-            actual2 = eColumna.acceso
+            actual = eColumna.acceso
+            listaColumnas.append(actual)
+            listaAux = []
 
-            
-            aux = actual2   #variable temporal para obtener los nodos sin afectar la creacion de filas y columnas
-            while aux != None:
-                stringNodos += 'nodo'+str(aux.fila)+'_'+str(actual2.columna)+'[label="'+str(aux.celdas.contadorTareas)+'", group='+str(actual2.columna+1)+']\n' #Creacion de nodos del grafo
-                lista_nodos.append(str(aux.fila)+','+str(actual2.columna))
-                aux = aux.abajo 
+            while actual != None:
+                listaAux.append(actual)
+                actual = actual.abajo
 
-            cad_aux += 'Columna'+str(actual2.columna)+'[label="'+str(actual2.columna)+'", group='+str(contadorGrupos+1)+'];\n'
-            cad_aux += 'Columna'+str(actual2.columna)+'->'+'Columna'+str(eColumna.siguiente.acceso.columna)+';\n'
-            rankdir += 'Columna'+str(actual2.columna)+';'
-            contadorGrupos+=1
-
-            if contadorConstante == 1:
-                inicioColumnas = str(actual2.columna)
-                contadorConstante += 1
-
-            lista_cabecera_columnas.append(str(actual2.columna))
-            
+            recorridoColumnas.append(listaAux)
             eColumna = eColumna.siguiente
 
-            if eColumna.siguiente == None:
-                actual2 = eColumna.acceso
-                cad_aux += 'Columna'+str(actual2.columna)+'[label="'+str(actual2.columna)+'", group='+str(contadorGrupos+1)+'];\n'
+        for x in range(len(listaFilas)):
+            filaAux = F + str(listaFilas[x].fila)
+            principal += filaAux + '[label='+str(listaFilas[x].fila)+',group="1"'+']\n' #Creacion de un nodo fila
 
-                aux2 = actual2
-                while aux2 != None:
-                    stringNodos += 'nodo'+str(aux2.fila)+'_'+str(actual2.columna)+'[label="'+str(aux2.celdas.contadorTareas)+'", group='+str(actual2.columna+1)+']\n' #Creacion del ultimo nodo del grafo
-                    lista_nodos.append(str(aux2.fila)+','+str(actual2.columna))
-                    aux2 = aux2.abajo
-
-                rankdir += 'Columna'+str(actual2.columna)+';'
-                lista_cabecera_columnas.append(str(actual2.columna))
-                break
-
-        cad_aux += 'raiz->Fila'+inicioFilas+';'+'\nraiz->Columna'+inicioColumnas+';\n'
-        cad_aux += rankdir.rstrip(';')+'}\n'
-        cad_aux += stringNodos
-        
-        for x in lista_cabecera_filas:
-            for y in lista_nodos:
-                nodoTemp = y.split(',')
-                if x == nodoTemp[0]:
-                    cad_aux += 'Fila'+ x +'->'+'nodo'+nodoTemp[0]+'_'+nodoTemp[1]+';\n'
-                    break
+            if x < len(listaFilas)-1:
+                principal += F+str(listaFilas[x].fila)+'->'+F+str(listaFilas[x+1].fila)+';\n' #Asignando hacia que fila apunta cada una
+                
+            aux = recorridoFilas[x] #Fila auxiliar que contiene una fila
+            principal += F+str(listaFilas[x].fila)+'->'+N+str(aux[0].fila)+'_'+str(aux[0].columna)+';\n' #Asignando a cada fila su acceso
+            rankAux = '{rank=same;'+filaAux+';' #Filas en horizontal
             
-        for i in lista_cabecera_filas:
-            rankFilas = '{rank=same;Fila'+str(i)+';' #Numero de fila
-            lista_nodos_separados = []
+            for y in range(len(aux)): #recorriendo cada fila
 
-            for j in range(0, len(lista_nodos)):
-                nodo_temp = lista_nodos[j].split(',') #[f, c]
-                if i == nodo_temp[0]:
-                    lista_nodos_separados.append(nodo_temp[0]+','+nodo_temp[1])  #["f,c", "f,c"]...
+                #principal += N + str(aux[y].fila)+'_'+str(aux[y].columna)+'[label="0",group="'+str(grupos)+'"]\n' #Creacion de los nodos
+                
+                if y < len(aux)-1: #Asignando la direccion de los nodos
+                    principal += N + str(aux[y].fila)+'_'+str(aux[y].columna)+'->'+N+str(aux[y].fila)+'_'+str(aux[y+1].columna)+';\n'
 
-                    #Parte de graficar nodo matriz dispersa
-                    if len(lista_nodos_separados) > 1:
-                        #print('heloou')
-                        for nodosSeparados in range(0,len(lista_nodos_separados)):
-                            if nodosSeparados+1 < len(lista_nodos_separados):
-                                separar = lista_nodos_separados[nodosSeparados].split(',')
-                                separar2 = lista_nodos_separados[nodosSeparados+1].split(',')
+                rankAux += N + str(aux[y].fila)+'_'+str(aux[y].columna)+';' #Poniendo las filas horizontales
+            #grupos+=1
+            principal += rankAux.rstrip(';')+'}\n'
+        grupos=2
+        rankColumnas = '{rank=same;raiz;'
+        for y in range(len(listaColumnas)):
+            columnaAux = C +str(listaColumnas[y].columna)
+            principal += columnaAux + '[label='+str(listaColumnas[y].columna)+',group="'+str(grupos)+'"]\n'
+            
+            rankColumnas+=columnaAux+';'
 
-                                cad_aux += 'nodo'+str(separar[0]+'_'+str(separar[1]))+'->'
-                                cad_aux += 'nodo'+str(separar2[0]+'_'+str(separar2[1]))+';\n'
-                            rankFilas += 'nodo'+str(separar[0]+'_'+str(separar[1]))+';'
-                    else:
-                        unSoloNodo = lista_nodos_separados[0].split(',')
-                        rankFilas += 'nodo'+str(unSoloNodo[0]+'_'+str(unSoloNodo[1]))+';'
-                    ######################################
+            aux = recorridoColumnas[y] #Contiene cada columna
+            principal += columnaAux+'->'+N+str(aux[0].fila)+'_'+str(aux[0].columna)+';\n'
+            for x in range(len(aux)):
+                principal += N + str(aux[x].fila)+'_'+str(aux[x].columna)+'[label="0",group="'+str(grupos)+'"]\n'#Creacion de los nodos
+                if x < len(aux)-1:
+                    principal += N + str(aux[x].fila)+'_'+str(aux[x].columna)+'->'+N+str(aux[x+1].fila)+'_'+str(aux[x].columna)+';\n'
+            grupos+=1
+            if y < len(listaColumnas)-1:
+                principal += C+str(listaColumnas[y].columna)+'->'+C+str(listaColumnas[y+1].columna)+';\n' #Asignando hacia que fila apunta cada una
+        principal += rankColumnas.rstrip(';')+'}\n'
 
-                lista_nodos_separados.clear()
-            rankFilas = rankFilas.rstrip(';')
-            rankFilas+='}\n'
-            cad_aux += rankFilas
+        #raiz apunta a los principales
+        principal += 'raiz->'+F+str(listaFilas[0].fila)+';\n'
+        principal += 'raiz->'+C+str(listaColumnas[0].columna)+';\n'
 
-        for k in lista_cabecera_columnas:
-            for l in lista_nodos:
-                nodoTemp = l.split(',')
-                if k == nodoTemp[1]:
-                    cad_aux += 'Columna'+k+'->'+'nodo'+nodoTemp[0]+'_'+nodoTemp[1]+';\n'
-                    break
+        principal+='}\n}'
         
-        #print('Filas: ')
-        for nF in lista_cabecera_filas:
-            listaF = []
-            for n in lista_nodos:
-                nodo = n.split(',')
-                if nF == nodo[0]:
-                    listaF.append(int(nodo[1]))
-            if len(listaF) > 1:
-                for elementoF in range(len(listaF)-1):
-                    cad_aux += 'nodo'+str(nF)+'_'+str(listaF[elementoF])+'->nodo'+str(nF)+'_'+str(listaF[elementoF+1])+';\n'
-            listaF.clear()
-        #
-        #print('Columnas: ')
-        for nC in lista_cabecera_columnas:
-            listaC = []
-            for n2 in lista_nodos:
-                nodo2 = n2.split(',')
-                if nC == nodo2[1]:
-                    listaC.append(int(nodo2[0]))
-            #print('Col: ',nC, 'ListaC: ',listaC)
-            if len(listaC) > 1:
-                for elementoC in range(len(listaC)-1):
-                    cad_aux += 'nodo'+str(listaC[elementoC])+'_'+str(nC)+'->nodo'+str(listaC[elementoC+1])+'_'+str(nC)+';\n'
-            listaC.clear()
-
-        cad_aux += '}\n}\n'
-        #print(cad_aux)
         nombre = ''
-        nombre += 'matriz' + str(self.contadorDispersa)
+        nombre += r'C:\Users\Squery\Desktop\Reportes_F2\matriz' + str(self.contadorDispersa)
         
         archivo = open(nombre+'.dot','w')
-        archivo.write(cad_aux)
+        archivo.write(principal)
         archivo.close()
 
         system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
@@ -213,13 +152,12 @@ class grafo:
         self.contadorDispersa += 1
 
     def listaTareas(self, listaTareas):
-        #print('Grafo tareas')
-
         g = Digraph('G', format='png', node_attr={'shape': 'box', 'height': '.1','rank':'same'}, edge_attr={ 'dir':'both'})
         g.attr(rankdir='LR')
         
         aux = listaTareas.primero
         lista = []
+        contador = 0
         while aux != None:
             cad = ''
             cad += str(aux.carnet) + '\n'
@@ -229,8 +167,9 @@ class grafo:
             cad += aux.fecha + '\n'
             cad += str(aux.hora) + '\n'
             cad += aux.estado + '\n'
-            g.node(str(aux.carnet), label=cad)
-            lista.append(aux.carnet)
+            g.node('nodo'+str(contador), label=cad)
+            lista.append('nodo'+str(contador))
+            contador += 1
             aux = aux.siguiente
 
         for x in range(len(lista)):
@@ -239,10 +178,10 @@ class grafo:
             else:
                 continue
         
-        nombre = 'ListaTareas'+str(self.contadorListaTareas)
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\ListaTareas'+str(self.contadorListaTareas)
         g.render(nombre)
-        self.contadorListaTareas += 1
         startfile(nombre+'.png')
+        self.contadorListaTareas += 1
 
     def arbolB_cursosGeneral(self, arbolB_general):
         # [ ACUMULADOR, ACUMULADORE DE ENLACES, CONTADOR PAGINA, CONTADOR AUX ]
@@ -267,7 +206,7 @@ class grafo:
         acumulador[0] += "}\n"
         #print(acumulador[0])
 
-        nombre = 'arbolPensum'
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolPensum'+str(self.contadorArbolBGeneral)
         archivo = open(nombre+'.dot','w')
         archivo.write(acumulador[0])
         archivo.close()
@@ -275,6 +214,7 @@ class grafo:
         system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
         #system('cd ./'+nombre+'.png')
         startfile(nombre+'.svg')
+        self.contadorArbolBGeneral += 1
         
     def imprimir(self, actual, acumulador):
         acumulador[0] += 'node{}[label="<r0>'.format(str(acumulador[2]))

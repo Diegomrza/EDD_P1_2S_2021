@@ -18,6 +18,14 @@ from Estructuras.grafo import grafo
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from Analizadores.sintactico import parser, objetos
+#Creacion de carpeta Reportes
+import os
+import errno
+try:
+    os.mkdir(r'C:\Users\Squery\Desktop\Reportes_F2')
+except OSError as e:
+    if e.errno != errno.EEXIST:
+        raise
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origin":"*"}})
@@ -60,8 +68,6 @@ estudiantes.insertar0(nodo4,0)
 estudiantes.insertar0(nodo5,0)
 estudiantes.insertar0(nodo6,0)
 #Fin de ingreso manual de estudiantes --------------------------------------------------------
-
-
 
 @app.route('/')
 def index():
@@ -106,7 +112,7 @@ def reporte():
     semestre = request.args.get('semestre','None')
 
 
-    if int(tipo) == 0: #Este si está
+    if int(tipo) == 0:
         g.grafoArbolAVL(estudiantes)
         return jsonify({
             "message":"Mostrando árbol de estudiantes"
@@ -135,7 +141,7 @@ def reporte():
             for y in estudiantes.auxiliar:
                 estudiantes.auxiliar.clear()
                 return jsonify({
-                    'message':y[0]
+                    'message':y
                 })
 
     elif int(tipo) == 3:
@@ -278,22 +284,24 @@ def recordatorios():
             return jsonify({
                 "message":"No se ingresaron los datos requeridos"
             })
-        estudiantes.obtener_recordatorio0(int(carnetG),int(fechaG[0]),int(fechaG[1]),int(fechaG[2]),int(horaG[0]), int(posicionG))
-        for x in estudiantes.buscados:
-            if x.pos == int(posicionG):
-                estudiantes.buscados.pop()
-                return jsonify({
-                    "Nombre":x.nombre,
-                    "Descripcion":x.descripcion,
-                    "Materia":x.materia,
-                    "Fecha":x.fecha,
-                    "Hora":x.hora,
-                    "Estado":x.estado
-                })
 
-        return jsonify({
+        estudiantes.obtener_recordatorio0(int(carnetG),int(fechaG[0]),int(fechaG[1]),int(fechaG[2]),int(horaG[0]), int(posicionG))
+        if len(estudiantes.auxiliar) == 0:
+            return jsonify({
             'message':'No se encontró la tarea buscada'
         })
+        else:
+            for x in estudiantes.auxiliar:
+                if x.pos == int(posicionG):
+                    estudiantes.auxiliar.clear()
+                    return jsonify({
+                        "Nombre":x.nombre,
+                        "Descripcion":x.descripcion,
+                        "Materia":x.materia,
+                        "Fecha":x.fecha,
+                        "Hora":x.hora,
+                        "Estado":x.estado
+                    })
 
     elif request.method == 'POST':
         carnet = request.json['Carnet']
@@ -309,39 +317,83 @@ def recordatorios():
 
         estudiantes.crearRecordatorio0(int(carnet), int(fecha[2]), int(fecha[1]), int(fecha[0]), int(hora[0]), datos)
 
-        return jsonify({
-            'message':'post'
-        })
+        if len(estudiantes.auxiliar) == 0:
+            return jsonify({
+                "message":"No se encontró al alumno"
+            })
+        else:
+            estudiantes.auxiliar.clear()
+            return jsonify({
+                "message":"Recordatorio creado con exito"
+            })
 
     elif request.method == 'PUT':
-        return jsonify({
-            'message':'put'
-        })
+        carnetP = int(request.json['Carnet'])
+        nombreP = request.json['Nombre']
+        descripcionP = request.json['Descripcion']
+        materiaP = request.json['Materia']
+        fechaP = request.json['Fecha']
+        horaP = request.json['Hora']
+        estadoP = request.json['Estado']
+        posicionP = int(request.json['Posicion'])
+
+        datosP = [carnetP,nombreP,descripcionP,materiaP,fechaP,horaP,estadoP,posicionP]
+        estudiantes.modificarRecordatorio0(carnetP, datosP)
+
+        if len(estudiantes.auxiliar) == 0:
+            return jsonify({
+                'message':'No se encontró al alumno'
+            })
+        else:
+            for x in estudiantes.auxiliar:
+                estudiantes.auxiliar.clear()
+                return jsonify({
+                    "message":x
+                })
+
     elif request.method == 'DELETE':
-        return({
-            'message':'delete'
-        })
+        carnetD = request.json['Carnet']
+        fechaD = request.json['Fecha']
+        horaD = request.json['Hora']
+        posicionD = int(request.json['Posicion'])
+
+        datosD = [fechaD, horaD, posicionD]
+        estudiantes.eliminarRecordatorio0(int(carnetD),datosD)
+        if len(estudiantes.auxiliar) == 0:
+            return jsonify({
+                "message":"No se encontró el alumno"
+            })
+        else:
+            for x in estudiantes.auxiliar:
+                estudiantes.auxiliar.clear()
+                return jsonify({
+                    "message":x
+                })
 
 @app.route('/cursosEstudiante', methods=['POST'])
 def cursosEstudiante():
 
     dictEstudiantes = request.json['Estudiantes']
     for x in dictEstudiantes:
-        print('\nCarnet: ',x['Carnet'])
+        #print('\nCarnet: ',x['Carnet'])
         for y in x['Años']:
-            print('Año: ',y['Año'])
+            #print('Año: ',y['Año'])
             for z in y['Semestres']:
-                print('Semestre: ',z['Semestre'])
+                #print('Semestre: ',z['Semestre'])
+                listaCursos = []
                 for w in z['Cursos']:
                     codigo = w['Codigo']
                     nombre = w['Nombre']
                     creditos = w['Creditos']
                     prerrequisitos = w['Prerequisitos']
                     obligatorio = w['Obligatorio']
-                    print('Datos: ',codigo,'-', nombre,'-', creditos,'-', prerrequisitos,'-', obligatorio)
-                print('\n')
+                    curso = NodoCurso(int(codigo),nombre,prerrequisitos,obligatorio,int(creditos))
+                    listaCursos.append(curso)
+
+                estudiantes.cursosEstudiante0(int(x['Carnet']),int(y['Año']),int(z['Semestre']),listaCursos)
+                listaCursos.clear()
     return jsonify({
-        'message':'exito'
+        'message':'Cursos ingresados'
     })
 
 @app.route('/cursosPensum', methods=['POST'])
@@ -354,7 +406,8 @@ def cursosPensum():
         nombre = x['Nombre']
         prerrequisito = ['Prerequisitos']
         tipo = x['Obligatorio']
-        pensum.insertar(codigo, nombre, prerrequisito, tipo)
+        creditos = int(x['Creditos'])
+        pensum.insertar(codigo, nombre, prerrequisito, tipo,creditos)
     return jsonify({
         "message":"Success"
     })   
@@ -368,10 +421,11 @@ def ply(ru):
     archivo = open(ruta, "r", encoding='utf-8')
     contenido = archivo.read()
     parser.parse(contenido)
+    archivo.close()
 
     lista_users = []
     lista_task = []
-
+    #print(len(objetos))
     for x in objetos:
         if type(x) == type(ob):  #Tipo user
             #print('Usuario: ',vars(x))
@@ -400,7 +454,7 @@ def ply(ru):
 
     for z in lista_task:
         #Quitando las comillas dobles a todos los datos para analizarlos correctamente
-        carnetT = (z.carnet.rstrip('"')).lstrip('"')
+        carnetT = int((z.carnet.rstrip('"')).lstrip('"'))
         nombreT = (z.nombre.rstrip('"')).lstrip('"')
         descripcionT = (z.descripcion.rstrip('"')).lstrip('"')
         materiaT = (z.materia.rstrip('"')).lstrip('"')
@@ -408,10 +462,9 @@ def ply(ru):
         horaT = (z.hora.rstrip('"')).lstrip('"')
         estadoT = (z.estado.rstrip('"')).lstrip('"')
 
-        print('Datos task: ',carnetT,nombreT,descripcionT,materiaT,fechaT,horaT,estadoT)
-        
-
-    archivo.close()
+        datos = [carnetT,nombreT,descripcionT,materiaT,fechaT,horaT,estadoT]
+        estudiantes.ingresarTask0(datos)
+    
     return jsonify({
         'Contenido': contenido
         }) 
