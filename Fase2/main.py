@@ -21,6 +21,7 @@ from Analizadores.sintactico import parser, objetos
 #Creacion de carpeta Reportes
 import os
 import errno
+
 try:
     os.mkdir(r'C:\Users\Squery\Desktop\Reportes_F2')
 except OSError as e:
@@ -36,38 +37,6 @@ obj = NodoTarea(0,'','','','',0,'')
 estudiantes = ArbolAVL() #Arbol AVL de estudiantes
 pensum = ArbolCursos(5) #Arbol B de cursos
 g = grafo()
-
-#Ingreso manual de estudiantes -------------------------------------------------------------------------
-nodo0 = NodoAVL(201901429,'2993323220101','Diego Abraham Robles Meza','Ingenieria en ciencias y sistemas','diegomrza98@gmail.com','123',86,23)
-
-year1 = NodoAnios(2021) #Creando un año para el estudiante
-mes1 = NodoMeses(6) #Creando un mes para el estudiante
-mes2 = NodoMeses(5) #Creando un mes para el estudiante
-#Llenando la matriz dispersa de tareas
-for x in range(3):
-    for y in range(10):
-        t = ListaTareas()
-        mes1.actividades.insertar(x,y,t)
-        mes2.actividades.insertar(x,y+1,t)
-        
-year1.meses.insertar(mes1)
-year1.meses.insertar(mes2)
-nodo0.lista_anios.insertar(year1)
-
-nodo1 = NodoAVL(202001429,'2991089610101','Jairo Josue Mejia Gonzalez','Ingenieria electronica','jairoJosue@gmail.com','456',25,24)
-nodo2 = NodoAVL(201900716,'2993323220202','Sergio Estuardo Sosa Sevilla','Ingenieria en ciencias y sistemas','stuarch@gmail.com','789',75,22)
-nodo3 = NodoAVL(201801429,'3031323220101','Angel Josue Avila Meza','Ingenieria Mecanica electrica','angeljosuemeza@gmail.com','159',65,21)
-nodo4 = NodoAVL(201901428,'3031563200101','Susan Sarai Gonzalez Marroquin','Reposteria','Angiesgonzalez@gmail.com','741',50,19)
-nodo5 = NodoAVL(201701429,'3031345870101','Jonatan David Gonzalez Gonzalez','Mecanica','coraliopuluc@gmail.com','369',100,21)
-nodo6 = NodoAVL(201601429,'3231398220101','Luis Allan Mayorga Palencia','Ingenieria Electronica','maypalkill@gmail.com','159',30,23)
-estudiantes.insertar0(nodo0,0)
-estudiantes.insertar0(nodo1,0)
-estudiantes.insertar0(nodo2,0)
-estudiantes.insertar0(nodo3,0)
-estudiantes.insertar0(nodo4,0)
-estudiantes.insertar0(nodo5,0)
-estudiantes.insertar0(nodo6,0)
-#Fin de ingreso manual de estudiantes --------------------------------------------------------
 
 @app.route('/')
 def index():

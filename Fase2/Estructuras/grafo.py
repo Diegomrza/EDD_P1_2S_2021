@@ -125,7 +125,7 @@ class grafo:
             aux = recorridoColumnas[y] #Contiene cada columna
             principal += columnaAux+'->'+N+str(aux[0].fila)+'_'+str(aux[0].columna)+';\n'
             for x in range(len(aux)):
-                principal += N + str(aux[x].fila)+'_'+str(aux[x].columna)+'[label="0",group="'+str(grupos)+'"]\n'#Creacion de los nodos
+                principal += N + str(aux[x].fila)+'_'+str(aux[x].columna)+'[label="'+str(aux[x].celdas.contadorTareas)+'",group="'+str(grupos)+'"]\n'#Creacion de los nodos
                 if x < len(aux)-1:
                     principal += N + str(aux[x].fila)+'_'+str(aux[x].columna)+'->'+N+str(aux[x+1].fila)+'_'+str(aux[x].columna)+';\n'
             grupos+=1

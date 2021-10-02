@@ -53,7 +53,7 @@ class Dispersa:
     def insertar(self, fila, columna, contenido):
         nuevo_nodo = NodoDispersa(fila, columna)
         nuevo_nodo.celdas = contenido
-        if (fila > 0 and fila < 25) and (columna > 0 and columna < 25):
+        if (fila > 0 and fila < 25) and (columna > 0 and columna < 32):
             if self.contador_filas < 25:
                 efila = self.encabezado_filas.devolver_encabezado(fila)
                 if efila == None:
@@ -81,7 +81,7 @@ class Dispersa:
                             nuevo_nodo.izquierda = aux
 
             #Insertar encabezado columna
-            if self.contador_columnas < 25:
+            if self.contador_columnas < 31:
                 ecolumna = self.encabezado_columnas.devolver_encabezado(columna)
                 if ecolumna == None:
                     ecolumna = NodoEncabezado(columna)
