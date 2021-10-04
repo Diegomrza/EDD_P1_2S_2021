@@ -27,7 +27,8 @@ class TablaHash:
         #Aplicando la colisión, para saber si la llave ya existe
         if self.buscarLlave(llave_calculada): #Solo entra si es True
             i = 0
-            pos = self.buscarPos(nuevo, i)
+            #pos = self.buscarPos(nuevo, i)
+            pos = self.cuadratica(nuevo, i)
             self.insertar(carnet, nombre, pos)
         else:
             tmp = self.primero
@@ -46,6 +47,7 @@ class TablaHash:
                     tmp = tmp.siguiente
                 if tmp.siguiente == None: #insercion al final
                     tmp.siguiente = nuevo
+                    self.id +=1
 
 
 
@@ -57,6 +59,18 @@ class TablaHash:
             return self.buscarPos(actual, i)
         #si la posicion no está ocupada se retorna la posicion calculada
         return pos
+
+
+
+    #Exploración cuadrática /////////////////////////////////////////////////////
+    def cuadratica(self,actual, i):
+        pos = i*i
+        if self.buscarLlave(pos):
+            i = i + 1
+            return self.cuadratica(actual, i)
+        return pos
+    #///////////////////////////////////////////////////////////////////////////
+
 
     def buscarLlave(self, llave):
         tmp = self.primero
