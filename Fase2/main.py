@@ -1,3 +1,5 @@
+from Estructuras2.TablaHash import TablaHash
+
 #Importaciones nodos estructuras
 from Estructuras.Nodos.NodoMeses import NodoMeses
 from Estructuras.Nodos.NodoAnios import NodoAnios
@@ -30,6 +32,7 @@ except OSError as e:
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origin":"*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 ob = NodoAVL(0,'','','','','',0,0)
 obj = NodoTarea(0,'','','','',0,'')
@@ -37,6 +40,13 @@ obj = NodoTarea(0,'','','','',0,'')
 estudiantes = ArbolAVL() #Arbol AVL de estudiantes
 pensum = ArbolCursos(5) #Arbol B de cursos
 g = grafo()
+
+#Creación del usuario administrador
+#user_admin = NodoAVL(0,0,'admin','','','admin',0,0)
+#user_admin.tipo = 'administrador'
+#estudiantes.insertar0(user_admin, 0)
+
+th1 = TablaHash(7)
 
 @app.route('/')
 def index():
@@ -437,6 +447,152 @@ def ply(ru):
     return jsonify({
         'Contenido': contenido
         }) 
+
+
+#Endpoints nuevos
+@app.route('/login', methods=['POST'])
+def login():
+    global estudiantes
+
+    #Toma de datos
+    password = request.json['password']
+
+    if request.json['usuario'] == 'admin' and password == 'admin':
+        return jsonify({
+            "message":"Success",
+            "reason":"Credenciales correctas, bienvenid@",
+            "Nombre":"admin",
+            "tipo":"administrador"
+        })
+    elif request.json['usuario'] == 'admin' and password != 'admin':
+        return jsonify({
+            "message":"Failed",
+            "reason":"Credenciales incorrectas, intente de nuevo"
+        })
+    else:
+        carnet = int(request.json['usuario'])
+        
+    #Busqueda en el arbol avl
+    estudiantes.mostrar_estudiante0(carnet)
+
+    if len(estudiantes.auxiliar) == 0:
+        return jsonify({
+            "message":"Failed",
+            "reason":"Estudiante no encontrado"
+        })
+    else:
+        for x in estudiantes.auxiliar:
+            estudiantes.auxiliar.clear()
+            if carnet == x.carnet and password == x.password:
+                return jsonify({
+                    #"Dpi":x.dpi,
+                    "nombre":x.nombre,
+                    #"Carrera":x.carrera,
+                    #"Correo":x.correo,
+                    #"Password":x.password,
+                    #"Creditos":x.creditos,
+                    #"Edad":x.edad,
+                    "message":"Success",
+                    "reason":"Credenciales correctas, bienvenid@ ",
+                    "tipo":x.tipo
+                })
+            else:
+                return jsonify({
+                    "message":"Failed",
+                    "reason":"Credenciales incorrectas"
+                })
+
+@app.route('/registro', methods = ['POST'])
+def registro():
+
+    global usuarios, estudiantes
+
+    carnet = int(request.json['carnet'])
+    dpi = int(request.json['dpi'])
+    nombre = request.json['nombre']
+    carrera = request.json['carrera']
+    correo = request.json['correo']
+    password = request.json['password']
+    edad = int(request.json['edad'])
+    tipo = request.json['tipo']
+    creditos = int(request.json['creditos'])
+    
+    nuevo = NodoAVL(carnet, dpi, nombre, carrera, correo, password, creditos, edad)
+    nuevo.tipo = tipo
+    estudiantes.insertar0(nuevo, 1)
+
+    if len(estudiantes.auxiliar) == 0:
+            return jsonify({
+                "message":"Success",
+                "reason":"Estudiante creado con exito"
+            })
+    else:
+        for x in estudiantes.auxiliar:
+            if x == True:
+                estudiantes.auxiliar.clear()
+                return jsonify({
+                    "message":"Failed",
+                    "reason":"El estudiante ya existe"
+                })
+
+#Obtiene todos los apuntes de un estudiante
+@app.route('/obtenerApuntes/<int:usuario>', methods=['GET'])
+def obtenerApuntes(usuario):
+    global th1
+
+    estudiante = th1.busqueda2(usuario)
+    listaAux = []
+    listaAux2 = []
+
+    if estudiante != None:
+        aux = estudiante.lista_apuntes.primero
+        while aux != None:
+            listaAux.append(aux)
+            aux = aux.siguiente
+
+    for x in listaAux:
+        apunte = {"titulo":x.titulo,"contenido":x.contenido,"id":x.id}
+        listaAux2.append(apunte)
+
+    return jsonify(listaAux2)
+
+#Obtiene un apunte de un estudiante
+@app.route('/apunte/<int:id>/<int:carnet>', methods=['GET'])
+def apunte(carnet, id):
+    
+    global th1
+    estudiante = th1.busqueda2(carnet)
+    if estudiante != None:
+        aux = estudiante.lista_apuntes.primero
+        while aux != None:
+            if id == aux.id:
+                return jsonify({
+                    "contenido":aux.contenido,
+                    "titulo":aux.titulo,
+                    "message":"Success"
+                })
+            aux = aux.siguiente
+    else:
+        return jsonify({
+            "message":"Failed",
+            "contenido":"None"
+        })
+
+#Creación de un apunte para un estudiante
+@app.route('/crearApunteNuevo', methods=['POST'])
+def crearApunteNuevo():
+    global th1
+
+    carnet = request.json['carnet']
+    titulo = request.json['titulo']
+    contenido = request.json['contenido']
+
+    th1.insertarHash(int(carnet), titulo, contenido)
+    return jsonify({
+        "message":"Success",
+        "reason":"Apunte creado con exito"
+    })
+
 
 if __name__ == '__main__':
     app.run(threaded = True,port = 3000, debug = True)

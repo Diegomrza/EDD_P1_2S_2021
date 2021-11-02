@@ -11,6 +11,7 @@ class NodoAVL: #Nodo del arbol de estudiantes
         self.creditos = creditos
         self.edad = edad
         self.lista_anios = ListaAnios() #Lista de años
+        self.tipo = "estudiante"
 
         self.altura = 1
         self.izquierda = None

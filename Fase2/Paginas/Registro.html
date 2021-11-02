@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <meta name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="estilos.css">
+
+
+</head>
+
+<body>
+    <form class="formulario">
+
+        <h1>Registrarse</h1>
+        <div class="contenedor">
+
+            <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <input id="carnet" type="text" placeholder="Carnet">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-pen icon"></i>
+                <input id="dpi" type="text" placeholder="DPI">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-pen icon"></i>
+                <input id="nombre" type="text" placeholder="Nombre">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-pen icon"></i>
+                <input id="carrera" type="text" placeholder="Carrera">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-pen icon"></i>
+                <input id="correo" type="text" placeholder="Correo">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-key icon"></i>
+                <input id="password" type="password" placeholder="Password">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-pen icon"></i>
+                <input id="edad" type="text" placeholder="Edad">
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-pen icon"></i>
+                <input id="creditos" type="text" placeholder="Créditos">
+            </div>
+
+        </div>
+        <input onclick="crearUsuario()" value="Registrarse" class="button">
+        <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+        <p>¿Ya tienes una cuenta?<a class="link" href="Login.html">Iniciar Sesion</a></p>
+        </div>
+    </form>
+
+    <script>
+        function crearUsuario() {
+            var carnet = document.querySelector('#carnet').value
+            var dpi = document.querySelector('#dpi').value
+            var nombre = document.querySelector('#nombre').value
+            var carrera = document.querySelector('#carrera').value
+            var correo = document.querySelector('#correo').value
+            var password = document.querySelector('#password').value
+            var edad = document.querySelector('#edad').value
+            var creditos = document.querySelector('#creditos').value
+
+            var objeto = {
+                'carnet': carnet,
+                'dpi': dpi,
+                'nombre': nombre,
+                'carrera': carrera,
+                'correo': correo,
+                'password': password,
+                'edad': edad,
+                'creditos':creditos,
+                'tipo': "estudiante"
+            }
+            fetch('http://127.0.0.1:3000/registro', {
+                method: 'POST',
+                body: JSON.stringify(objeto),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+                .catch(err => {
+                    console.error('Error', err)
+                    window.alert("ocurrio un error, ver consola")
+                })
+                .then(response => {
+                    if (response.message == 'Failed') {
+                        alert(response.reason)
+                    } else {
+                        alert(`Credenciales correctas, ${carnet} creado`)
+                        sessionStorage.setItem("usuario", carnet)
+                        sessionStorage.setItem("password", password)
+                        location.href = "Login.html"
+                    }
+                })
+        }
+    </script>
+</body>
+
+</html>
