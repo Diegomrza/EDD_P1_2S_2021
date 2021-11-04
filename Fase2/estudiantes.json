@@ -1,0 +1,41 @@
+{
+    "estudiantes":[
+        {
+            "carnet":20210000001,
+            "DPI":2097615549301,
+            "nombre":"jorge",
+            "carrera":"ing. ciencias y sistemas",
+            "correo":"jorge@gmial.com",
+            "password":"FWfo94",
+            "edad":26
+
+        },
+        {
+            "carnet":20210000002,
+            "DPI":9251761540101,
+            "nombre":"Carlos",
+            "carrera":"ing. ciencias y sistemas",
+            "correo":"carlos@gmial.com",
+            "password":"yuWfo94",
+            "edad":26
+        },
+        {
+            "carnet":20210000003,
+            "DPI":900000000101,
+            "nombre":"juan",
+            "carrera":"ing. ciencias y sistemas",
+            "correo":"juan@gmial.com",
+            "password":"yud5asd4",
+            "edad":20
+        },
+        {
+            "carnet":20210000004,
+            "DPI":920000000101,
+            "nombre":"Luis",
+            "carrera":"ing. ciencias y sistemas",
+            "correo":"Luis@gmial.com",
+            "password":"sdfadf5er1",
+            "edad":21
+        }
+    ]
+}

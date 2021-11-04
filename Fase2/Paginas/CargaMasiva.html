@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
+    <title>Carga masiva</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -32,14 +32,84 @@
         </div>
     </nav>
     <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
-    <div style="margin-top: 200px;">
-        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Estudiantes</small><input class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
-        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Pensum</small><input class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
-        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Cursos estudiantes</small><input class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
-        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Apuntes</small><input class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
+    <div style="margin-top: 150px;">
+        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Estudiantes</small><input id="estudiantes" name="estudiantes1" class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
+        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Pensum</small><input id="pensum" name="pensum1" class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
+        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Cursos estudiantes</small><input id="cursos" name="cursos1" class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
+        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Apuntes</small><input id="apuntes" name="apuntes1" class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);">
+            <button onclick="archivos()" data-bss-hover-animate="rubberBand" style="height: 50px; width: 150px; margin-top: 50px;">Cargar</button></div>
+        <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+
+
+    <script>
+        function archivos(){
+            var estudiantes = document.querySelector('#estudiantes').value.split('\\')[2];
+            var pensum = document.querySelector('#pensum').value.split('\\')[2];
+            var cursos = document.querySelector('#cursos').value.split('\\')[2];
+            var apuntes = document.querySelector('#apuntes').value.split('\\')[2];
+            if (estudiantes == undefined){
+                estudiantes = 'None';
+            }; if (pensum == undefined){
+                pensum = 'None';
+            }; if (cursos == undefined){
+                cursos = 'None';
+            }; if (apuntes == undefined){
+                apuntes = 'None';
+            }; var objeto = {
+                "estudiantes" : estudiantes,
+                "pensum" : pensum,
+                "cursos" : cursos,
+                "apuntes" : apuntes
+            };
+
+            console.log(objeto)
+
+            fetch('http://127.0.0.1:3000/carga', {
+                method: 'POST',
+                body: JSON.stringify(objeto),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+                .catch(err => {
+                    console.error('Error', err)
+                    window.alert("ocurrio un error, ver consola")
+            })
+            .then(response => {
+                if (response.message == 'Failed') {
+                    alert(response.reason)
+                } else {
+                    //alert(response.reason +": "+ `${response.nombre}`)
+                    alert('Achivos cargados con exito')
+                    }
+                })
+        }
+        
+        /*function abrirArchivo(evento){
+            let archivo = evento.target.files[0];
+
+            if (archivo){
+                let reader = new FileReader();
+
+                reader.onload = function(e) {
+                    let contenido = e.target.result;
+
+                    document.getElementById('contenido').innerText = contenido;
+                };
+
+                reader.readAsText(archivo);
+            } else {
+                document.getElementById('mensajes').innerText = 'No se ha seleccionado un archivo.';
+            }
+        }
+
+        window.addEventListener('load', () => {
+            document.getElementById('archivoTexto').addEventListener('change', abrirArchivo);
+        });*/
+    </script>
 </body>
 
 </html>

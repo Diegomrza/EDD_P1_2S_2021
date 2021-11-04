@@ -1,25 +1,23 @@
 from Estructuras2.TablaHash import TablaHash
+from cryptography.fernet import Fernet
+import hashlib
 
 #Importaciones nodos estructuras
-from Estructuras.Nodos.NodoMeses import NodoMeses
-from Estructuras.Nodos.NodoAnios import NodoAnios
 from Estructuras.Nodos.NodoAVL import NodoAVL
 from Estructuras.Nodos.NodoCursos import NodoCurso
-from Estructuras.Nodos.NodoDispersa import NodoDispersa
 from Estructuras.Nodos.NodoTarea import NodoTarea
+
 #Importaciones estructuras
 from Estructuras.ArbolAVL import ArbolAVL
 from Estructuras.ArbolCursos import ArbolCursos
-from Estructuras.Dispersa import Dispersa
-from Estructuras.ListaAnios import ListaAnios
-from Estructuras.ListaMeses import ListaMeses
-from Estructuras.ListaSemestres import ListaSemestres
-from Estructuras.ListaTareas import ListaTareas
 from Estructuras.grafo import grafo
+
 #importaciones flask
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import json
 from Analizadores.sintactico import parser, objetos
+
 #Creacion de carpeta Reportes
 import os
 import errno
@@ -41,12 +39,11 @@ estudiantes = ArbolAVL() #Arbol AVL de estudiantes
 pensum = ArbolCursos(5) #Arbol B de cursos
 g = grafo()
 
-#Creación del usuario administrador
-#user_admin = NodoAVL(0,0,'admin','','','admin',0,0)
-#user_admin.tipo = 'administrador'
-#estudiantes.insertar0(user_admin, 0)
-
+#Tablas hash
 th1 = TablaHash(7)
+
+clave = Fernet.generate_key()
+encriptador = Fernet(clave)
 
 @app.route('/')
 def index():
@@ -54,32 +51,48 @@ def index():
 
 @app.route('/carga', methods=['POST'])
 def carga():
-    tipo = request.json['tipo']
-    ruta = request.json['path']
+    estudiante = request.json['estudiantes']
+    pensum = request.json['pensum']
+    cursos = request.json['cursos']
+    apuntes = request.json['apuntes']
 
-    if tipo.lower() == 'estudiante': #Aquí se analiza el archivo para usuarios y tareas
-        ply(ruta)
-    elif tipo.lower() == 'recordatorio': #Se supone no se usa aquí
-        print('Tipo recordatorio: ',end='')
-        print(tipo + ' - ' + ruta)
-    elif tipo.lower() == 'curso': #Se supone no se usa aquí
-        print('Tipo curso: ',end='')
-        print(tipo + ' - ' + ruta)
-    else:
-        #Si la petición no cumple
-        return jsonify({
-            'message':'Parámetros inválidos, ingrese los parámetros de manera correcta'
-        })
+    '''if tipo.lower() == 'estudiantes':
+        #ply(ruta)'''
+
+    if estudiante != 'None':
+        rutaEstudiantes = r'C:\Users\Squery\Documents\GitHub\EDD_SmartClass_201901429\Fase2'+'\\'+estudiante
+
+        archivoEstudiantes = open(rutaEstudiantes, encoding="utf8"); contenidoEstudiantes = archivoEstudiantes.read()
+        cargarEstudiantes(json.loads(contenidoEstudiantes))
+
+    if pensum != 'None':
+        rutaPensum = r'C:\Users\Squery\Documents\GitHub\EDD_SmartClass_201901429\Fase2'+'\\'+pensum
+
+        archivoPensum = open(rutaPensum, encoding='utf8'); contenidoPensum = archivoPensum.read()
+        cargarPensumGeneral(json.loads(contenidoPensum))
+
+    if cursos != 'None':
+        rutaCursos = r'C:\Users\Squery\Documents\GitHub\EDD_SmartClass_201901429\Fase2'+'\\'+cursos
+        archivoCursos = open(rutaCursos, encoding='utf8'); contenidoCursos = archivoCursos.read()
+        cargarPensumEstudiantes(json.loads(contenidoCursos))
+
+    if apuntes != 'None':
+        rutaApuntes = r'C:\Users\Squery\Documents\GitHub\EDD_SmartClass_201901429\Fase2'+'\\'+apuntes
+        
+        archivoApuntes = open(rutaApuntes, encoding="utf8"); contenidoApuntes = archivoApuntes.read()
+        cargarApuntes(json.loads(contenidoApuntes))
+
     #Si la petición fue correcta
     return jsonify({
-        'message' : 'Archivo leído con exito'
+        'message' : 'Success',
+        'reason':"Archivos leídos con exito"
     })
 
 @app.route('/reporte', methods=['GET'])
 def reporte():
     global estudiantes #Arbol AVL
     global pensum #Arbol B
-    global g
+    global g, encriptador
 
     #Obteniendo todos los parámetros necesarios para los reportes solicitados
     tipo = request.args.get('tipo','None')
@@ -92,7 +105,7 @@ def reporte():
 
 
     if int(tipo) == 0:
-        g.grafoArbolAVL(estudiantes)
+        g.grafoArbolAVL(estudiantes, encriptador)
         return jsonify({
             "message":"Mostrando árbol de estudiantes"
         })
@@ -141,6 +154,12 @@ def reporte():
                 return jsonify({
                     "message":z
                 })
+
+    elif int(tipo) == 5:
+        g.grafoAVLEncriptado(estudiantes)
+        return jsonify({
+            "message":"Mostrando árbol de estudiantes encriptado"
+        })
 
     else:
         return jsonify({
@@ -452,7 +471,7 @@ def ply(ru):
 #Endpoints nuevos
 @app.route('/login', methods=['POST'])
 def login():
-    global estudiantes
+    global estudiantes, encriptador
 
     #Toma de datos
     password = request.json['password']
@@ -461,7 +480,7 @@ def login():
         return jsonify({
             "message":"Success",
             "reason":"Credenciales correctas, bienvenid@",
-            "Nombre":"admin",
+            "nombre":"admin",
             "tipo":"administrador"
         })
     elif request.json['usuario'] == 'admin' and password != 'admin':
@@ -469,9 +488,9 @@ def login():
             "message":"Failed",
             "reason":"Credenciales incorrectas, intente de nuevo"
         })
-    else:
-        carnet = int(request.json['usuario'])
-        
+    
+    carnet = int(request.json['usuario'])
+    password = hashlib.sha256(password.encode()); #password = cifrarDatos(password.hexdigest())
     #Busqueda en el arbol avl
     estudiantes.mostrar_estudiante0(carnet)
 
@@ -483,10 +502,10 @@ def login():
     else:
         for x in estudiantes.auxiliar:
             estudiantes.auxiliar.clear()
-            if carnet == x.carnet and password == x.password:
+            if carnet == x.carnet and password.hexdigest() == encriptador.decrypt(x.password.encode()).decode():
                 return jsonify({
                     #"Dpi":x.dpi,
-                    "nombre":x.nombre,
+                    "nombre":encriptador.decrypt(x.nombre.encode()).decode(),
                     #"Carrera":x.carrera,
                     #"Correo":x.correo,
                     #"Password":x.password,
@@ -505,18 +524,35 @@ def login():
 @app.route('/registro', methods = ['POST'])
 def registro():
 
-    global usuarios, estudiantes
+    global estudiantes
 
     carnet = int(request.json['carnet'])
-    dpi = int(request.json['dpi'])
-    nombre = request.json['nombre']
-    carrera = request.json['carrera']
-    correo = request.json['correo']
-    password = request.json['password']
-    edad = int(request.json['edad'])
-    tipo = request.json['tipo']
-    creditos = int(request.json['creditos'])
+
+    dpi0 = int(request.json['dpi'])
+    dpi = cifrarDatos(dpi0)
+
+    nombre0 = request.json['nombre']
+    nombre = cifrarDatos(nombre0)
+
+    carrera0 = request.json['carrera']
+    carrera = cifrarDatos(carrera0)
+
+    correo0 = request.json['correo']
+    correo = cifrarDatos(correo0)
+
+    password0 = request.json['password']
+    password1 = hashlib.sha256(password0.encode())
+    password = cifrarDatos(password1.hexdigest())
     
+    edad0 = int(request.json['edad'])
+    edad = cifrarDatos(edad0)
+
+    tipo0 = request.json['tipo']
+    tipo = cifrarDatos(tipo0)
+
+    creditos0 = int(request.json['creditos'])
+    creditos = cifrarDatos(creditos0)
+
     nuevo = NodoAVL(carnet, dpi, nombre, carrera, correo, password, creditos, edad)
     nuevo.tipo = tipo
     estudiantes.insertar0(nuevo, 1)
@@ -586,13 +622,93 @@ def crearApunteNuevo():
     carnet = request.json['carnet']
     titulo = request.json['titulo']
     contenido = request.json['contenido']
+    #print(carnet, titulo, contenido)
 
     th1.insertarHash(int(carnet), titulo, contenido)
+    #th1.mostrar()
+    print(th1.tamanio)
     return jsonify({
         "message":"Success",
         "reason":"Apunte creado con exito"
     })
 
+def cargarEstudiantes(diccionario_estudiantes):
+    global estudiantes
+    for x in diccionario_estudiantes['estudiantes']:
+        carnet = int(x['carnet']); #carnet = cifrarDatos(carnet)
+        DPI = int(x['DPI']); DPI = cifrarDatos(DPI)
+        nombre = x['nombre']; nombre = cifrarDatos(nombre)
+        carrera = x['carrera']; carrera = cifrarDatos(carrera)
+        correo = x['correo']; correo = cifrarDatos(correo)
+        password = x['password']; password = hashlib.sha256(password.encode()); password = cifrarDatos(password.hexdigest())
+        creditos = int('0'); creditos = cifrarDatos(creditos) #x['creditos']
+        edad = int(x['edad']); edad = cifrarDatos(edad)
+        nuevoESTUDIANTE = NodoAVL(carnet, DPI, nombre, carrera, correo, password, creditos, edad)
+        estudiantes.insertar0(nuevoESTUDIANTE, 1)
+
+def cargarApuntes(diccionario_apuntes):
+    global th1
+    for x in diccionario_apuntes['usuarios']:
+        #print('Carnet: ', x['carnet'],'\n')
+        for y in x['apuntes']:
+            carnet = x['carnet']
+            titulo = ''
+            contenido = ''
+            for z in y:
+                if z == 'Título':
+                    titulo = y[z]
+                if z == 'Contenido':
+                    contenido = y[z]
+            th1.insertarHash(int(carnet), titulo, contenido)
+    print(th1.tamanio)
+
+def cargarPensumGeneral(diccionario_pensum_general):
+    global pensum
+    for x in diccionario_pensum_general['Cursos']:
+        codigo = int(x['Codigo'])
+        nombre = x['Nombre']
+        prerrequisito = ['Prerequisitos']
+        tipo = x['Obligatorio']
+        creditos = int(x['Creditos'])
+        pensum.insertar(codigo, nombre, prerrequisito, tipo, creditos)
+
+def cargarPensumEstudiantes(diccionario_pensum_estudiantes):
+    global estudiantes
+    dictEstudiantes = diccionario_pensum_estudiantes['Estudiantes']
+    for x in dictEstudiantes:
+        #print('\nCarnet: ',x['Carnet'])
+        for y in x['Años']:
+            #print('Año: ',y['Año'])
+            for z in y['Semestres']:
+                #print('Semestre: ',z['Semestre'])
+                listaCursos = []
+                for w in z['Cursos']:
+                    codigo = w['Codigo']
+                    nombre = w['Nombre']
+                    creditos = w['Creditos']
+                    prerrequisitos = w['Prerequisitos']
+                    obligatorio = w['Obligatorio']
+                    curso = NodoCurso(int(codigo),nombre,prerrequisitos,obligatorio,int(creditos))
+                    listaCursos.append(curso)
+
+                estudiantes.cursosEstudiante0(int(x['Carnet']),int(y['Año']),int(z['Semestre']),listaCursos)
+                listaCursos.clear()
+
+def cifrarDatos(dato):
+    global encriptador
+    if type(dato) != str:
+        dato = str(dato)
+    token = encriptador.encrypt(dato.encode())
+    return token.decode()
 
 if __name__ == '__main__':
     app.run(threaded = True,port = 3000, debug = True)
+
+#from Estructuras.Nodos.NodoDispersa import NodoDispersa
+#from Estructuras.Dispersa import Dispersa
+#from Estructuras.ListaAnios import ListaAnios
+#from Estructuras.ListaMeses import ListaMeses
+#from Estructuras.ListaSemestres import ListaSemestres
+#from Estructuras.ListaTareas import ListaTareas
+#from Estructuras.Nodos.NodoMeses import NodoMeses
+#from Estructuras.Nodos.NodoAnios import NodoAnios

@@ -13,9 +13,17 @@ class TablaHash:
         self.factor_carga = (self.id/self.tamanio)*100
         #print('factor carga',self.factor_carga)
         if self.factor_carga < 50 and self.factor_carga >= 0:
-            llave = carnet % self.tamanio #Método división
+            llave = 0
+            bandera = False
+            for x in self.carnets:
+                if x[0] == carnet:
+                    llave = x[1]
+                    bandera = True
+                    break
+            if bandera == False:
+                llave = carnet % self.tamanio #Método división
 
-            if self.buscarLlave(llave) and carnet in self.carnets:
+            if self.buscarLlave(llave) and bandera == True:
                 auxiliar = self.busqueda(llave)
                 auxiliar.lista_apuntes.insertar(carnet, titulo, contenido)
             else:
@@ -30,10 +38,11 @@ class TablaHash:
         nuevo = NodoHash(llave_calculada, carnet, titulo, contenido)
         
         if self.primero == None:
-            self.primero = nuevo
+            #self.primero = nuevo
             self.id += 1
             nuevo.lista_apuntes.insertar(carnet, titulo, contenido)
-            self.carnets.append(nuevo.carnet) ##
+            self.primero = nuevo
+            self.carnets.append([nuevo.carnet, nuevo.llave]) ##
             return
         
         #Aplicando la colisión, para saber si la llave ya existe
@@ -49,7 +58,7 @@ class TablaHash:
                 nuevo.siguiente = tmp
                 self.primero = nuevo
                 self.id += 1
-                self.carnets.append(nuevo.carnet) ###
+                self.carnets.append([nuevo.carnet, nuevo.llave]) ###
             else: #Inserción al medio
                 while tmp.siguiente != None:
                     tmp2 = tmp.siguiente
@@ -57,13 +66,13 @@ class TablaHash:
                         tmp.siguiente = nuevo
                         nuevo.siguiente = tmp2
                         self.id += 1
-                        self.carnets.append(nuevo.carnet) ###
+                        self.carnets.append([nuevo.carnet, nuevo.llave]) ###
                         break
                     tmp = tmp.siguiente
                 if tmp.siguiente == None: #Inserción al final
                     tmp.siguiente = nuevo
                     self.id +=1
-                    self.carnets.append(nuevo.carnet) ###
+                    self.carnets.append([nuevo.carnet, nuevo.llave]) ###
 
 
     def buscarPos(self, actual, i):

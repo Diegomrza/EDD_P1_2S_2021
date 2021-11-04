@@ -69,8 +69,8 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th class="text-center">No.</th>
-                                    <th class="text-center">No.</th>
-                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Titulo</th>
+                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="apnts" class="text-center">
@@ -105,9 +105,11 @@
     <script src="assets/js/bs-init.js"></script>
 
     <script>
+        
         function nuevoApunte() {
             location.href = "CrearApunte.html"
         }
+
         function verApuntes() {
             location.href = "VistaApuntes.html"
         }
@@ -115,30 +117,29 @@
         function cargarApuntes() {
             var carnet = sessionStorage.getItem('usuario');
             document.querySelector('#nombreUsuario').innerHTML = sessionStorage.getItem('nombre')
-
-            fetch(`http://127.0.0.1:3000/obtenerApuntes/${carnet}`, {
-
+            fetch(`http://127.0.0.1:3000/obtenerApuntes/${carnet}`,{
             }).then(res => res.json())
-                .catch(err => {
-                    console.log(err)
-                    alert('Ocurrio un error al momento de obtener los juegos')
-                })
-                .then(response => {
-                    var mis_juegos = response;
-                    var game_cards = document.querySelector('#apnts')
-                    mis_juegos.forEach(juego => {
-                        game_cards.innerHTML += `<tr>
-                                    <td>${juego.id}</td>
-                                    <td>${juego.titulo}</td>
-                                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a
-                                            class="btn btnMaterial btn-flat primary semicircle" role="button"
-                                            data-bss-hover-animate="wobble" href="VistaApunte.html?id=${juego.id}"><i
-                                                class="far fa-eye"></i><small style="color: #212121;">Ver</small></a>
-                                    </td>
-                                </tr>`
-                    });
-                })
-
+            .catch(err => {
+                console.log(err)
+                alert('Ocurrio un error al momento de obtener los juegos')
+            })
+            .then(response => {
+                var mis_juegos = response;
+                var game_cards = document.querySelector('#apnts')
+                console.log(response)
+                mis_juegos.forEach(juego => {
+                    game_cards.innerHTML += `
+                    <tr>
+                        <td>${juego.id}</td>
+                        <td>${juego.titulo}</td>
+                        <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a
+                            class="btn btnMaterial btn-flat primary semicircle" role="button"
+                            data-bss-hover-animate="wobble" href="VistaApunte.html?id=${juego.id}"><i
+                            class="far fa-eye"></i><small style="color: #212121;">Ver</small></a>
+                        </td>
+                    </tr>`
+                });
+            })
         }
     </script>
 </body>

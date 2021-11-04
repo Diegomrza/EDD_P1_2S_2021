@@ -1,0 +1,6402 @@
+{
+"Estudiantes": [
+{
+"Carnet": "201183728",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201000244",
+"Años":[
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+},
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201210811",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201315898",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201582352",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+},
+{
+"Codigo": "0787",
+"Nombre": "Sistemas organizacionales y gerenciales 2",
+"Creditos": 4,
+"Prerequisitos": "0786",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201115140",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201350393",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+},
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201698163",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+},
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201402462",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+},
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201643353",
+"Años":[
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0101",
+"Nombre": "Matematica Basica 1",
+"Creditos": 7,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201043689",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+},
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0101",
+"Nombre": "Matematica Basica 1",
+"Creditos": 7,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201489697",
+"Años":[
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+},
+{
+"Codigo": "0787",
+"Nombre": "Sistemas organizacionales y gerenciales 2",
+"Creditos": 4,
+"Prerequisitos": "0786",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201818908",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+},
+{
+"Codigo": "0787",
+"Nombre": "Sistemas organizacionales y gerenciales 2",
+"Creditos": 4,
+"Prerequisitos": "0786",
+"Obligatorio": true
+},
+{
+"Codigo": "0720",
+"Nombre": "Modelacion y simulacion 2",
+"Creditos": 5,
+"Prerequisitos": "0729",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201816850",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+},
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+},
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201232485",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201131811",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+},
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201476680",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201511649",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0101",
+"Nombre": "Matematica Basica 1",
+"Creditos": 7,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+},
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201255643",
+"Años":[
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201947729",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201173540",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+},
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0101",
+"Nombre": "Matematica Basica 1",
+"Creditos": 7,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201704168",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+},
+{
+"Codigo": "0795",
+"Nombre": "Logica de sistemas",
+"Creditos": 2,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201661519",
+"Años":[
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201309890",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+},
+{
+"Codigo": "0787",
+"Nombre": "Sistemas organizacionales y gerenciales 2",
+"Creditos": 4,
+"Prerequisitos": "0786",
+"Obligatorio": true
+},
+{
+"Codigo": "0720",
+"Nombre": "Modelacion y simulacion 2",
+"Creditos": 5,
+"Prerequisitos": "0729",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201740604",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+},
+{
+"Codigo": "0787",
+"Nombre": "Sistemas organizacionales y gerenciales 2",
+"Creditos": 4,
+"Prerequisitos": "0786",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201646518",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201766242",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0101",
+"Nombre": "Matematica Basica 1",
+"Creditos": 7,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+},
+{
+"Codigo": "0736",
+"Nombre": "Analisis probabilistico",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0777",
+"Nombre": "Organizacion de lenguajes y compiladores 1",
+"Creditos": 4,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0964",
+"Nombre": "Organizacion computacional",
+"Creditos": 3,
+"Prerequisitos": "0152,0771,0962",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201537627",
+"Años":[
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Sistemas de bases de datos 1",
+"Creditos": 5,
+"Prerequisitos": "0773",
+"Obligatorio": true
+},
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0772",
+"Nombre": "Estructura de datos",
+"Creditos": 5,
+"Prerequisitos": "0771,0796,0962",
+"Obligatorio": true
+},
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201327675",
+"Años":[
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0018",
+"Nombre": "Filosofia de la ciencia",
+"Creditos": 3,
+"Prerequisitos": "0019",
+"Obligatorio": false
+},
+{
+"Codigo": "0116",
+"Nombre": "Matematica aplicada 3",
+"Creditos": 5,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0118",
+"Nombre": "Matematica aplicada 1",
+"Creditos": 6,
+"Prerequisitos": "0112,0114",
+"Obligatorio": true
+},
+{
+"Codigo": "0722",
+"Nombre": "Teoria de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0732,0772,0116,0118",
+"Obligatorio": true
+},
+{
+"Codigo": "0601",
+"Nombre": "Investigacion de operaciones 1",
+"Creditos": 5,
+"Prerequisitos": "0771,0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+},
+{
+"Codigo": "0796",
+"Nombre": "Lenguajes formales y de programacion",
+"Creditos": 3,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201897987",
+"Años":[
+{
+"Año":"2017",
+"Semestres":[
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0962",
+"Nombre": "Matematica computo 2",
+"Creditos": 5,
+"Prerequisitos": "0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0771",
+"Nombre": "Introduccion a la programacion y computacion 2",
+"Creditos": 5,
+"Prerequisitos": "0107,0770,0795,0960",
+"Obligatorio": true
+},
+{
+"Codigo": "0112",
+"Nombre": "Matematica intermedia 2",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0114",
+"Nombre": "Matematica intermedia 3",
+"Creditos": 5,
+"Prerequisitos": "0107",
+"Obligatorio": true
+},
+{
+"Codigo": "0152",
+"Nombre": "Fisica 2",
+"Creditos": 6,
+"Prerequisitos": "0107,0150",
+"Obligatorio": true
+},
+{
+"Codigo": "0011",
+"Nombre": "Idioma tecnico 4",
+"Creditos": 2,
+"Prerequisitos": "0009",
+"Obligatorio": false
+},
+{
+"Codigo": "2025",
+"Nombre": "Practica inicial",
+"Creditos": 0,
+"Prerequisitos": "0103,0770",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2018",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2019",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+},
+{
+"Codigo": "0786",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0283,0722",
+"Obligatorio": true
+},
+{
+"Codigo": "0972",
+"Nombre": "Sistemas organizacionales y gerenciales 1",
+"Creditos": 4,
+"Prerequisitos": "0781,0775,0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0785",
+"Nombre": "Analisis y diseño de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0283",
+"Obligatorio": true
+},
+{
+"Codigo": "0798",
+"Nombre": "Seminario de sistemas 2",
+"Creditos": 3,
+"Prerequisitos": "0797",
+"Obligatorio": true
+},
+{
+"Codigo": "2009",
+"Nombre": "Practica final",
+"Creditos": 0,
+"Prerequisitos": "2036",
+"Obligatorio": true
+},
+{
+"Codigo": "0787",
+"Nombre": "Sistemas organizacionales y gerenciales 2",
+"Creditos": 4,
+"Prerequisitos": "0786",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0779",
+"Nombre": "Arquitectura de computadores y ensambladores 2",
+"Creditos": 4,
+"Prerequisitos": "0778",
+"Obligatorio": true
+},
+{
+"Codigo": "0970",
+"Nombre": "Redes de computadoras 1",
+"Creditos": 4,
+"Prerequisitos": "0773,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0014",
+"Nombre": "Economia",
+"Creditos": 4,
+"Prerequisitos": "0732",
+"Obligatorio": true
+},
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+},
+{
+"Codigo": "0724",
+"Nombre": "Teoria de sistemas 2",
+"Creditos": 5,
+"Prerequisitos": "0722,0601,0736",
+"Obligatorio": true
+},
+{
+"Codigo": "0603",
+"Nombre": "Investigacion de operaciones 2",
+"Creditos": 5,
+"Prerequisitos": "0601",
+"Obligatorio": true
+},
+{
+"Codigo": "0281",
+"Nombre": "Sistemas operativos 1",
+"Creditos": 5,
+"Prerequisitos": "0781,0778",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0781",
+"Nombre": "Organizacion de lenguajes y compiladores 2",
+"Creditos": 5,
+"Prerequisitos": "0777,0772",
+"Obligatorio": true
+},
+{
+"Codigo": "0778",
+"Nombre": "Arquitectura de computadores y ensambladores 1",
+"Creditos": 5,
+"Prerequisitos": "0796,0964",
+"Obligatorio": true
+},
+{
+"Codigo": "0773",
+"Nombre": "Manejo e implementacion de archivos",
+"Creditos": 4,
+"Prerequisitos": "0772,0796",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "2036",
+"Nombre": "Practica intermedia",
+"Creditos": 0,
+"Prerequisitos": "0778,0777,0773,2025",
+"Obligatorio": true
+},
+{
+"Codigo": "0285",
+"Nombre": "Sistemas operativos 2",
+"Creditos": 4,
+"Prerequisitos": "0281",
+"Obligatorio": true
+},
+{
+"Codigo": "0975",
+"Nombre": "Redes de computadoras 2",
+"Creditos": 4,
+"Prerequisitos": "0970",
+"Obligatorio": true
+},
+{
+"Codigo": "0775",
+"Nombre": "Sistemas de bases de datos 2",
+"Creditos": 4,
+"Prerequisitos": "0281,0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0283",
+"Nombre": "Analisis y diseño de sistemas 1",
+"Creditos": 5,
+"Prerequisitos": "0774",
+"Obligatorio": true
+},
+{
+"Codigo": "0797",
+"Nombre": "Seminario de sistemas 1",
+"Creditos": 3,
+"Prerequisitos": "0724",
+"Obligatorio": true
+},
+{
+"Codigo": "0729",
+"Nombre": "Modelacion y simulacion 1",
+"Creditos": 5,
+"Prerequisitos": "0724,0603",
+"Obligatorio": true
+}]
+}
+]
+}
+]
+},
+{
+"Carnet": "201500866",
+"Años":[
+{
+"Año":"2020",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0960",
+"Nombre": "Matematica computo 1",
+"Creditos": 5,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0770",
+"Nombre": "Introduccion a la programacion y computacion 1",
+"Creditos": 4,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0107",
+"Nombre": "Matematica intermedia 1",
+"Creditos": 10,
+"Prerequisitos": "0103",
+"Obligatorio": true
+},
+{
+"Codigo": "0150",
+"Nombre": "Fisica 1",
+"Creditos": 10,
+"Prerequisitos": "0103,0147",
+"Obligatorio": true
+},
+{
+"Codigo": "0009",
+"Nombre": "Idioma tecnico 3",
+"Creditos": 10,
+"Prerequisitos": "0008",
+"Obligatorio": false
+},
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+}]
+},
+{
+"Semestre":"2",
+"Cursos": [
+{
+"Codigo": "0732",
+"Nombre": "Estadistica 1",
+"Creditos": 5,
+"Prerequisitos": "0107,0005",
+"Obligatorio": true
+}]
+}
+]
+}
+,
+{
+"Año":"2021",
+"Semestres":[
+{
+"Semestre":"1",
+"Cursos": [
+{
+"Codigo": "0039",
+"Nombre": "Deportes 1",
+"Creditos": 1,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0348",
+"Nombre": "Quimica General 1",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0006",
+"Nombre": "Idioma tecnico 1",
+"Creditos": 2,
+"Prerequisitos": "",
+"Obligatorio": false
+},
+{
+"Codigo": "0019",
+"Nombre": "Social Humanistica 2",
+"Creditos": 4,
+"Prerequisitos": "0017",
+"Obligatorio": true
+},
+{
+"Codigo": "0103",
+"Nombre": "Matematica Basica 2",
+"Creditos": 7,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0005",
+"Nombre": "Tecnicas de estudio y de investigacion",
+"Creditos": 3,
+"Prerequisitos": "",
+"Obligatorio": true
+},
+{
+"Codigo": "0147",
+"Nombre": "Fisica basica",
+"Creditos": 5,
+"Prerequisitos": "0101",
+"Obligatorio": true
+},
+{
+"Codigo": "0008",
+"Nombre": "Idioma tecnico 2",
+"Creditos": 2,
+"Prerequisitos": "0006",
+"Obligatorio": false
+}]
+}
+]
+}
+]
+}
+]
+}

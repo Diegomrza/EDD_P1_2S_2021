@@ -3,6 +3,7 @@ from graphviz import Digraph
 from os import startfile, system
 import queue
 import os
+from cryptography.fernet import Fernet
 
 from Estructuras.Cola import Cola
 
@@ -15,8 +16,8 @@ class grafo:
         self.contadorArbolBGeneral = 0
         self.contadorArbolEstudiante = 0
 
-    def grafoArbolAVL(self, arbolAVL):
-        print('Método grafo avl')
+    def grafoArbolAVL(self, arbolAVL, llave):
+        #print('Método grafo avl')
 
         cadena = '''digraph G {\nnode[shape=box]
         '''
@@ -28,10 +29,10 @@ class grafo:
         while cola.es_vacia() != True:
             nodo = cola.desencolar()
             if nodo[0] != '':
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+nodo[1].nombre+'\n'+nodo[1].carrera+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+llave.decrypt((nodo[1].nombre)).decode()+'\n'+llave.decrypt((nodo[1].carrera)).decode()+'"];\n'
                 cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
             else:
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+nodo[1].nombre+'\n'+nodo[1].carrera+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+llave.decrypt((nodo[1].nombre)).decode()+'\n'+llave.decrypt((nodo[1].carrera)).decode()+'"];\n'
 
             if nodo[1].izquierda != None:
                 aux = [nodo[1], nodo[1].izquierda]
@@ -40,10 +41,45 @@ class grafo:
                 aux2 = [nodo[1], nodo[1].derecha]
                 cola.encolar(aux2)
         
-            
         cadena += '''}'''
-        #
-        #print(cadena)
+        
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolAVL'+str(self.contadorArbolAVL)
+        archivo = open(nombre+'.dot','w')
+        archivo.write(cadena)
+        archivo.close()
+        cadena = ''
+        system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
+        #system('cd ./'+nombre+'.png')
+        startfile(nombre+'.svg')
+        self.contadorArbolAVL += 1
+
+    def grafoAVLEncriptado(self, arbolAVL):
+        #print('Método grafo avl')
+
+        cadena = '''digraph G {\nnode[shape=box]
+        '''
+        
+        cola = Cola() #Creando la cola
+        au = ['',arbolAVL.root]
+        cola.encolar(au) #Metiendo la raiz a la cola
+
+        while cola.es_vacia() != True:
+            nodo = cola.desencolar()
+            if nodo[0] != '':
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre).decode()[0:10]+'\n'+(nodo[1].carrera).decode()[0:10]+'"];\n'
+                cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
+            else:
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre).decode()[0:10]+'\n'+(nodo[1].carrera).decode()[0:10]+'"];\n'
+
+            if nodo[1].izquierda != None:
+                aux = [nodo[1], nodo[1].izquierda]
+                cola.encolar(aux)
+            if nodo[1].derecha != None:
+                aux2 = [nodo[1], nodo[1].derecha]
+                cola.encolar(aux2)
+        
+        cadena += '''}'''
+        
         nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolAVL'+str(self.contadorArbolAVL)
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
