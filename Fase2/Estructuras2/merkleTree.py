@@ -43,20 +43,26 @@ class merkleTree:
             self.hashes = aux.copy()
             if len(self.niveles) != 1:
                 self.niveles.clear()
+                
         self.root = self.niveles[0]
 
 
-        '''while len(self.niveles) != 1:
+    def hashing(self):
+        while len(self.niveles) != 1:
             k = 0
             while k < len(self.hashes):
-                raiz = self.hashes[k] + self.hashes[k+1]
-                converse = hashlib.sha256(raiz.encode())
-                self.niveles.append(converse.hexdigest())
-                self.hashes = self.niveles
+                #raiz = self.hashes[k] + self.hashes[k+1]
+                arbol = nodoMerkle()
+                arbol.izquierda = self.hashes[k].id
+                arbol.derecha = self.hashes[k+1].id
+                converse = hashlib.sha256(arbol.id.encode())
+                arbol.id = converse.hexdigest()
+                self.niveles.append(arbol)
+
+                #self.hashes = self.niveles
                 k += 2
-            
-                
-            self.hashes = self.niveles'''
+             
+            self.hashes = self.niveles
 
 
 arbol = merkleTree(['1','2','3','4','5','6','7'])

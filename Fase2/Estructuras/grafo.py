@@ -15,6 +15,7 @@ class grafo:
         self.contadorListaTareas = 0
         self.contadorArbolBGeneral = 0
         self.contadorArbolEstudiante = 0
+        self.contadorTablaHash = 0
 
     def grafoArbolAVL(self, arbolAVL, llave):
         #print('Método grafo avl')
@@ -29,10 +30,10 @@ class grafo:
         while cola.es_vacia() != True:
             nodo = cola.desencolar()
             if nodo[0] != '':
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+llave.decrypt((nodo[1].nombre)).decode()+'\n'+llave.decrypt((nodo[1].carrera)).decode()+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+llave.decrypt((nodo[1].nombre).encode()).decode()+'\n'+llave.decrypt((nodo[1].carrera).encode()).decode()+'"];\n'
                 cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
             else:
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+llave.decrypt((nodo[1].nombre)).decode()+'\n'+llave.decrypt((nodo[1].carrera)).decode()+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+llave.decrypt((nodo[1].nombre).encode()).decode()+'\n'+llave.decrypt((nodo[1].carrera).encode()).decode()+'"];\n'
 
             if nodo[1].izquierda != None:
                 aux = [nodo[1], nodo[1].izquierda]
@@ -43,7 +44,7 @@ class grafo:
         
         cadena += '''}'''
         
-        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolAVL'+str(self.contadorArbolAVL)
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\arbolAVL'+str(self.contadorArbolAVL)
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
         archivo.close()
@@ -52,6 +53,7 @@ class grafo:
         #system('cd ./'+nombre+'.png')
         startfile(nombre+'.svg')
         self.contadorArbolAVL += 1
+        return nombre+'.svg'
 
     def grafoAVLEncriptado(self, arbolAVL):
         #print('Método grafo avl')
@@ -66,10 +68,10 @@ class grafo:
         while cola.es_vacia() != True:
             nodo = cola.desencolar()
             if nodo[0] != '':
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre).decode()[0:10]+'\n'+(nodo[1].carrera).decode()[0:10]+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre)[0:10]+'\n'+(nodo[1].carrera)[0:10]+'"];\n'
                 cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
             else:
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre).decode()[0:10]+'\n'+(nodo[1].carrera).decode()[0:10]+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre)[0:10]+'\n'+(nodo[1].carrera)[0:10]+'"];\n'
 
             if nodo[1].izquierda != None:
                 aux = [nodo[1], nodo[1].izquierda]
@@ -80,7 +82,7 @@ class grafo:
         
         cadena += '''}'''
         
-        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolAVL'+str(self.contadorArbolAVL)
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\arbolAVL'+str(self.contadorArbolAVL)
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
         archivo.close()
@@ -89,6 +91,7 @@ class grafo:
         #system('cd ./'+nombre+'.png')
         startfile(nombre+'.svg')
         self.contadorArbolAVL += 1
+        return nombre+'.svg'
 
     def matrizDispersa(self, matriz):
         principal = 'digraph g{\nlabel="Matriz dispersa"\nnode[shape=box]\nsubgraph h{\n'
@@ -271,3 +274,97 @@ class grafo:
 
     def arbolB_cursosEstudiante(self, arbolB_Estudiante):
         pass
+
+    #Nuevos métodos
+    def tablaHash(self, th):
+        cadenaGrafo = 'digraph G {\nnode[shape=box style="radial"]\n'
+        listaNodos = [] #Nodos de la tabla hash
+        listaApuntes = []
+        aux = th.primero
+        while aux != None:
+            apunteAux = aux.lista_apuntes.primero
+            listaAuxiliar = []
+
+            while apunteAux != None:
+                listaAuxiliar.append(apunteAux)
+                apunteAux = apunteAux.siguiente
+
+            listaApuntes.append(listaAuxiliar)
+            listaNodos.append(aux)
+            aux = aux.siguiente
+
+        for x in range(len(listaNodos)):
+            if x < len(listaNodos)-1:
+                nodo0 = 'nodo'+str(listaNodos[x].carnet)+'[label="'+str(listaNodos[x].carnet)+'"];\n'
+                nodo1 = 'nodo'+str(listaNodos[x+1].carnet)+'[label="'+str(listaNodos[x+1].carnet)+'"];\n'
+                cadenaGrafo += nodo0 + nodo1
+                cadenaGrafo += 'nodo'+str(listaNodos[x].carnet) +'->'+'nodo'+str(listaNodos[x+1].carnet)+';\n'
+            else:
+                cadenaGrafo += 'nodo'+str(listaNodos[x].carnet)+'[label="'+str(listaNodos[x].carnet)+'"];\n'
+        
+        for y in listaApuntes:
+            validar = 0
+            rank = '{rank=same;'
+            for z in range(len(y)):
+                if validar == 0:
+                        nodoRaiz = 'nodo' + str(y[z].carnet)
+                        nodotmp = 'nodo' + str(y[z].carnet) + '_' + str(y[z].id)
+                        cadenaGrafo += nodoRaiz+'->'+nodotmp+';\n'
+                        rank += nodoRaiz+';'
+                        validar = 1
+                if z < len(y)-1:
+                    nodotmp = 'nodo' + str(y[z].carnet) + '_' + str(y[z].id)
+                    nodotmp2 = 'nodo'+ str(y[z].carnet) + '_' + str(y[z+1].id)
+                    
+                    cadenaGrafo += nodotmp+'[label="'+y[z].titulo+'", shape=oval]\n'
+                    #cadenaGrafo += nodotmp2+'[label="'+y[z+1].titulo+'"]\n'
+                    cadenaGrafo += nodotmp+'->'+nodotmp2+';\n'
+                    rank += nodotmp+';'+nodotmp2+';'
+                else:
+                    nodotmp = 'nodo' + str(y[z].carnet) + '_' + str(y[z].id)
+                    rank += nodotmp+';'
+                    cadenaGrafo += nodotmp+'[label="'+y[z].titulo+'", shape=oval]\n'
+            rank += '}\n'
+            cadenaGrafo += rank
+
+        cadenaGrafo += '\n}'
+        #print(cadenaGrafo)
+
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\TablaHash'+str(self.contadorListaTareas)
+        archivo = open(nombre+'.dot','w')
+        archivo.write(cadenaGrafo)
+        archivo.close()
+
+        system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
+        #system('cd ./matriz.png')
+        startfile(nombre+'.png')
+        self.contadorTablaHash += 1
+
+    
+    def redEstudios(self):
+        
+        return
+    
+    def grafoCompletoPensum(self, grafoPensum):
+        cadena = 'digraph G {\nnode[shape=oval style="radial"]\nrankdir=LR\n'
+
+        listaNodosPensum = grafoPensum.nodos
+
+        for x in listaNodosPensum:
+            label = x.codigo + '\n' + x.nombre
+            cadena += 'nodo'+x.codigo+'[label="'+label+'"];\n'
+            for y in x.prerequisitos:
+                if y != '':
+                    ponderacion = grafoPensum.obtenerPonderacion(x.codigo)
+                    cadena += 'nodo'+y+'->'+'nodo'+x.codigo+'[label="'+str(ponderacion)+'"];\n'
+        
+        cadena += '}'
+
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\GrafoPensum'
+        archivo = open(nombre+'.dot','w')
+        archivo.write(cadena)
+        archivo.close()
+
+        system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
+        #system('cd ./matriz.png')
+        startfile(nombre+'.png')

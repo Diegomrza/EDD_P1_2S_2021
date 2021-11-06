@@ -32,60 +32,16 @@
         </div>
     </nav>
     <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
-    <div style="width: 100%;height: 750px;"><small class="d-block" style="color: var(--bs-white);font-size: 30px;text-align: center;margin-left: 42%;width: 250px;">Reporte tabla hash</small>
-        <img id="imagen" style="width: 100%;height: 100%;">
+    <div style="width: 100%;height: 750px;">
+        <small style="display: block; color: white; font-size: xx-large; text-align: center;">Ingrese los cursos que se desea asignar en formato json: </small>
+        <textarea style="display: block; margin-left: auto; margin-right: auto; width: 80%; height: 700px; resize: none;" placeholder="hola"></textarea>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
 
     <script>
-
-$(document).ready(function() {
-            $("#BaseToImage").click(function() {
-                //alert($("#response").val());
-                document.getElementById('preview').setAttribute('src', $("#response").val());
-                $("#preview").show();
-            });
-        });
-        //Convert Image to Base64
-        $(document).ready(function() {
-            $("#inputFileToLoad").change(function() {
-                var filesSelected = document.getElementById("inputFileToLoad").files;
-                if (filesSelected.length > 0) {
-                    var fileToLoad = filesSelected[0];
-                    var fileReader = new FileReader();
-                    fileReader.onload = function(fileLoadedEvent) {
-                        var base64value = fileLoadedEvent.target.result;
-                        console.log(base64value);
-                        $("#response").val(base64value);
-                    };
-                    fileReader.readAsDataURL(fileToLoad);
-                }
-            });
-        });
-
-        function cargarImagen(){
-            var imagen = new Image();
-
-            fetch('http://127.0.0.1:3000/reporte?tipo=0', {
-                //method: 'POST',
-                //body: JSON.stringify(objeto),
-                //headers: {
-                //    'Content-Type': 'application/json'
-                //}
-            }).then(res => res.json())
-                .catch(err => {
-                    console.error('Error', err)
-                    window.alert("ocurrio un error, ver consola")
-            })
-            .then(response => {
-                imagen.setAtributte('src','data:image/png;base64,'+response.imagen);
-                //image.src = 'data:image/png;base64,'+response.imagen;
-                document.body.appendChild(image);
-            })
-
-            
-        }
+    
+    
     </script>
 </body>
 

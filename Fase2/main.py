@@ -1,6 +1,7 @@
 from Estructuras2.TablaHash import TablaHash
 from cryptography.fernet import Fernet
 import hashlib
+import base64
 
 #Importaciones nodos estructuras
 from Estructuras.Nodos.NodoAVL import NodoAVL
@@ -11,6 +12,7 @@ from Estructuras.Nodos.NodoTarea import NodoTarea
 from Estructuras.ArbolAVL import ArbolAVL
 from Estructuras.ArbolCursos import ArbolCursos
 from Estructuras.grafo import grafo
+from Estructuras.GrafoPensum import grafoPensum
 
 #importaciones flask
 from flask import Flask, request, jsonify
@@ -23,7 +25,7 @@ import os
 import errno
 
 try:
-    os.mkdir(r'C:\Users\Squery\Desktop\Reportes_F2')
+    os.mkdir(r'C:\Users\Squery\Desktop\Reportes_F3')
 except OSError as e:
     if e.errno != errno.EEXIST:
         raise
@@ -37,7 +39,8 @@ obj = NodoTarea(0,'','','','',0,'')
 
 estudiantes = ArbolAVL() #Arbol AVL de estudiantes
 pensum = ArbolCursos(5) #Arbol B de cursos
-g = grafo()
+g = grafo() #para los reportes
+gPensum = grafoPensum() #Grafo nuevo
 
 #Tablas hash
 th1 = TablaHash(7)
@@ -92,7 +95,7 @@ def carga():
 def reporte():
     global estudiantes #Arbol AVL
     global pensum #Arbol B
-    global g, encriptador
+    global g, encriptador, th1, gPensum
 
     #Obteniendo todos los parámetros necesarios para los reportes solicitados
     tipo = request.args.get('tipo','None')
@@ -104,10 +107,14 @@ def reporte():
     semestre = request.args.get('semestre','None')
 
 
-    if int(tipo) == 0:
-        g.grafoArbolAVL(estudiantes, encriptador)
+    if int(tipo) == 0: #Estudiantes desencriptados
+        ruta0 = g.grafoArbolAVL(estudiantes, encriptador)
+        image = open(ruta0, 'rb')
+        image_read = image.read()
+        image_64_encode = base64.b64encode(image_read)
         return jsonify({
-            "message":"Mostrando árbol de estudiantes"
+            "message" : "Mostrando árbol de estudiantes",
+            "imagen" : image_64_encode.decode()
         })
 
     elif int(tipo) == 1 and carnet != 'None' and anio != 'None' and mes != 'None': 
@@ -137,7 +144,8 @@ def reporte():
                 })
 
     elif int(tipo) == 3:
-        g.arbolB_cursosGeneral(pensum)
+        #g.arbolB_cursosGeneral(pensum)
+        g.grafoCompletoPensum(gPensum)
         return jsonify({
             "message":"Mostrando árbol de cursos del pensum"
         })
@@ -155,10 +163,23 @@ def reporte():
                     "message":z
                 })
 
-    elif int(tipo) == 5:
-        g.grafoAVLEncriptado(estudiantes)
+    elif int(tipo) == 5: #Estudiantes encriptados
+        ruta5 = g.grafoAVLEncriptado(estudiantes)
         return jsonify({
-            "message":"Mostrando árbol de estudiantes encriptado"
+            "message" : "Mostrando árbol de estudiantes encriptado",
+            "imagen" : ruta5
+        })
+
+    elif int(tipo) == 6: #Tabla hash
+
+        try:
+            g.tablaHash(th1)
+        except:
+            print('Error')
+
+        return jsonify({
+            "message":"Success",
+            "reason":"Si"
         })
 
     else:
@@ -663,7 +684,7 @@ def cargarApuntes(diccionario_apuntes):
     print(th1.tamanio)
 
 def cargarPensumGeneral(diccionario_pensum_general):
-    global pensum
+    global pensum, gPensum
     for x in diccionario_pensum_general['Cursos']:
         codigo = int(x['Codigo'])
         nombre = x['Nombre']
@@ -671,6 +692,15 @@ def cargarPensumGeneral(diccionario_pensum_general):
         tipo = x['Obligatorio']
         creditos = int(x['Creditos'])
         pensum.insertar(codigo, nombre, prerrequisito, tipo, creditos)
+    
+    for x in diccionario_pensum_general['Cursos']:
+        codigo = x['Codigo']
+        nombre = x['Nombre']
+        creditos = x['Creditos']
+        prerequisitos = x['Prerequisitos'].split(',')
+        obligatorio = x['Obligatorio']
+
+        gPensum.insertar(codigo, nombre, creditos, prerequisitos, obligatorio)
 
 def cargarPensumEstudiantes(diccionario_pensum_estudiantes):
     global estudiantes
@@ -700,6 +730,9 @@ def cifrarDatos(dato):
         dato = str(dato)
     token = encriptador.encrypt(dato.encode())
     return token.decode()
+
+def imagen_a_base64():
+    return
 
 if __name__ == '__main__':
     app.run(threaded = True,port = 3000, debug = True)
