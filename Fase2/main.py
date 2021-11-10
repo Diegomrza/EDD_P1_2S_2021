@@ -2,6 +2,7 @@ from Estructuras2.TablaHash import TablaHash
 from cryptography.fernet import Fernet
 import hashlib
 import base64
+import time, asyncio
 
 #Importaciones nodos estructuras
 from Estructuras.Nodos.NodoAVL import NodoAVL
@@ -50,7 +51,12 @@ encriptador = Fernet(clave)
 
 @app.route('/')
 def index():
-    return '<h1>El servidor está corriendo!</h1>'
+    '''while True:
+        time.sleep(300)'''
+    return '<h1>El server está corriendo</h1>'
+        
+
+    #return '<h1>El servidor está corriendo!</h1>'
 
 @app.route('/carga', methods=['POST'])
 def carga():
@@ -106,16 +112,20 @@ def reporte():
     hora = request.args.get('hora','None')
     semestre = request.args.get('semestre','None')
 
-
     if int(tipo) == 0: #Estudiantes desencriptados
-        ruta0 = g.grafoArbolAVL(estudiantes, encriptador)
-        image = open(ruta0, 'rb')
-        image_read = image.read()
-        image_64_encode = base64.b64encode(image_read)
-        return jsonify({
-            "message" : "Mostrando árbol de estudiantes",
-            "imagen" : image_64_encode.decode()
-        })
+        try:
+            nombre = g.grafoArbolAVL(estudiantes, encriptador)
+
+            return jsonify({
+                "message" : "Success",
+                "reason":"Mostrando árbol de estudiantes",
+                "nombre" : nombre
+            })
+        except:
+            return jsonify({
+                "message":"Failed",
+                "reason":"No se pudo generar la imagen"
+            })
 
     elif int(tipo) == 1 and carnet != 'None' and anio != 'None' and mes != 'None': 
         estudiantes.reporteMatrizDispersa0(int(carnet), int(anio), int(mes), g)
@@ -143,12 +153,20 @@ def reporte():
                     'message':y
                 })
 
-    elif int(tipo) == 3:
+    elif int(tipo) == 3: #Grafo completo
         #g.arbolB_cursosGeneral(pensum)
-        g.grafoCompletoPensum(gPensum)
-        return jsonify({
-            "message":"Mostrando árbol de cursos del pensum"
-        })
+        try:
+            nombre = g.grafoCompletoPensum(gPensum)
+            return jsonify({
+                "message":"Success",
+                "reason":"Mostrando árbol de cursos del pensum",
+                "nombre" : nombre
+            })
+        except:
+            return jsonify({
+                "message":"Failed",
+                "reason":"No se pudo generar la imagen"
+            })
 
     elif int(tipo) == 4 and carnet != 'None' and anio != 'None' and semestre != 'None':
         estudiantes.reporteArbolB0(int(carnet), int(anio), int(semestre))
@@ -159,28 +177,44 @@ def reporte():
         else:
             for z in estudiantes.auxiliar:
                 estudiantes.auxiliar.clear()
-                return jsonify({
-                    "message":z
-                })
+                if z[0] == '1':
+                    return jsonify({
+                        "message":"Success",
+                        "nombre":z[1]
+                    })
+                else :
+                    return jsonify({
+                        "message":"Failed",
+                        "reason":z[1]
+                    })
 
     elif int(tipo) == 5: #Estudiantes encriptados
-        ruta5 = g.grafoAVLEncriptado(estudiantes)
-        return jsonify({
-            "message" : "Mostrando árbol de estudiantes encriptado",
-            "imagen" : ruta5
-        })
+        try:
+            nombre = g.grafoAVLEncriptado(estudiantes)
+            return jsonify({
+                "message":"Success",
+                "reason" : "Mostrando árbol de estudiantes encriptado",
+                "nombre" : nombre
+            })
+        except:
+            return jsonify({
+                "message":"Failed",
+                "reason":"No se pudo generar la imagen"
+            })
 
     elif int(tipo) == 6: #Tabla hash
-
         try:
-            g.tablaHash(th1)
+            nombre = g.tablaHash(th1)
+            return jsonify({
+                "message":"Success",
+                "reason":"Creación de imagen exitosa",
+                "nombre":nombre
+            })
         except:
-            print('Error')
-
-        return jsonify({
-            "message":"Success",
-            "reason":"Si"
-        })
+            return jsonify({
+                "message":"Failed",
+                "reason":"No se pudo generar la imagen"
+            })
 
     else:
         return jsonify({
@@ -493,7 +527,6 @@ def ply(ru):
 @app.route('/login', methods=['POST'])
 def login():
     global estudiantes, encriptador
-
     #Toma de datos
     password = request.json['password']
 
@@ -592,6 +625,23 @@ def registro():
                     "reason":"El estudiante ya existe"
                 })
 
+@app.route('/recuperarPassword', methods=['GET'])
+def recuperarPassword():
+    global estudiantes, clave
+    carnet = request.args.get('carnet','None')
+    estudiantes.mostrar_estudiante0(int(carnet))
+
+    for x in estudiantes.auxiliar:
+        if int(carnet) == x.carnet:
+            return jsonify({
+                "message" : "Success",
+                "password" : x.password
+            })
+
+    return jsonify({
+        "message" : "Failed"
+    })
+
 #Obtiene todos los apuntes de un estudiante
 @app.route('/obtenerApuntes/<int:usuario>', methods=['GET'])
 def obtenerApuntes(usuario):
@@ -652,6 +702,23 @@ def crearApunteNuevo():
         "message":"Success",
         "reason":"Apunte creado con exito"
     })
+
+@app.route('/asignarCursos', methods=['POST'])
+def asignarCursos():
+    contenido = request.json['contenido']
+    print(type(contenido))
+    try:
+        cargarPensumEstudiantes(json.loads(contenido))
+        return jsonify({
+        "message" : "Success",
+        "reason" : "Cursos asignados"
+    })
+    except:
+        return jsonify({
+            "message" : "Failed",
+            "reason" : "Error al asignar los cursos"
+        })
+    
 
 def cargarEstudiantes(diccionario_estudiantes):
     global estudiantes
@@ -731,8 +798,12 @@ def cifrarDatos(dato):
     token = encriptador.encrypt(dato.encode())
     return token.decode()
 
-def imagen_a_base64():
-    return
+def crearHash(dato):
+    if type(dato) != str:
+            dato = str(dato)
+    return hashlib.sha256(dato.encode()).hexdigest()
+
+
 
 if __name__ == '__main__':
     app.run(threaded = True,port = 3000, debug = True)

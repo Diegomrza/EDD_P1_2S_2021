@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Tabla hash</title>
+    <title>Reporte tabla hash</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -29,32 +29,36 @@
         </div>
     </nav>
     <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
-    <div >
-        <small class="d-block" style="color: var(--bs-white);font-size: 30px;display: block; margin-left: auto; margin-right: auto; width: 280px;">Reporte Tabla Hash</small>
-        <div id="divImagen">
-            <!--<img src="" id="imagen" style="width: 100%;height: 100%;" >-->
-            
-        </div>
-        <button style="display: block; margin-left: auto; margin-right: auto; background-color: purple; height: 50px; font-size: x-large;" data-bss-hover-animate="wobble" id="boton1" onclick="cargarImagen()">Cargar imagen</button>
+    <div>
+        <small class="d-block" style="color: var(--bs-white);font-size: 30px; margin-left: auto; margin-right: auto; margin-top: 30px; width: 500px;">Estudiantes encriptados</small>
+        <button data-bss-hover-animate="wobble" style="font-size: x-large; height: 50px; width: 150px; background-color: purple; display: block; margin-left: auto; margin-right: auto;" id="boton1" onclick="redirigir(5)">Ir</button>
+        <small class="d-block" style="color: var(--bs-white);font-size: 30px; margin-left: auto; margin-right: auto; margin-top: 30px; width: 500px;">Estudiantes desencriptados</small>
+        <button data-bss-hover-animate="wobble" style="font-size: x-large; height: 50px; width: 150px; background-color: purple; display: block; margin-left: auto; margin-right: auto;" id="boton2" onclick="redirigir(0)">Ir</button>
+        <small class="d-block" style="color: var(--bs-white);font-size: 30px; margin-left: auto; margin-right: auto; margin-top: 30px; width: 500px;">Grafo pensum</small>
+        <button data-bss-hover-animate="wobble" style="font-size: x-large; height: 50px; width: 150px; background-color: purple; display: block; margin-left: auto; margin-right: auto;" id="boton3" onclick="redirigir(3)">Ir</button>
+        <small class="d-block" style="color: var(--bs-white);font-size: 30px; margin-left: auto; margin-right: auto; margin-top: 30px; width: 500px;">Tabla hash</small>
+        <button data-bss-hover-animate="wobble" style="font-size: x-large; height: 50px; width: 150px; background-color: purple; display: block; margin-left: auto; margin-right: auto;" id="boton4" onclick="redirigir(6)">Ir</button>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
 
     <script>
-        function cargarImagen(){
-            fetch('http://127.0.0.1:3000/reporte?tipo=6', {
-            }).then(res => res.json())
-                .catch(err => {
-                    console.error('Error', err)
-                    window.alert("ocurrio un error, ver consola")
-            })
-            .then(response => {
-                
-                var imagen = document.querySelector('#divImagen');
-                imagen.innerHTML += `<img src="${response.nombre.split('\\')[2]}"  >`;
-                console.log(response);
-                
-            });
+        function redirigir(tipo){
+
+            if (tipo == 5){
+                //Estudiantes encriptados
+                location.href="Encriptados.html";
+            } else if(tipo == 0){  
+                //Estudiantes desencriptados
+                location.href="Desencriptados.html";
+            } else if(tipo == 3){
+                //Grafo pensum
+                location.href="GrafoCompleto.html";
+            } else if (tipo == 6){
+                //Tabla hash
+                location.href="TablaHash.html";
+            };
         };
     </script>
 </body>

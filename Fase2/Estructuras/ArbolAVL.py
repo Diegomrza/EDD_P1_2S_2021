@@ -255,12 +255,12 @@ class ArbolAVL:
                 semestreAux = year.semestre.buscarSemestre(semestre)
                 if semestreAux != None:
                     grafoB = grafo()
-                    grafoB.arbolB_cursosGeneral(semestreAux.cursos)
-                    self.auxiliar.append('Graficando el árbol b')
+                    nombre = grafoB.arbolB_cursosGeneral(semestreAux.cursos)
+                    self.auxiliar.append(['1', nombre])
                 else:
-                    self.auxiliar.append('No se encontró el semestre')
+                    self.auxiliar.append(['2', 'No se encontró el semestre'])
             else:
-                self.auxiliar.append('No se encontró el año indicado')
+                self.auxiliar.append(['3', 'No se encontró el año indicado'])
         return raiz
 
     #Para mostrar la información de un estudiante (Método GET)

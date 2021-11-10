@@ -36,6 +36,14 @@
             "correo":"Luis@gmial.com",
             "password":"sdfadf5er1",
             "edad":21
+        },{
+            "carnet":201500866,
+            "DPI":2993323220101,
+            "nombre":"Diego Abraham Robles Meza",
+            "carrera":"ing. ciencias y sistemas",
+            "correo":"correo@gmail.com",
+            "password":"123",
+            "edad":23
         }
     ]
 }

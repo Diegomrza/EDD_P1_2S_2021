@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Tabla hash</title>
+    <title>Estudiantes encriptados</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body  style="background: url(&quot;assets/img/90458.jpg&quot;);">
+<body style="background: url(&quot;assets/img/90458.jpg&quot;);">
     <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: rgb(34, 34, 34);padding-top: 0;padding-bottom: 10px;border-radius: 20;border-bottom-left-radius: 20;border-bottom-right-radius: 20;border-style: none;border-top-right-radius: 20;border-top-left-radius: 20;">
         <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
@@ -30,7 +30,7 @@
     </nav>
     <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
     <div >
-        <small class="d-block" style="color: var(--bs-white);font-size: 30px;display: block; margin-left: auto; margin-right: auto; width: 280px;">Reporte Tabla Hash</small>
+        <small class="d-block" style="color: var(--bs-white);font-size: 30px;display: block; margin-left: auto; margin-right: auto; width: 500px;">Reporte Estudiantes Encriptados</small>
         <div id="divImagen">
             <!--<img src="" id="imagen" style="width: 100%;height: 100%;" >-->
             
@@ -42,18 +42,23 @@
 
     <script>
         function cargarImagen(){
-            fetch('http://127.0.0.1:3000/reporte?tipo=6', {
+            fetch('http://127.0.0.1:3000/reporte?tipo=5', {
             }).then(res => res.json())
                 .catch(err => {
-                    console.error('Error', err)
-                    window.alert("ocurrio un error, ver consola")
+                    console.error('Error', err);
+                    window.alert("ocurrio un error, ver consola");
             })
             .then(response => {
-                
-                var imagen = document.querySelector('#divImagen');
-                imagen.innerHTML += `<img src="${response.nombre.split('\\')[2]}"  >`;
-                console.log(response);
-                
+                if (response.message == 'Failed'){
+                    alert(response.reason);
+                    location.reload(false)
+                } else {
+                    //document.querySelector('#imagen').setAttribute("scr",response.nombre);
+                    var imagen = document.querySelector('#divImagen');
+                    imagen.innerHTML += `<img src="${response.nombre.split('\\')[2]}"  >`;
+                    console.log(response);
+                    location.reload(false)
+                };
             });
         };
     </script>

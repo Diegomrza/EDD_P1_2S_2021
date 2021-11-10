@@ -302,7 +302,7 @@
             "Obligatorio": true
         },
         {
-            "Codigo": "0771",
+            "Codigo": "0774",
             "Nombre": "Sistemas de bases de datos 1",
             "Creditos": 5,
             "Prerequisitos": "0773",

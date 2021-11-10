@@ -14,12 +14,9 @@ class grafo:
         self.contadorDispersa = 0
         self.contadorListaTareas = 0
         self.contadorArbolBGeneral = 0
-        self.contadorArbolEstudiante = 0
         self.contadorTablaHash = 0
 
     def grafoArbolAVL(self, arbolAVL, llave):
-        #print('Método grafo avl')
-
         cadena = '''digraph G {\nnode[shape=box]
         '''
         
@@ -48,16 +45,20 @@ class grafo:
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
         archivo.close()
-        cadena = ''
+        
+        nombre2 = r'Fase2\Paginas\arbolAVL'+str(self.contadorArbolAVL)
+        archivo2 = open(nombre2+'.dot','w')
+        archivo2.write(cadena)
+        archivo2.close()
+
         system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
+        system('dot -Tpng'+' '+nombre2+'.dot -o '+nombre2+'.png')
         #system('cd ./'+nombre+'.png')
-        startfile(nombre+'.svg')
+        startfile(nombre2+'.png')
         self.contadorArbolAVL += 1
-        return nombre+'.svg'
+        return nombre2+'.png'
 
     def grafoAVLEncriptado(self, arbolAVL):
-        #print('Método grafo avl')
-
         cadena = '''digraph G {\nnode[shape=box]
         '''
         
@@ -86,12 +87,19 @@ class grafo:
         archivo = open(nombre+'.dot','w')
         archivo.write(cadena)
         archivo.close()
-        cadena = ''
+        
+        nombre2 = r'Fase2\Paginas\arbolAVL'+str(self.contadorArbolAVL)
+        archivo2 = open(nombre2+'.dot','w')
+        archivo2.write(cadena)
+        archivo2.close()
+
+
         system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
+        system('dot -Tpng'+' '+nombre2+'.dot -o '+nombre2+'.png')
         #system('cd ./'+nombre+'.png')
-        startfile(nombre+'.svg')
+        startfile(nombre2+'.png')
         self.contadorArbolAVL += 1
-        return nombre+'.svg'
+        return nombre2+'.png'
 
     def matrizDispersa(self, matriz):
         principal = 'digraph g{\nlabel="Matriz dispersa"\nnode[shape=box]\nsubgraph h{\n'
@@ -245,15 +253,22 @@ class grafo:
         acumulador[0] += "}\n"
         #print(acumulador[0])
 
-        nombre = r'C:\Users\Squery\Desktop\Reportes_F2\arbolPensum'+str(self.contadorArbolBGeneral)
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\arbolPensum'+str(self.contadorArbolBGeneral)
         archivo = open(nombre+'.dot','w')
         archivo.write(acumulador[0])
         archivo.close()
 
+        nombre2 = r'Fase2\Paginas\arbolPensum'+str(self.contadorArbolBGeneral)
+        archivo = open(nombre2+'.dot','w')
+        archivo.write(acumulador[0])
+        archivo.close()
+
         system('dot -Tsvg'+' '+nombre+'.dot -o '+nombre+'.svg')
+        system('dot -Tpng'+' '+nombre2+'.dot -o '+nombre2+'.png')
         #system('cd ./'+nombre+'.png')
-        startfile(nombre+'.svg')
+        startfile(nombre2+'.png')
         self.contadorArbolBGeneral += 1
+        return nombre2+'.png'
         
     def imprimir(self, actual, acumulador):
         acumulador[0] += 'node{}[label="<r0>'.format(str(acumulador[2]))
@@ -271,9 +286,6 @@ class grafo:
                 acumulador[1] += '"node{}":r{} -> "node{}"\n'.format(str(acumulador[2]) ,str(i), str(acumulador[3]))
             i += 1
         acumulador[0] += '"];\n'
-
-    def arbolB_cursosEstudiante(self, arbolB_Estudiante):
-        pass
 
     #Nuevos métodos
     def tablaHash(self, th):
@@ -328,19 +340,24 @@ class grafo:
             cadenaGrafo += rank
 
         cadenaGrafo += '\n}'
-        #print(cadenaGrafo)
 
-        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\TablaHash'+str(self.contadorListaTareas)
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\TablaHash'+str(self.contadorTablaHash)
         archivo = open(nombre+'.dot','w')
         archivo.write(cadenaGrafo)
         archivo.close()
 
-        system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
-        #system('cd ./matriz.png')
-        startfile(nombre+'.png')
-        self.contadorTablaHash += 1
+        nombre2 = r'Fase2\Paginas\TablaHash'+str(self.contadorTablaHash)
+        archivo2 = open(nombre2+'.dot','w')
+        archivo2.write(cadenaGrafo)
+        archivo2.close()
 
-    
+        system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
+        system('dot -Tpng'+' '+nombre2+'.dot -o'+nombre2+'.png')
+        #system('cd ./matriz.png')
+        startfile(nombre2+'.png')
+        self.contadorTablaHash += 1
+        return nombre2+'.png'
+ 
     def redEstudios(self):
         
         return
@@ -365,6 +382,14 @@ class grafo:
         archivo.write(cadena)
         archivo.close()
 
+        nombre2 = r'Fase2\Paginas\GrafoPensum'
+        archivo2 = open(nombre2+'.dot','w')
+        archivo2.write(cadena)
+        archivo2.close()
+
         system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
+        system('dot -Tpng'+' '+nombre2+'.dot -o'+nombre2+'.png')
         #system('cd ./matriz.png')
-        startfile(nombre+'.png')
+        startfile(nombre2+'.png')
+
+        return nombre2+'.png'

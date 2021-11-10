@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Asignar Cursos</title>
+    <title>Cursos Asignados</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -24,15 +24,15 @@
                         href="VistaApuntes.html" style="color: rgba(224,217,217,0.9);">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="VistaApuntes.html"
                         style="color: rgba(224,217,217,0.9);">Apuntes</a></li>
-                <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="index.html"
+                <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="VistaApuntes.html"
                         style="color: rgba(224,217,217,0.9);">Tareas</a></li>
                 <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="RedDeCursos.html"
                         style="color: rgba(224,217,217,0.9);">Red de cursos</a></li>
                 <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="AsignarCursos.html"
                         style="color: rgba(224,217,217,0.9);">Asignar cursos</a></li>
-                <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="index.html"
+                <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="CursosAsignados.html"
                         style="color: rgba(224,217,217,0.9);">Cursos asignados</a></li>
-                <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="index.html"
+                <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="VistaApuntes.html"
                         style="color: rgba(224,217,217,0.9);">CRUD tareas</a></li>
                 </ul>
                 <p class="ms-auto navbar-text actions" data-bss-hover-animate="wobble" style="text-align: right;"><a class="login" href="login.html" style="color: rgba(224,217,217,0.9);"><i class="fa fa-power-off"></i>&nbsp;Cerrar Sesión</a> </p>
@@ -41,9 +41,12 @@
     </nav>
     <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small id="nombreUsuario" style="margin-left: 10px;font-size: 20px;margin-top: 10px;"></small></div>
     <div style="width: 100%;height: 750px;">
-        <small style="display: block; color: white; font-size: xx-large; text-align: center;">Ingrese los cursos que se desea asignar en formato json: </small>
-        <textarea id="areaDeTexto" style="display: block; margin-left: auto; margin-right: auto; width: 80%; height: 700px; resize: none;" placeholder='{"Estudiantes": [{"Carnet": "000000000","Años": [{"Año": "0000","Semestres": [{"Semestre": "0","Cursos": [{"Codigo": "0000","Nombre": "00000000000000000","Creditos": 0, "Prerequisitos": "0,00,000,0000","Obligatorio": true}]}]}]}]}'></textarea>
-        <button data-bss-hover-animate="wobble" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  background-color: purple; float: right; margin-right: 190px; margin-top: 10px; height: 50px;" onclick="asignarCursos()">Asignar</button>
+        <small style="display:block; margin-left: auto; margin-right: auto; color: white; text-align: center; font-size: xx-large;">Ingrese el año: </small>
+        <input id="anio" style="display:block; margin-left: auto; margin-right: auto; height: 35px;" type="text"><br>
+        <small style="display:block; margin-left: auto; margin-right: auto; text-align: center; color: white; font-size: xx-large;">Ingrese el semestre: </small>  
+        <input id="semestre" style="display:block; margin-left: auto; margin-right: auto; height: 35px;" type="text"><br>
+        
+        <button data-bss-hover-animate="wobble" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; background-color: purple; margin-top: 10px; height: 50px; display:block; margin-left: auto; margin-right: auto;" onclick="asignarCursos()">Consultar</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -55,18 +58,10 @@
         }
 
         function asignarCursos(){
-            var contenido = document.querySelector('#areaDeTexto').value;
-            
-            var objeto = {
-                "contenido" : contenido
-            }
+            var anio = document.querySelector('#anio').value;
+            var semestre = document.querySelector('#semestre').value;
 
-            fetch('http://127.0.0.1:3000/asignarCursos', {
-                method: 'POST',
-                body: JSON.stringify(objeto),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+            fetch(`http://127.0.0.1:3000/reporte?tipo=4&carnet=${sessionStorage.getItem('usuario')}&anio=${anio}&semestre=${semestre}`, {
             }).then(res => res.json())
                 .catch(err => {
                     console.error('Error', err)
@@ -76,9 +71,10 @@
                 if (response.message == 'Failed') {
                     alert(response.reason)
                 } else {
+                    console.log(response)
                     //alert(response.reason +": "+ `${response.nombre}`)
-                    alert(response.reason)
-                    location.href="VistaApuntes.html"
+                    //alert(response.reason)
+                    //location.href="VistaApuntes.html"
                     }
                 })
         }

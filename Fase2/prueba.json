@@ -1,0 +1,182 @@
+{
+    "Estudiantes": [
+        {
+            "Carnet": "201901429",
+            "Años": [
+                {
+                    "Año": "2019",
+                    "Semestres": [
+                        {
+                            "Semestre": "1",
+                            "Cursos": [
+                                {
+                                    "Codigo": "0794",
+                                    "Nombre": "Seminario de sistemas 1",
+                                    "Creditos": 3,
+                                    "Prerequisitos": "0724",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0722",
+                                    "Nombre": "Modelacion y simulacion 1",
+                                    "Creditos": 5,
+                                    "Prerequisitos": "0724,0603",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0796",
+                                    "Nombre": "Sistemas organizacionales y gerenciales 1",
+                                    "Creditos": 4,
+                                    "Prerequisitos": "0283,0722",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0977",
+                                    "Nombre": "Sistemas organizacionales y gerenciales 1",
+                                    "Creditos": 4,
+                                    "Prerequisitos": "0781,0775,0724",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0786",
+                                    "Nombre": "Analisis y diseño de sistemas 2",
+                                    "Creditos": 5,
+                                    "Prerequisitos": "0283",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0799",
+                                    "Nombre": "Seminario de sistemas 2",
+                                    "Creditos": 3,
+                                    "Prerequisitos": "0797",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "2002",
+                                    "Nombre": "Practica final",
+                                    "Creditos": 0,
+                                    "Prerequisitos": "2036",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0788",
+                                    "Nombre": "Sistemas organizacionales y gerenciales 2",
+                                    "Creditos": 4,
+                                    "Prerequisitos": "0786",
+                                    "Obligatorio": true
+                                }
+                            ]
+                        },
+                        {
+                            "Semestre": "2",
+                            "Cursos": [
+                                {
+                                    "Codigo": "0152",
+                                    "Nombre": "Fisica 1",
+                                    "Creditos": 10,
+                                    "Prerequisitos": "0103,0147",
+                                    "Obligatorio": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Año": "2020",
+                    "Semestres": [
+                        {
+                            "Semestre": "1",
+                            "Cursos": [
+                                {
+                                    "Codigo": "0796",
+                                    "Nombre": "Logica de sistemas",
+                                    "Creditos": 2,
+                                    "Prerequisitos": "0103",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0920",
+                                    "Nombre": "Matematica computo 1",
+                                    "Creditos": 5,
+                                    "Prerequisitos": "0103",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0750",
+                                    "Nombre": "Introduccion a la programacion y computacion 1",
+                                    "Creditos": 4,
+                                    "Prerequisitos": "0103",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0106",
+                                    "Nombre": "Matematica intermedia 1",
+                                    "Creditos": 10,
+                                    "Prerequisitos": "0103",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0140",
+                                    "Nombre": "Fisica 1",
+                                    "Creditos": 10,
+                                    "Prerequisitos": "0103,0147",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0008",
+                                    "Nombre": "Idioma tecnico 3",
+                                    "Creditos": 10,
+                                    "Prerequisitos": "0008",
+                                    "Obligatorio": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Año": "2021",
+                    "Semestres": [
+                        {
+                            "Semestre": "1",
+                            "Cursos": [
+                                {
+                                    "Codigo": "0772",
+                                    "Nombre": "Sistemas de bases de datos 1",
+                                    "Creditos": 5,
+                                    "Prerequisitos": "0773",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "2037",
+                                    "Nombre": "Practica intermedia",
+                                    "Creditos": 0,
+                                    "Prerequisitos": "0778,0777,0773,2025",
+                                    "Obligatorio": true
+                                },
+                                {
+                                    "Codigo": "0286",
+                                    "Nombre": "Sistemas operativos 2",
+                                    "Creditos": 4,
+                                    "Prerequisitos": "0281",
+                                    "Obligatorio": true
+                                }
+                            ]
+                        },
+                        {
+                            "Semestre": "2",
+                            "Cursos": [
+                                {
+                                    "Codigo": "0019",
+                                    "Nombre": "Filosofia de la ciencia",
+                                    "Creditos": 3,
+                                    "Prerequisitos": "0019",
+                                    "Obligatorio": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
