@@ -27,9 +27,9 @@ class Block:
             self.hash = self.crearHash() 
 
 class BlockChain:
-    def __init__(self, dificultad='0000'):
+    def __init__(self):
         self.contadorBloques = 1
-        self.dificultad = dificultad
+        self.dificultad = '0000'
         self.chain = [self.setPrimerBloque()]
 
     def setPrimerBloque(self):

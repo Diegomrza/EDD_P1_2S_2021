@@ -61,6 +61,9 @@ cadenaDeBloques = BlockChain()
 clave = Fernet.generate_key()
 encriptador = Fernet(clave)
 
+
+tiempoCronometro = 30.0
+
 @app.route('/')
 def index():
     '''while True:
@@ -757,6 +760,37 @@ def asignarCursos():
             "reason" : "Error al asignar los cursos"
         })
     
+
+@app.route('/tiempo', methods=['POST'])
+def tiempo():
+    global tiempoCronometro
+    tiempo = request.json['tiempo']
+    try:
+        tiempoCronometro = float(tiempo)
+        return jsonify({
+            "message":"Success",
+            "reason":"Tiempo cambiado con exito"
+        })
+    except:
+        return jsonify({
+            "message":"Failed",
+            "reason":"Ocurrió un problema al intentar cambiar el tiempo"
+        })
+    
+
+@app.route('/PruebaTrabajo', methods=['POST'])
+def PruebaTrabajo():
+    global cadenaDeBloques
+
+    dificultad = request.json['dificultad']
+    print(type(dificultad))
+    cadenaDeBloques.dificultad = dificultad
+
+    return jsonify({
+        "message":"Success",
+        "reason":"Cambiado correctamente"
+    })
+
 def cargarEstudiantes(diccionario_estudiantes):
     global estudiantes
     for x in diccionario_estudiantes['estudiantes']:
@@ -905,8 +939,9 @@ def nuevoBloque():
     listaEstudiantes.clear()
 
 def temporizador():
+    global tiempoCronometro
     while True:
-        time.sleep(50.0)
+        time.sleep(tiempoCronometro)
         nuevoBloque()
 
 t1 = threading.Thread(target=temporizador)
