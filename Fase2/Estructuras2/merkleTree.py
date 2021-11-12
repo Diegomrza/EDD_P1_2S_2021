@@ -52,27 +52,32 @@ class merkleTree:
 
     def hashing(self, lista):
         lista = self.parOimpar(lista)
-        parents = []
+        aux = []
 
         while len(lista) != 1:
-            index = 0
-            length = len(lista)
-            while index < length:
-                izq = lista[index]
+            i = 0
+            tamanio = len(lista)
+            while i < tamanio:
+                izq = lista[i]
                 der = None
-                if (index+1) < length:
-                    der = lista[index+1]
+                if (i+1) < tamanio:
+                    der = lista[i+1]
                 else:
                     der = nodoMerkle(None, None, izq.hash)
                 
-                parentHash = self.crearHash(izq.hash + der.hash)
-                parents.append(nodoMerkle(izq, der, parentHash))
-                index += 2
-            lista = parents
-            parents = []
+                hashPrincipal = self.crearHash(izq.hash + der.hash)
+                aux.append(nodoMerkle(izq, der, hashPrincipal))
+                i += 2
+            lista = aux
+            aux = []
         self.root = lista[0]
 
-def crearHash(dato):
+    def limpiarArbol(self):
+        self.root = None
+        self.hashes.clear()
+        self.niveles.clear()
+        
+'''def crearHash(dato):
     if type(dato) != str:
         dato = str(dato)
     return hashlib.sha256(dato.encode()).hexdigest()
@@ -86,4 +91,4 @@ for x in range(7):
 arbol = merkleTree()
 #arbol.crear()
 arbol.hashing(lista)
-print('Raíz: ',arbol.root.hash)
+print('Raíz: ',vars(arbol.root))'''

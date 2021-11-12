@@ -1,8 +1,7 @@
 from Estructuras2.TablaHash import TablaHash
 from cryptography.fernet import Fernet
 import hashlib
-import base64
-import time, asyncio
+import time, threading, datetime
 
 #Importaciones nodos estructuras
 from Estructuras.Nodos.NodoAVL import NodoAVL
@@ -14,6 +13,8 @@ from Estructuras.ArbolAVL import ArbolAVL
 from Estructuras.ArbolCursos import ArbolCursos
 from Estructuras.grafo import grafo
 from Estructuras.GrafoPensum import grafoPensum
+from Estructuras2.merkleTree import merkleTree, nodoMerkle
+from Estructuras2.BlockChain import Block, BlockChain
 
 #importaciones flask
 from flask import Flask, request, jsonify
@@ -43,8 +44,19 @@ pensum = ArbolCursos(5) #Arbol B de cursos
 g = grafo() #para los reportes
 gPensum = grafoPensum() #Grafo nuevo
 
-#Tablas hash
-th1 = TablaHash(7)
+th1 = TablaHash(7) #Tablas hash
+
+#Las 3 operaciones posibles para el blockchain: crear apunte, crear estudiante, asignar un curso
+listaApuntes = [] 
+listaEstudiantes = [] 
+listaCursos = [] 
+
+merkleEstudiantes = merkleTree() #Arbol de merkle estudiantes
+merkleCursos = merkleTree() #Arbol de merkle cursos
+merkleApuntes = merkleTree() #Arbol de merkle apuntes
+
+#BlockChain
+cadenaDeBloques = BlockChain()
 
 clave = Fernet.generate_key()
 encriptador = Fernet(clave)
@@ -101,7 +113,7 @@ def carga():
 def reporte():
     global estudiantes #Arbol AVL
     global pensum #Arbol B
-    global g, encriptador, th1, gPensum
+    global g, encriptador, th1, gPensum, merkleEstudiantes, merkleCursos, merkleApuntes
 
     #Obteniendo todos los parámetros necesarios para los reportes solicitados
     tipo = request.args.get('tipo','None')
@@ -215,6 +227,23 @@ def reporte():
                 "message":"Failed",
                 "reason":"No se pudo generar la imagen"
             })
+
+    elif int(tipo) == 7: #árbol de merkle apuntes
+        g.graficarMerkle(merkleEstudiantes)
+        return jsonify({
+            "message":"Success",
+            "reason":"Exito"
+        })
+
+    elif int(tipo) == 8: #árbol de merkle cursos
+        return jsonify({
+
+        })
+
+    elif int(tipo) == 9: #árbol de merkle estudiantes
+        return jsonify({
+            
+        })
 
     else:
         return jsonify({
@@ -579,6 +608,7 @@ def login():
 def registro():
 
     global estudiantes
+    global listaEstudiantes
 
     carnet = int(request.json['carnet'])
 
@@ -601,8 +631,8 @@ def registro():
     edad0 = int(request.json['edad'])
     edad = cifrarDatos(edad0)
 
-    tipo0 = request.json['tipo']
-    tipo = cifrarDatos(tipo0)
+    tipo = request.json['tipo']
+    #tipo = cifrarDatos(tipo)
 
     creditos0 = int(request.json['creditos'])
     creditos = cifrarDatos(creditos0)
@@ -612,10 +642,11 @@ def registro():
     estudiantes.insertar0(nuevo, 1)
 
     if len(estudiantes.auxiliar) == 0:
-            return jsonify({
-                "message":"Success",
-                "reason":"Estudiante creado con exito"
-            })
+        listaEstudiantes.append(nuevo)
+        return jsonify({
+            "message":"Success",
+            "reason":"Estudiante creado con exito"
+        })
     else:
         for x in estudiantes.auxiliar:
             if x == True:
@@ -689,6 +720,7 @@ def apunte(carnet, id):
 @app.route('/crearApunteNuevo', methods=['POST'])
 def crearApunteNuevo():
     global th1
+    global listaApuntes
 
     carnet = request.json['carnet']
     titulo = request.json['titulo']
@@ -697,7 +729,9 @@ def crearApunteNuevo():
 
     th1.insertarHash(int(carnet), titulo, contenido)
     #th1.mostrar()
-    print(th1.tamanio)
+    #print(th1.tamanio)
+    #                    carnet, titulo, contenido
+    listaApuntes.append([carnet, titulo, contenido])
     return jsonify({
         "message":"Success",
         "reason":"Apunte creado con exito"
@@ -705,10 +739,14 @@ def crearApunteNuevo():
 
 @app.route('/asignarCursos', methods=['POST'])
 def asignarCursos():
+    global listaCursos
+    fecha = datetime.datetime.now()
     contenido = request.json['contenido']
-    print(type(contenido))
+    carnet = request.json['carnet']
+    #print(type(contenido))
     try:
         cargarPensumEstudiantes(json.loads(contenido))
+        listaCursos.append([carnet, contenido, fecha])
         return jsonify({
         "message" : "Success",
         "reason" : "Cursos asignados"
@@ -719,7 +757,6 @@ def asignarCursos():
             "reason" : "Error al asignar los cursos"
         })
     
-
 def cargarEstudiantes(diccionario_estudiantes):
     global estudiantes
     for x in diccionario_estudiantes['estudiantes']:
@@ -803,7 +840,77 @@ def crearHash(dato):
             dato = str(dato)
     return hashlib.sha256(dato.encode()).hexdigest()
 
+def merkle_apuntes():
+    global merkleApuntes, th1
+    aux = th1.primero
+    lista = []
+    while aux != None:
+        aux2 = aux.lista_apuntes.primero
+        while aux2 != None:
+            lista.append(aux2.titulo+aux2.contenido+str(aux2.carnet))
+            aux2 = aux2.siguiente
+        aux = aux.siguiente
+    lista2 = []
+    for x in lista:
+        lista2.append(nodoMerkle(None, None, crearHash(x)))
+    merkleApuntes.hashing(lista2)
 
+def crearArchivoBloque(merkleRoot):
+    global cadenaDeBloques
+    cadenaDeBloques.addBloque(merkleRoot)
+    
+def nuevoBloque():
+    global merkleApuntes, merkleCursos, merkleEstudiantes
+    global listaApuntes, listaCursos, listaEstudiantes
+    global g
+
+    lista0 = []
+    lista1 = []
+    lista2 = []
+
+    if len(listaApuntes) != 0:
+        for x in listaApuntes:
+            nuevo0 = nodoMerkle(None, None, crearHash(x[0]+x[1]+x[2]))
+            lista0.append(nuevo0)
+    else:
+        lista0.append(nodoMerkle(None, None, crearHash('-1')))
+    
+    if len(listaCursos) != 0:
+        for y in listaCursos:
+            nuevo1 = nodoMerkle(None, None, crearHash(y[0]+y[1]+str(y[2])))
+            lista1.append(nuevo1)
+    else:
+        lista1.append(nodoMerkle(None, None, crearHash('-1')))
+    
+    if len(listaEstudiantes) != 0:
+        for z in listaEstudiantes:
+            nuevo2 = nodoMerkle(None, None, crearHash(str(z.carnet)+str(z.dpi)+z.nombre+z.carrera+z.correo+z.password+str(z.edad)))
+            lista2.append(nuevo2)
+    else:
+        lista2.append(nodoMerkle(None, None, crearHash('-1')))
+
+    merkleApuntes.hashing(lista0); g.graficarMerkle(merkleApuntes)
+    merkleCursos.hashing(lista1); g.graficarMerkle(merkleCursos)
+    merkleEstudiantes.hashing(lista2); g.graficarMerkle(merkleEstudiantes)
+
+    merkleRoot = crearHash(merkleApuntes.root.hash+merkleCursos.root.hash+merkleEstudiantes.root.hash)
+    crearArchivoBloque(merkleRoot)
+
+    merkleApuntes.limpiarArbol()
+    merkleCursos.limpiarArbol()
+    merkleEstudiantes.limpiarArbol()
+    
+    listaApuntes.clear()
+    listaCursos.clear()
+    listaEstudiantes.clear()
+
+def temporizador():
+    while True:
+        time.sleep(50.0)
+        nuevoBloque()
+
+t1 = threading.Thread(target=temporizador)
+t1.start()
 
 if __name__ == '__main__':
     app.run(threaded = True,port = 3000, debug = True)

@@ -15,6 +15,7 @@ class grafo:
         self.contadorListaTareas = 0
         self.contadorArbolBGeneral = 0
         self.contadorTablaHash = 0
+        self.contadorMerkle = 0
 
     def grafoArbolAVL(self, arbolAVL, llave):
         cadena = '''digraph G {\nnode[shape=box]
@@ -68,11 +69,13 @@ class grafo:
 
         while cola.es_vacia() != True:
             nodo = cola.desencolar()
+            tama = len(nodo[1].nombre)
+            nio = len(nodo[1].carrera)
             if nodo[0] != '':
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre)[0:10]+'\n'+(nodo[1].carrera)[0:10]+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre)[tama-10:tama-1]+'\n'+(nodo[1].carrera)[nio-10:nio-1]+'"];\n'
                 cadena += str(nodo[0].carnet)+"->"+str(nodo[1].carnet)+";\n"
             else:
-                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre)[0:10]+'\n'+(nodo[1].carrera)[0:10]+'"];\n'
+                cadena += str(nodo[1].carnet)+'[label="'+str(nodo[1].carnet)+'\n'+(nodo[1].nombre)[tama-10:tama-1]+'\n'+(nodo[1].carrera)[nio-10:nio-1]+'"];\n'
 
             if nodo[1].izquierda != None:
                 aux = [nodo[1], nodo[1].izquierda]
@@ -361,6 +364,50 @@ class grafo:
     def redEstudios(self):
         
         return
+
+    def graficarMerkle(self, arbol_merkle):
+        cadena = '''digraph G {\nnode[shape=box]
+        '''
+
+        cola = Cola()
+        au = ['', arbol_merkle.root]
+        cola.encolar(au)
+
+        while cola.es_vacia() != True:
+            nodo = cola.desencolar()
+            if nodo[0] != '':
+                cadena += 'nodo_' + str(nodo[1].hash[0:6])+'[label="'+nodo[1].hash[0:6]+'"];\n'
+                cadena += 'nodo_' + nodo[0].hash[0:6]+"->"+ 'nodo_'+nodo[1].hash[0:6]+";\n"
+            else:
+                cadena += 'nodo_' + str(nodo[1].hash[0:6]) + '[label="'+ nodo[1].hash[0:6] +'"];\n'
+
+            if nodo[1].izquierda != None:
+                aux = [nodo[1], nodo[1].izquierda]
+                cola.encolar(aux)
+            if nodo[1].derecha != None:
+                aux2 = [nodo[1], nodo[1].derecha]
+                cola.encolar(aux2)
+            
+        
+        cadena += '''}'''
+        nombre = r'C:\Users\Squery\Desktop\Reportes_F3\MerkleTree'+str(self.contadorMerkle)
+        archivo = open(nombre+'.dot','w')
+        archivo.write(cadena)
+        archivo.close()
+
+        '''nombre2 = r'Fase2\Paginas\MerkleTree'+str(self.contadorMerkle)
+        archivo2 = open(nombre2+'.dot','w')
+        archivo2.write(cadena)
+        archivo2.close()'''
+
+        system('dot -Tpng'+' '+nombre+'.dot -o'+nombre+'.png')
+        #system('dot -Tpng'+' '+nombre2+'.dot -o'+nombre2+'.png')
+        #system('cd ./matriz.png')
+        #startfile(nombre2+'.png')
+        self.contadorMerkle += 1
+        #return nombre2+'.png'
+
+        
     
     def grafoCompletoPensum(self, grafoPensum):
         cadena = 'digraph G {\nnode[shape=oval style="radial"]\nrankdir=LR\n'

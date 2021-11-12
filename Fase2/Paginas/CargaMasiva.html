@@ -15,20 +15,21 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body style="background: url(&quot;assets/img/90458.jpg&quot;);">
+<body onload="cargarDatos()" style="background: url(&quot;assets/img/90458.jpg&quot;);">
     <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: rgb(34, 34, 34);padding-top: 0;padding-bottom: 10px;border-radius: 20;border-bottom-left-radius: 20;border-bottom-right-radius: 20;border-style: none;border-top-right-radius: 20;border-top-left-radius: 20;">
         <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
                 <ul class="navbar-nav nav-right">
                     <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="CargaMasiva.html" style="color: rgba(224,217,217,0.9);">Carga masiva de archivos</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="contact.html" style="color: rgba(224,217,217,0.9);">Administrar Blockchain</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="#" style="color: rgba(224,217,217,0.9);">Administrar Blockchain</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="Reportes.html" style="color: rgba(224,217,217,0.9);">Reportes</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="RegistroAdmins.html" style="color: rgba(224,217,217,0.9);">Registrar un usuario</a></li>
                 </ul>
                 <p class="ms-auto navbar-text actions" data-bss-hover-animate="wobble" style="text-align: right;"><a class="login" href="login.html" style="color: rgba(224,217,217,0.9);"><i class="fa fa-power-off"></i>&nbsp;Cerrar Sesión</a> </p>
             </div>
         </div>
     </nav>
-    <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
+    <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small id="nombreUsuario" style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
     <div style="margin-top: 150px;">
         <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Estudiantes</small><input id="estudiantes" name="estudiantes1" class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
         <div style="margin-left: auto;margin-right: auto;width: 550px;height: 50px;margin-top: 80px;"><small class="text-center" style="color: var(--bs-white);font-size: 20px;">Pensum</small><input id="pensum" name="pensum1" class="float-end" type="file" data-bss-hover-animate="rubberBand" style="background: var(--bs-purple);color: var(--bs-gray-900);"></div>
@@ -85,27 +86,9 @@
                 })
         }
         
-        /*function abrirArchivo(evento){
-            let archivo = evento.target.files[0];
-
-            if (archivo){
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                    let contenido = e.target.result;
-
-                    document.getElementById('contenido').innerText = contenido;
-                };
-
-                reader.readAsText(archivo);
-            } else {
-                document.getElementById('mensajes').innerText = 'No se ha seleccionado un archivo.';
-            }
-        }
-
-        window.addEventListener('load', () => {
-            document.getElementById('archivoTexto').addEventListener('change', abrirArchivo);
-        });*/
+        function cargarDatos(){
+            document.querySelector('#nombreUsuario').innerHTML = sessionStorage.getItem('usuario');
+        };
     </script>
 </body>
 

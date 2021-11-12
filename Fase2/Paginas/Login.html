@@ -73,14 +73,13 @@
                         location.href = "CargaMasiva.html"
                     } else{
                         location.href="VistaApuntes.html";
-                    }
-                    }
-                })
-        }
-
+                    };
+                };
+            });
+        };
 
         function recuperarPassword() {
-            var username = document.querySelector('#usuario').value
+            var username = document.querySelector('#usuario').value;
 
             fetch(`http://127.0.0.1:3000/recuperarPassword?carnet=${username}`, {
             }).then(res => res.json())
@@ -94,9 +93,9 @@
                 } else {
                     alert(`Su contraseña es: ${response.password}`);
                     
-                }
+                };
             });
-        }
+        };
     </script>
 </body>
 

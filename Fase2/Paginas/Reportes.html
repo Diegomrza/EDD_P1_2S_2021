@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body  style="background: url(&quot;assets/img/90458.jpg&quot;);">
+<body onload="cargarDatos()"  style="background: url(&quot;assets/img/90458.jpg&quot;);">
     <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: rgb(34, 34, 34);padding-top: 0;padding-bottom: 10px;border-radius: 20;border-bottom-left-radius: 20;border-bottom-right-radius: 20;border-style: none;border-top-right-radius: 20;border-top-left-radius: 20;">
         <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
@@ -23,12 +23,13 @@
                     <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="wobble" href="CargaMasiva.html" style="color: rgba(224,217,217,0.9);">Carga masiva de archivos</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="#" style="color: rgba(224,217,217,0.9);">Administrar Blockchain</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="Reportes.html" style="color: rgba(224,217,217,0.9);">Reportes</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="wobble" href="RegistroAdmins.html" style="color: rgba(224,217,217,0.9);">Registrar un usuario</a></li>
                 </ul>
                 <p class="ms-auto navbar-text actions" data-bss-hover-animate="wobble" style="text-align: right;"><a class="login" href="login.html" style="color: rgba(224,217,217,0.9);"><i class="fa fa-power-off"></i>&nbsp;Cerrar Sesión</a> </p>
             </div>
         </div>
     </nav>
-    <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
+    <div style="background: var(--bs-white);border-top-left-radius: 20px;border-top-right-radius: 20px;color: rgb(33, 37, 41);width: 98%;margin-left: 12px;margin-top: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;"><i class="fa fa-user" style="transform: scale(1.50);padding: 10px;"></i><small id="nombreUsuario" style="margin-left: 10px;font-size: 20px;margin-top: 10px;">Nombre de usuario</small></div>
     <div>
         <small class="d-block" style="color: var(--bs-white);font-size: 30px; margin-left: auto; margin-right: auto; margin-top: 30px; width: 500px;">Estudiantes encriptados</small>
         <button data-bss-hover-animate="wobble" style="font-size: x-large; height: 50px; width: 150px; background-color: purple; display: block; margin-left: auto; margin-right: auto;" id="boton1" onclick="redirigir(5)">Ir</button>
@@ -59,6 +60,10 @@
                 //Tabla hash
                 location.href="TablaHash.html";
             };
+        };
+
+        function cargarDatos(){
+            document.querySelector('#nombreUsuario').innerHTML = sessionStorage.getItem('usuario')
         };
     </script>
 </body>
