@@ -62,7 +62,7 @@ clave = Fernet.generate_key()
 encriptador = Fernet(clave)
 
 
-tiempoCronometro = 30.0
+tiempoCronometro = 300.0
 
 @app.route('/')
 def index():
