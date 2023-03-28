@@ -29,11 +29,11 @@ class Block:
 class BlockChain:
     def __init__(self):
         self.contadorBloques = 1
-        self.dificultad = '0000'
+        self.dificultad = '00'
         self.chain = [self.setPrimerBloque()]
 
     def setPrimerBloque(self):
-        nuevo = Block(0,'0000','0000')
+        nuevo = Block(0,'00','00')
         nuevo.minar(self.dificultad)
 
         archivo = open(r'C:\Users\Squery\Desktop\Bloques\\'+str(nuevo.indice)+'.txt', 'w')
@@ -70,6 +70,10 @@ class BlockChain:
         archivo.close()
 
 
-'''EDDCoin = BlockChain()
+EDDCoin = BlockChain()
 for x in range(5):
-    EDDCoin.addBloque('Diego'+str(x))'''
+    EDDCoin.addBloque('Diego'+str(x))
+
+for y in EDDCoin.chain:
+    print(vars(y))
+    print()

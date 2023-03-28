@@ -57,8 +57,12 @@ class ArbolAVL:
             return aux
         return nodo
 #####################
+
+
+
+
     def insertar0(self, nodo, tipo):
-        self.root = self.insertar(self.root, nodo, tipo)      
+        self.root = self.insertar(self.root, nodo, tipo)       
     def insertar(self, raiz, nodo, tipo): #Recibe como parámetro un nodo de tipo avl
         if raiz == None:
             raiz = nodo
@@ -494,4 +498,3 @@ class ArbolAVL:
                 raiz.lista_anios.insertar(nuevoAnio)
                 
         return raiz
-

@@ -47,7 +47,7 @@ void menu()
 {
     string opcion;       //variable de tipo cadena de letras
     bool bandera = true; //variable de tipo falso o verdadero
-    cout << "\n\n\n";
+    cout << "\n\n\n"; //system.ou
     while (bandera == true)
     {
         cout << "***********Menu**********" << endl;

@@ -1,0 +1,18 @@
+digraph G {
+node[shape=box style="radial"]
+nodo201901429[label="201901429"];
+nodo201900716[label="201900716"];
+nodo201901429->nodo201900716;
+nodo201900716[label="201900716"];
+nodo201901429->nodo201901429_1;
+nodo201901429_1[label="Apunte nuevo", shape=oval]
+nodo201901429_1->nodo201901429_2;
+nodo201901429_2[label="Nota2", shape=oval]
+{rank=same;nodo201901429;nodo201901429_1;nodo201901429_2;nodo201901429_2;}
+nodo201900716->nodo201900716_1;
+nodo201900716_1[label="Hola", shape=oval]
+nodo201900716_1->nodo201900716_2;
+nodo201900716_2[label="Cinco beneficios importantes de blockchain", shape=oval]
+{rank=same;nodo201900716;nodo201900716_1;nodo201900716_2;nodo201900716_2;}
+
+}

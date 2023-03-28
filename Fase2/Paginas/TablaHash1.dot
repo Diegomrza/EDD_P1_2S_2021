@@ -1,0 +1,10 @@
+digraph G {
+node[shape=box style="radial"]
+nodo201901429[label="201901429"];
+nodo201901429->nodo201901429_1;
+nodo201901429_1[label="Apunte nuevo", shape=oval]
+nodo201901429_1->nodo201901429_2;
+nodo201901429_2[label="Nota2", shape=oval]
+{rank=same;nodo201901429;nodo201901429_1;nodo201901429_2;nodo201901429_2;}
+
+}
